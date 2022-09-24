@@ -10,7 +10,10 @@ class RoomRate extends Model
     use HasFactory;
 
     protected $fillable = [
-        "room_id",
-        "rate",
+        'rate'
     ];
+    
+    public function rooms(){
+        return $this->belongsTo(Room::class, 'room_id');
+    }
 }
