@@ -20,13 +20,9 @@ class CreateReservationsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreignId('guest_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->constrained();
             $table->foreignId('employee_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->constrained();
             $table->date('check_in');
             $table->date('check_out');
             $table->timestamps();
