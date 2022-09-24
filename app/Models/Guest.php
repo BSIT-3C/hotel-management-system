@@ -15,4 +15,16 @@ class Guest extends Model
         "email",
         "contact",
     ];
+
+    public function reservations(){
+        return $this->hasMany(Reservation::class, 'guest_id');
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'guest_id');
+    }
+
+    public function blacklist(){
+        return $this->hasMany(Blacklist::class, 'guest_id');
+    }
 }

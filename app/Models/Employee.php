@@ -16,4 +16,12 @@ class Employee extends Model
         "work_hours",
         "position_id",
     ];
+
+    public function reservations(){
+        return $this->hasMany(Reservation::class, 'employee_id');
+    }
+
+    public function position(){
+        return $this->belongsTo(Position::class, 'position_id');
+    }
 }
