@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RoomRate extends Model
+class Role extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'rate'
+        "role"
     ];
-    
-    public function rooms(){
-        return $this->belongsTo(Room::class, 'room_id');
+
+    public function accounts(){
+        return $this->hasMany(Account::class, 'role_id');
     }
 }

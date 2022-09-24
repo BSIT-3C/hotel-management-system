@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RoomRate extends Model
+class Blacklist extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'rate'
+        "guest_id",
+        "reason",
     ];
-    
-    public function rooms(){
-        return $this->belongsTo(Room::class, 'room_id');
+
+    public function guest(){
+        return $this->belongsTo(Guest::class, 'guest_id');
     }
 }

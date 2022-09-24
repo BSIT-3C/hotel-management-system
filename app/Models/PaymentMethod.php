@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RoomRate extends Model
+class PaymentMethod extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'rate'
+        "payment_method",
+        "is_available"
     ];
-    
-    public function rooms(){
-        return $this->belongsTo(Room::class, 'room_id');
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'payment_method_id');
     }
 }
