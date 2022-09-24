@@ -13,9 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // accountant, accounting clerk
 
-        \App\Models\Department::factory()->count(3)->sequence(['department' => 'Front Office'], ['department' => 'Accounting'],['department' => 'House Keeping'],)
+        \App\Models\Department::factory()->count(3)->sequence(['department' => 'Front Office'], ['department' => 'Accounting'], ['department' => 'House Keeping'],)
             ->create();
 
         \App\Models\Position::factory()->count(3)->sequence(['position' => 'Receptionist', 'department_id' => 1], ['position' => 'Accountant', 'department_id' => 2], ['position' => 'House Keeper', 'department_id' => 3])
@@ -30,6 +29,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\Employee::factory(10)->create();
         \App\Models\Room::factory(10)->create();
         \App\Models\Housekeeping::factory(3)->create();
-        // \App\Models\User::factory(10)->create();
     }
 }
