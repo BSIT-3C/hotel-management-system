@@ -13,10 +13,7 @@ class PaymentMethodFactory extends Factory
      */
     public function definition()
     {
-        $paymentMethodArray = ['Cash', 'MasterCard', 'Paypal', 'GCash', 'Debit Card', 'Other'];
-
         return [
-            'payment_method' => array_rand($paymentMethodArray, 1),
             'is_available' => $this->faker->boolean,
         ];
     }

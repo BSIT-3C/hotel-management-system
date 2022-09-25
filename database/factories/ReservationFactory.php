@@ -14,9 +14,9 @@ class ReservationFactory extends Factory
     public function definition()
     {
         return [
-            'room_id' => $this->faker->unique()->numberBetween(1, 100),
-            'guest_id' => $this->faker->unique()->numberBetween(1, 100),
-            'employee_id' => $this->faker->numberBetween(1, 100),
+            'room_id' => $this->faker->numberBetween(1, 10),
+            'guest_id' => $this->faker->numberBetween(1, 10),
+            'employee_id' => $this->faker->numberBetween(1, 10),
             'check_in' => $this->faker->date(),
             'check_out' => $this->faker->date()
         ];

@@ -13,11 +13,9 @@ class RoleFactory extends Factory
      */
     public function definition()
     {
-        // edit this if you want to change the default values
-        $hotelRoles = ['Front Desk', 'Housekeeping', 'Accounting', 'Manager', 'Admin'];
 
         return [
-            'role' => array_rand($hotelRoles, 1)
+            //
         ];
     }
 }

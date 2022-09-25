@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained();
-            $table->foreignId('guest_id')->constrained();
+            $table->foreignId('role_id')->constrained();
             $table->string('password');
             $table->timestamps();
         });
