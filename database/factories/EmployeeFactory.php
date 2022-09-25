@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Position;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class EmployeeFactory extends Factory
 {
@@ -17,7 +18,7 @@ class EmployeeFactory extends Factory
         $fname = $this->faker->firstName();
         $mname = $this->faker->lastName();
         $lname = $this->faker->lastName();
-        $email = "{$fname}{$mname}.{$lname}@gmail.com";
+        $email = Str::lower("{$fname}{$mname}.{$lname}@gmail.com");
 
         return [
             'first_name' => $fname,
