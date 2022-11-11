@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InformationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/dashboard', function () {
+    return view('frontdesk/dashboard');
+});
+
+Route::get('/information', function () {
+    return view('frontdesk/information');
+});
+
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
