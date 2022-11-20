@@ -3,8 +3,8 @@
         <button class="btn border-0" style="padding: 0;" ><img src="{{ asset('assets/tranquil.png') }}" width="" height="58"  href=""></button>   
         
         <div>
-            <button class="bi bi-house-door btn"> Dashboard</button>  
-            <button class="bi bi-info-circle btn"><a href="/information" class="text-decoration-none text-black"> Information</a></button>
+            <a href="/dashboard" class="text-decoration-none text-black"><button class="bi bi-house-door btn"> Dashboard</button></a>
+            <a href="/information" class="text-decoration-none text-black"><button class="bi bi-info-circle btn"> Information</button></a>
             <button class="bi bi-card-list btn"> All Bookings</button>
         </div> 
     
