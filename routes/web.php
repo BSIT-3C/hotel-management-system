@@ -19,11 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/frontdesk/dashboard', function () {
     return view('frontdesk/dashboard');
 });
 
-Route::get('/information', function () {
+Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
 });
 
