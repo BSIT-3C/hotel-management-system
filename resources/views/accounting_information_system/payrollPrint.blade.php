@@ -113,8 +113,10 @@
             <embed src="{{ asset('file/payrollPrint.pdf') }}" height="520" width="1000" />
         </div>
 
-        <div class="example_div">
+        <div class="example">
         </div>
+
+
 
     </div>
 
