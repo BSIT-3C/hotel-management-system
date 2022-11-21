@@ -1,0 +1,194 @@
+.rectangle1
+{
+background-color:#1840c4;
+height:140px;
+width:1350px;
+}
+
+.tranquil1
+{
+height:126.2745132446289px;
+width:150.5px;
+border: none;
+position: fixed;
+top: 21;
+}
+.search
+{
+position:absolute;
+right:10px;
+padding:5px;
+margin:10;
+width:40px;
+height:40px;
+}
+
+.expenses
+{
+position:absolute;
+color:#000000;
+text-align:left;
+vertical-align:text-top;
+font-size:45px;
+font-family: Arial, Helvetica, sans-serif;
+line-height:11%;
+width:330px;
+top: 180;
+right: 980;
+font-weight:bolder;
+}
+
+.line
+{
+position:absolute;
+color:#000000;
+text-align:left;
+vertical-align:text-top;
+font-size:64px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+line-height: 40%;
+width:312px;
+top: 180;
+right: 1045;
+}
+
+.section1
+{
+position:absolute;
+background-color:#e5e5e5;
+height:468px;
+width:247px;
+}
+.empty1
+{
+background-color:#ffffff;
+height:415px;
+width:233px;
+border:1px solid #000000;
+left:14px;
+top:53px;
+position:absolute;
+}
+.rectangle54
+{
+background-color:#e1dfd2;
+height:40px;
+width:233px;
+border:1px solid #000000;
+top:13px;
+left:14px;
+position:absolute;
+}
+
+.latestupdate
+{
+color:#000000;
+text-align:right;
+font-size: 18px;
+font-family:Arial, Helvetica, sans-serif;
+line-height:1100%;
+width:185px;
+font-weight: bold;
+top:60px;
+}
+
+.selectWrapper{
+    border-radius:36px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:2px solid black;
+    background-color:#e1dfd2;
+    top:163px;
+    left:800px;
+    position:absolute;
+
+  }
+  .selectBox{
+    width:140px;
+    height:40px;
+    border:0px;
+    font-size: large;
+    outline:none;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .selectWrapper2{
+    border-radius:36px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:2px solid black;
+    background-color:#e1dfd2;
+    top:163px;
+    left:970px;
+    position:absolute;
+  }
+  .selectBox2{
+    width:140px;
+    height:40px;
+    border:0px;
+    font-size: large;
+    outline:none;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .selectWrapper3{
+    border-radius:36px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:2px solid black;
+    background-color:#e1dfd2;
+    top:163px;
+    left:1140px;
+    position:absolute;
+  }
+  .selectBox3{
+    width:140px;
+    height:40px;
+    border:0px;
+    font-size: large;
+    outline:none;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+    font-family: Arial;
+    font-weight: bold;
+    height: 33px;
+    margin: -70px 0 0 200px;
+  }
+
+  .rectangle45
+{
+position:absolute;
+background-color:#e1dfd2;
+height:30px;
+width:900px;
+filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+top: 600;
+left: 227;
+font-family: Arial;
+font-weight: bold;
+}
+
+.expenses1
+{
+position:absolute;
+color:#000000;
+text-align:left;
+vertical-align:text-top;
+font-size:17px;
+font-family: Arial;
+line-height:11%;
+width:330px;
+top: 615;
+right: 800;
+font-weight:bolder;
+}
