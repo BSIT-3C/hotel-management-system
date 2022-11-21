@@ -34,7 +34,7 @@
                     <embed src="{{asset('file/Revenue.pdf')}}" height="520" width="1000" />
                 </div>
 
-
+                <div class="example"></div>
             </div>
     </body>
 
