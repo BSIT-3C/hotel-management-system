@@ -92,7 +92,7 @@
         <div class="d-flex justify-content-between">
             <h1 class="d-inline"><b> PAYROLL</b></h1>
 
-            <!--Search Button: Java Script-->
+        <!--Search Button: Java Script-->
             <div class="Search d-inline">
                 <div class="md-form md-outline input-with-post-icon datepicker">
                     <input type="date" name="date" id="date" readonly="readonly" size="12"/>
