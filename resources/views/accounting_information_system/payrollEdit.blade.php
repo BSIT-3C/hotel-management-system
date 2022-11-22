@@ -2,11 +2,8 @@
 <html>
 
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
      <!-- FOR JQUERY AND DATEPICKER  -->
      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -24,7 +21,7 @@
 
     <style>
         .rectangle{
-            height: 15ch;
+            height: 65px;
             width: auto;
             background-color: #1840C4;
             margin-top: auto;
@@ -33,21 +30,48 @@
         }
 
         h1{
-            font-size: 50px;
+            font-size: 45px;
             font-family: 'Times New Roman', Times, serif;
             margin-left: 10px;
         }
 
         .Search {
-            margin-top:30px;
+            margin-top:10px;
             right: 10px;
             margin-right: 20px;
+        }
+
+        .line {
+            content: " ";
+            display: block;
+            border-bottom: 0.5px solid #9E9E9E;
+        }
+
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        td, th{
+            background-color: white;
+            text-align: center;
+            border: 1px solid black !important;
+        }
+
+        td{
+            border: 1px solid black !important;
+        }
+
+        table tbody tr td {
+            padding: 15px;
         }
 
         .total{
             width:70%;
             height: 50px;
-            font-size: 25px;
+            font-size: 20px;
             margin-left: auto;
             margin-right: auto;
             padding: 5px 25px;
@@ -62,7 +86,7 @@
     <body>
         <!--Header-->
         <div class="rectangle">
-            <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" style="position:absolute; left:40px; top:20px" height="100px" width="120px">
+            <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" style="position:absolute; left:25px; top:10px" height="45px" width="100px">
         </div>
         
         <div class="d-flex justify-content-between">
@@ -72,36 +96,43 @@
             <div class="Search d-inline">
                 <div class="md-form md-outline input-with-post-icon datepicker">
                     <input type="date" name="date" id="date" readonly="readonly" size="12"/>
-                    <button type="Search">Search</button>
+                    <button style="background-color: #E1DFD2" class="btn btn-light" type="Search">Search</button>
                     <i class="fas fa-calendar input-prefix" tabindex=0></i>
     
-                <script>function available(date) {
-                    if (date.getDate() == '15' || date.getDate() == '28') {
-                        return [true, '', 'Available']
-                    } else {
-                        return [false, '', 'unAvailable']
+                    <script>function available(date) {
+                        if (date.getDate() == '15' || date.getDate() == '28') {
+                            return [true, '', 'Available']
+                        } 
+                        else {
+                            return [false, '', 'unAvailable']
+                        }
                     }
-                }
-                $('#date').datepicker({ beforeShowDay: available })</script>
+                    $('#date').datepicker({ beforeShowDay: available })</script>
                 </div>
             </div>
         </div>
+        
+        <!--Line-->
+        <div class="line"></div>
 
-        <hr style=""/>
         <!--Update-->
         Latest Update....
+        <br>
+        <br>
 
+        <!--Tables-->
+        <div class="container">
         <table class="table table-bordered">
             <!--Titles-->
             <thead>
                 <tr>
-                    <th scope="col"></th>
-                    <th style="background-color: #DFDFDF; border: 1px solid black" scope="col">ID NUMBER</th>
-                    <th style="background-color: #DFDFDF; border: 1px solid black" scope="col">POSITION</th>
-                    <th style="background-color: #DFDFDF; border: 1px solid black" scope="col">DAY</th>
-                    <th style="background-color: #DFDFDF; border: 1px solid black" scope="col">GROSS AMOUNT EARNED</th>
-                    <th style="background-color: #DFDFDF; border: 1px solid black" scope="col">TOTAL DEDUCTIONS</th>
-                    <th style="background-color: #DFDFDF; border: 1px solid black" scope="col">NET AMOUNT DUE</th>
+                    <th style="border: 1px solid black" scope="col"></th>
+                    <th style="background-color: #E1DFD2; border: 1px solid black" scope="col">ID NUMBER</th>
+                    <th style="background-color: #E1DFD2; border: 1px solid black" scope="col">POSITION</th>
+                    <th style="background-color: #E1DFD2; border: 1px solid black" scope="col">DAY</th>
+                    <th style="background-color: #E1DFD2; border: 1px solid black" scope="col">GROSS AMOUNT EARNED</th>
+                    <th style="background-color: #E1DFD2; border: 1px solid black" scope="col">TOTAL DEDUCTIONS</th>
+                    <th style="background-color: #E1DFD2; border: 1px solid black" scope="col">NET AMOUNT DUE</th>
                 </tr>
             </thead>
             
@@ -161,12 +192,21 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
-        
+        </div>
     <!--Total Computation-->
-        <table class ="total">
-            <th>Total:</th>
+        <div class ="total">
+            <th>Total Salary:</th>
         </table>
     </body>
 

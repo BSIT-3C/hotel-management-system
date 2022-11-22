@@ -1,266 +1,358 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        
-        <title>Home - Revenue</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://kit.fontawesome.com/65bd41fff5.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
 
-    </head>
-
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    
     <style>
-    * {box-sizing: border-box;}
 
-body { 
-    margin: 0;
-}
+        body {
+            margin: 0;
+            background: white;
+        }
 
-.header {
-    overflow: hidden;
-    background-color: #1840C4;
-    padding: 1px 10px;
-}
+        .navbar {
+            background:#1840C4;
+        }
 
-@media screen and (max-width: 500px) {
-.header a {
-    float: none;
-    display: block;
-}
-}
+        h1{
+            font-size: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            margin-left: 10px;
+        }
 
-h1{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 80px;
-}
+        .bootstrap-iso {
+            float: right;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            margin-right: 107px;
+        }
 
-.pull-right {
-    float: right;
-    margin-top: 25px;
-    margin-right: 20px;
-}
+        .line {
+            content: " ";
+            display: block;
+            border-bottom: 0.5px solid #9E9E9E;
+        }
 
-table, th, td {
-    background-color: #E1DFD2;
-    border: 1px solid black;
-    font-size: 15px;
-    border-collapse: collapse;
-}
+        table {
+            border: 1px solid black;
+            width: 100%;
+        }
 
-th, td {
-    grid-template-columns: auto auto auto auto auto auto;
-    padding: 5px;
-    text-align: center;
-}
+        table thead tr td {
+            border: 1px solid black;
+            text-align: center;
+            background-color: #E1DFD2;
+        }
 
-.column {
-    float: left;
-    border: 1px solid black;
-}
+        table thead tr {
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
 
-.one {
-    width: 11.8%;
-    height: 350px;
-    background-color:white
-}
+        }
 
-.two {
-    width: 6.7%;
-    height: 350px;
-    background-color:white
-}
+        table tbody tr td {
+            padding: 15px;
+        }
 
-.three {
-    width: 6.8%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(1) {
+            grid-column: 1/3;
+            grid-row: 1/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.four {
-    width: 6.7%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(2) {
+            grid-column: 3/6;
+        }
 
-.five {
-    width: 5.7%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(3) {
+            grid-column: 6/9;
+        }
 
-.six {
-    width: 5.7%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(4) {
+            grid-column: 9/12;
+        }
 
-.seven {
-    width: 5.7%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(5) {
+            grid-column: 3;
+        }
 
-.eight {
-    width: 4.3%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(6) {
+            grid-column: 4;
+        }
 
-.nine {
-    width: 4.3%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(7) {
+            grid-column: 5;
+        }
 
-.ten {
-    width: 4.2%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(8) {
+            grid-column: 6;
+        }
 
-.eleven {
-    width: 23.9%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(9) {
+            grid-column: 7;
+        }
 
-.twelve {
-    width: 14.2%;
-    height: 350px;
-    background-color:white
-}
+        thead td:nth-child(10) {
+            grid-column: 8;
+        }
 
-.columnd {
-    float: left;
-    border: 1px solid black;
-    padding: 1px;
-    width:70%;
-    margin-left: 200px;
-    margin-top: 5px;
-}
+        thead td:nth-child(11) {
+            grid-column: 9;
+        }
 
-.totald {
-    border: 1px solid black;
-    font-size: 10px;
-    border-collapse: collapse;
-    background-color: #E1DFD2;
-}
-    </style>
+        thead td:nth-child(12) {
+            grid-column: 10;
+        }
 
-    <body>
-        <div class="header">
-            <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo3" width="100" height="50">  
-        </div>
+        thead td:nth-child(13) {
+            grid-column: 11;
+        }
 
-        <font size="+6">REVENUE</font>
+        tbody tr td {
+            border: 1px solid black;
+        }
 
-        <div class="pull-right">
-            <input type="datetime-local" id="Test_DatetimeLocal">
-            <button type="button">Search</button> 
-        </div>
+        tbody tr {
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
+            text-align: center;
 
-        <hr>
-        Latest Update....
+        }
+
+        .club {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            grid-column: 12/14;
+            grid-row: 1/3;
+        }
+
+        .cell_date {
+
+            grid-column: 1/3;
+        }
+
+        .cell_club {
+
+            grid-column: 12/14;
+        }
+
+        .cell_total {
+
+            grid-column: 14/16;
+        }
+
+        .col_total {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            grid-column: 14/16;
+            grid-row: 1/3;
+        }
         
-        <table style="width:100%">
-            <tr>
-              <th>DATE</th>
-              <th colspan="3">SUPERIOR</th>
-              <th colspan="3">LUXURY</th>
-              <th colspan="3">SUITE</th>
-              <th>CLUB ROOM</th>
-              <th>TOTAL</th>
-            </tr>
-            <tr>
-              <td></td>
+        .column {
+            float: left;
+            padding: 1px;
+            width:70%;
+            margin-left: 200px;
+            margin-top: 5px;
+        }
 
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
+        .total {
+            font-size: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            border-collapse: collapse;
+            box-shadow: 0 10px 10px 0 #E1DFD2;
+            background-color: #DFDFDF;
+        }
+    
+        </style>
 
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
+</head>
+  <body>
+    <nav class="navbar navbar-expand-md">
+        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo3" width="80" height="40">
+            <span class="navbar-toggler-icon"></span>
+    </nav>  
 
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
 
-              <td></td>
+    <h1><b> REVENUE</b></h1>
 
-              <td></td>
-            </tr>
+    <div class="bootstrap-iso">
+           <form method="post">
+               <input type="date" id="date" name="date">
+               <button style="background-color: #E1DFD2" class="btn btn-light" name="search" type="search">Search</button>
+           </form>
+    </div>
+
+    <!--Line-->
+    <div class="line"></div>
+    
+    <div class="container">
+
+        Latest Update...
+
+        <table>
+            <thead>
+                <tr>
+                    <td id="a">Date</td>
+                    <td id="b">Superior</td>
+                    <td id="c">Luxury</td>
+                    <td id="d">Suite</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td class="club">Club Room</td>
+                    <td class="col_total">Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+                <tr>
+                    <td class="cell_date"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cell_club"></td>
+                    <td class="cell_total"></td>
+                </tr>
+            </tbody>
         </table>
 
-        <div class="row">
-            <div class="column one">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column two">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column three">
-                <h2></h2>
-                <p></p>
-            </div>
-            
-            <div class="column four">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column five">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column six">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column seven">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column eight">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column nine">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column ten">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column eleven">
-                <h2></h2>
-                <p></p>
-            </div>
-
-            <div class="column twelve">
-                <h2></h2>
-                <p></p>
-            </div>
-
+        <div class="column total">
+            <h2><b>TOTAL:</b></h2>
         </div>
-
-        <div class="columnd totald">
-            <h2>TOTAL:</h2>
-        </div>
-
-    </body>
-
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 </html>
