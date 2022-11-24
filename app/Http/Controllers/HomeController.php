@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payroll;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        /**
+         * For testing
+         */
+        // $position_salary = Payroll::where('position_id', 1)->first();
+        // return view('home')->with(["total_salary" => $position_salary->getTotalSalary()]);
+
         return view('home');
     }
 }
