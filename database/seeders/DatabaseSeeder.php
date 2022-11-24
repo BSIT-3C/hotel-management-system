@@ -12,6 +12,7 @@ use App\Models\RoomRate;
 use App\Models\RoomType;
 use App\Models\Blacklist;
 use App\Models\Department;
+use App\Models\Employee_Payroll;
 use App\Models\RoomStatus;
 use App\Models\Reservation;
 use App\Models\Transaction;
@@ -73,6 +74,9 @@ class DatabaseSeeder extends Seeder
 
         $this->createTenEntryPerFactory();
 
+        Employee_Payroll::factory()->count(2)->sequence(['position_id' => 3, 'employee_id' => 1,  'cut_off' => "2022-11-28"], ['position_id' => 3, 'employee_id' => 1,  'cut_off' => "2022-11-15"])
+            ->create();
+
         RoomRate::factory()->count(4)->sequence(
             ['room_id' => 1, 'rate' => 1000],
             ['room_id' => 2, 'rate' => 2000],
@@ -80,6 +84,7 @@ class DatabaseSeeder extends Seeder
             ['room_id' => 4, 'rate' => 4000]
         )
             ->create();
+
 
         Blacklist::factory()->count(3)->create();
     }
