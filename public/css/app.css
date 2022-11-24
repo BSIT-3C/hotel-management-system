@@ -1,11 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8"; /*!
+@charset "UTF-8";
+/*
  * Bootstrap  v5.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+    
+    --color-primary: #1840c4;
+    --color-secondary: #e1dfd2;
+    --color-tertiary: #ffffff;
+    --color-quaternary: #dfdfdf;
+    
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
