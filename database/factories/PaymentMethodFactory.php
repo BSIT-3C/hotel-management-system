@@ -14,7 +14,7 @@ class PaymentMethodFactory extends Factory
     public function definition()
     {
         return [
-            'is_available' => $this->faker->boolean,
+            //
         ];
     }
 }
