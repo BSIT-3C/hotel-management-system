@@ -32,7 +32,6 @@ class DTR extends Model
         $check_out = Carbon::parse($this->check_out);
         $check_in = Carbon::parse($this->check_in);
         $diff = $check_in->diff($check_out);
-        $hours = $diff->i;
 
         return $diff;
     }
@@ -59,8 +58,8 @@ class DTR extends Model
         $check_out = Carbon::parse($this->check_out);
         $check_in = Carbon::parse($this->check_in);
         $diff = $check_in->diff($check_out);
-        $hours = $diff->i;
+        $minutes = $diff->i;
 
-        return $hours;
+        return $minutes;
     }
 }
