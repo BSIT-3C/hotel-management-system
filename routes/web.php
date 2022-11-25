@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AccountingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,16 @@ use App\Http\Controllers\InformationController;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Auth::routes();
+
+// frontdesk
 Route::get('/frontdesk/dashboard', function () {
     return view('frontdesk/dashboard');
 });
@@ -27,34 +33,18 @@ Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
 });
 
-// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// accounting
+Route::get('/accounting/payrollEdit/{position}', [AccountingController::class, 'payrollEdit']);
 
-Route::get('/accounting/payrollEdit', function () {
-    return view('/accounting_information_system/payrollEdit');  
-});
+Route::get('/accounting/payrollPrint/{position}', [AccountingController::class, 'payrollPrint']);
 
-Route::get('/accounting/payrollPrint', function () {
-    return view('/accounting_information_system/payrollPrint');  
-});
+Route::get('/accounting/revenueEdit', [AccountingController::class, 'revenueEdit']);
 
-Route::get('/accounting/revenueEdit', function () {
-    return view('/accounting_information_system/revenueEdit');  
-});
+Route::get('/accounting/revenuePrint', [AccountingController::class, 'revenuePrint']);
 
-Route::get('/accounting/revenuePrint', function () {
-    return view('/accounting_information_system/revenuePrint');  
-});
+Route::get('/accounting/expensesEdit', [AccountingController::class, 'expensesEdit']);
 
-Route::get('/accounting/expensesEdit', function () {
-    return view('/accounting_information_system/expensesEdit');
-});
+Route::get('/accounting/expensesPrint', [AccountingController::class, 'expensesPrint']);
 
-Route::get('/accounting/expensesPrint', function () {
-    return view('/accounting_information_system/expensesPrint');
-});
-
-Route::get('/accounting/home', function () {
-    return view('/accounting_information_system/home');
-});
+Route::get('/accounting/home', [AccountingController::class, 'index']);
