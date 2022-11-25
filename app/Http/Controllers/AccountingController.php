@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee_Payroll;
 use App\Models\Payroll;
 
 /**
@@ -27,28 +28,41 @@ class AccountingController extends Controller
     }
 
     /**
+     * for displaying payroll
+     * 
+     * @return View with the employee payrolls object
+     */ 
+    public function payrolls(){
+        $payrolls = Employee_Payroll::all();
+
+        return view('/accounting_information_system/payrolls', [
+            'payrolls' => $payrolls
+        ]);        
+    }
+
+    /**
      * for editing payroll
      *
-     * @param Payroll $payroll the payroll object
+     * @param Employee_Payroll $payroll the employee payroll object
      * 
-     * @return View with the payroll object
+     * @return View with the employee payroll object
      */ 
-    public function payrollEdit(Payroll $payroll){
+    public function payrollEdit(Employee_Payroll $employee_payrolls){
         return view('/accounting_information_system/payrollEdit', [
-            'payroll' => $payroll
+            'employee_payroll' => $employee_payrolls
         ]);        
     }
 
     /**
      * for printing payroll
      *
-     * @param Payroll $payroll the payroll object
+     * @param Employee_Payroll $payroll the employee payroll object
      * 
-     * @return View with the payroll object
+     * @return View with the employee payroll object
      */ 
-    public function payrollPrint(Payroll $payroll){     
+    public function payrollPrint(Employee_Payroll $employee_payrolls){     
         return view('/accounting_information_system/payrollPrint', [
-            'payroll' => $payroll
+            'employee_payroll' => $employee_payrolls
         ]);        
     }
 

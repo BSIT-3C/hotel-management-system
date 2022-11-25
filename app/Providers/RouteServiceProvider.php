@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Payroll;
+use App\Models\Employee_Payroll;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -38,12 +38,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        // define binding resolution logic
-        // added by @FN-FAL113 (Quality Assurance Lead, contact in-case of problems)
-        Route::bind('position', function($value){
-            return Payroll::where('position_id', $value)->firstOrFail();
-        });
-
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
@@ -53,9 +47,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-        });
-
-       
+        });  
     }
 
     /**

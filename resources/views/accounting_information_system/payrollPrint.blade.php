@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +19,6 @@
 
     nav {
         background: #1840c4;
-        padding: 10px 40px 10px 70px;
         border: 1px;
         border-left: none;
         border-right: none;
@@ -92,8 +90,7 @@
         <ul>
             <div>
                 <a>
-                    <img src="{{ asset('images/logo3.png') }}" alt="Hotle logo" width="150" height="90"
-                        class="logo" />
+                    <img src="{{ asset('images/logo3.png') }}" alt="Hotle logo" width="150" height="90"/>
                 </a>
             </div>
         </ul>
@@ -101,7 +98,7 @@
 
     <div class="group">
 
-        <h1> PAYROLL</h1>
+        <h1>PAYROLL</h1>
         <div class="container">
             <form>
                 <i class="fa-solid fa-calendar"></i>
@@ -110,15 +107,12 @@
             </form>
         </div>
         <div class="Viewing">
-            <embed src="{{ asset('file/payrollPrint.pdf') }}" height="520" width="1000" />
+            <embed src="{{ asset('file/payrollPrint.pdf') }}#toolbar=0" height="520" width="1000" />
         </div>
 
 
 
     </div>
 
-
-
 </body>
-
 </html>

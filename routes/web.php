@@ -35,16 +35,16 @@ Route::get('/frontdesk/information', function () {
 
 
 // accounting
-Route::get('/accounting/payrollEdit/{position}', [AccountingController::class, 'payrollEdit']);
+Route::prefix('accounting')->group(function() {
+    Route::get('home', [AccountingController::class, 'index']);
 
-Route::get('/accounting/payrollPrint/{position}', [AccountingController::class, 'payrollPrint']);
+    Route::get('payrolls', [AccountingController::class, 'payrolls']);
+    Route::post('payrollEdit/{employee_payrolls}', [AccountingController::class, 'payrollEdit']);
+    Route::get('payrollPrint/{employee_payrolls}', [AccountingController::class, 'payrollPrint']);
 
-Route::get('/accounting/revenueEdit', [AccountingController::class, 'revenueEdit']);
+    Route::get('revenueEdit', [AccountingController::class, 'revenueEdit']);
+    Route::get('revenuePrint', [AccountingController::class, 'revenuePrint']);
 
-Route::get('/accounting/revenuePrint', [AccountingController::class, 'revenuePrint']);
-
-Route::get('/accounting/expensesEdit', [AccountingController::class, 'expensesEdit']);
-
-Route::get('/accounting/expensesPrint', [AccountingController::class, 'expensesPrint']);
-
-Route::get('/accounting/home', [AccountingController::class, 'index']);
+    Route::get('expensesEdit', [AccountingController::class, 'expensesEdit']);
+    Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
+});
