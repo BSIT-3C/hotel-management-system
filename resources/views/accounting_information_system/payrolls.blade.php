@@ -112,10 +112,6 @@
         </div>
     </div>
     
-    <!--Total Computation-->
-    <div class="total">
-        
-    </div>
 
 </body>
 </html>
@@ -131,6 +127,5 @@
 
     $('#date').datepicker({ beforeShowDay: available })
 
-    const table = $('#table').DataTable(); 
-    $('.total').text(`Total: ` + table.column(6).data().reduce((a, b) => parseInt(a) + parseInt(b)))
+    $('#table').DataTable(); 
 </script>
