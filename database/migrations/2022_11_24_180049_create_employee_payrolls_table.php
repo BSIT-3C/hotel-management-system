@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentMethodsTable extends Migration
+class CreateEmployeePayrollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreatePaymentMethodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('employee_payrolls', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_method');
-            $table->boolean('is_available')->default(1);
+            $table->foreignId('employee_id')->constrained();
+            $table->foreignId('position_id')
+                ->constrained();
+            $table->date('cut_off');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreatePaymentMethodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('employee_payrolls');
     }
 }
