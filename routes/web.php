@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
+Auth::routes();
 
 // frontdesk
 Route::get('/frontdesk/dashboard', function () {
@@ -35,7 +36,7 @@ Route::get('/frontdesk/information', function () {
 
 
 // accounting
-Route::prefix('accounting')->group(function() {
+Route::prefix('accounting')->group(function () {
     Route::get('home', [AccountingController::class, 'index']);
 
     Route::get('payrolls', [AccountingController::class, 'payrolls']);
