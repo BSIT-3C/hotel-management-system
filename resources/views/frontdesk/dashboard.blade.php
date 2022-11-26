@@ -45,16 +45,16 @@
         <div class="container p-5">
             <div class="row">
                 <div class="col">
-                    <button class="btn secondary p-4 w-100">Check In</button>
+                    <button class="btn btn-outline-primary p-4 w-100">Check In</button>
                 </div>
                 <div class="col">
-                    <button class="btn secondary p-4 w-100">Check Out</button>
+                    <button class="btn btn-outline-primary p-4 w-100">Add Reservation</button>
                 </div>
                 <div class="col">
-                    <button class="btn secondary p-4 w-100">Add Reservation</button>
+                    <button class="btn btn-outline-primary p-4 w-100">Add Transaction</button>
                 </div>
                 <div class="col">
-                    <button class="btn secondary p-4 w-100">Add Transaction</button>
+                    <button class="btn btn-outline-primary p-4 w-100">Check Out</button>
                 </div>
             </div>
         </div>
