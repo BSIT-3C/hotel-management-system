@@ -1,7 +1,6 @@
 
 @php
     $i = 0;
-   // dd($payrolls[0]->id);
 @endphp
 
 <!DOCTYPE html>
