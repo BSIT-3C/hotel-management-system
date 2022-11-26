@@ -19,6 +19,7 @@ use App\Models\Transaction;
 use App\Models\Housekeeping;
 use App\Models\PaymentMethod;
 use App\Models\Payroll;
+use App\Models\DTR;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -75,6 +76,8 @@ class DatabaseSeeder extends Seeder
         $this->createTenEntryPerFactory();
 
         Employee_Payroll::factory()->count(2)->sequence(['position_id' => 3, 'employee_id' => 1,  'cut_off' => "2022-11-28"], ['position_id' => 3, 'employee_id' => 1,  'cut_off' => "2022-11-15"])
+            ->create();
+        DTR::factory()->count(1)->sequence(['employee_id' => 1])
             ->create();
 
         RoomRate::factory()->count(4)->sequence(
