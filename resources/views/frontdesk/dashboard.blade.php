@@ -42,13 +42,14 @@
     <x-header />
 
     <section>
+        </a>
         <div class="container p-5">
             <div class="row">
                 <div class="col">
                     <button class="btn btn-outline-primary p-4 w-100">Check In</button>
                 </div>
                 <div class="col">
-                    <button class="btn btn-outline-primary p-4 w-100">Add Reservation</button>
+                    <a href="{{ url('/guest-form') }}"><button class="btn btn-outline-primary p-4 w-100">Add Reservation</button></a>
                 </div>
                 <div class="col">
                     <button class="btn btn-outline-primary p-4 w-100">Add Transaction</button>

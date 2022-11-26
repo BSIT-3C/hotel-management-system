@@ -54,3 +54,15 @@ Route::prefix('accounting')->group(function () {
 Route::get('/guest-form', function () {
     return view('guest-information/Guest Information Form');
 });
+
+Route::get('/reservation', function () {
+    return view('guest-information/Reservation');
+});
+
+Route::get('/reservation-list', function () {
+    return view('guest-information/Reservation List');
+});
+
+Route::get('/blacklist', function () {
+    return view('guest-information/Blacklist');
+});
