@@ -19,6 +19,7 @@ class AccountFactory extends Factory
             'employee_id' => Employee::pluck('id')->random(),
             'role_id' => Role::pluck('id')->random(),
             'password' => $this->faker->password,
+            'is_verified' => $this->faker->boolean(50)
         ];
     }
 }

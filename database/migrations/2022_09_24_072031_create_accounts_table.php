@@ -19,6 +19,7 @@ class CreateAccountsTable extends Migration
             $table->foreignId('employee_id')->constrained();
             $table->foreignId('role_id')->constrained();
             $table->string('password');
+            $table->boolean('is_verified');
             $table->timestamps();
         });
     }
