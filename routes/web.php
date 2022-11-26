@@ -49,3 +49,8 @@ Route::prefix('accounting')->group(function () {
     Route::get('expensesEdit', [AccountingController::class, 'expensesEdit']);
     Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
 });
+
+//guest info
+Route::get('/guest-form', function () {
+    return view('guest-information/Guest Information Form');
+});
