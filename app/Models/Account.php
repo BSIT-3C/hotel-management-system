@@ -13,13 +13,16 @@ class Account extends Model
         "employee_id",
         "role_id",
         "password",
+        "is_verified"
     ];
 
-    public function employee(){
+    public function employee()
+    {
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class, 'role_id');
     }
 }
