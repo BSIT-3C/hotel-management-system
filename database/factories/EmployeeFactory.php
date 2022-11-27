@@ -23,11 +23,12 @@ class EmployeeFactory extends Factory
         return [
             'first_name' => $fname,
             'last_name' => $lname,
-            // 'email' => $this->faker->safeEmail(),
+            'email' => $this->faker->safeEmail(),
             'email' => $email,
             'address' => $this->faker->state(),
-            //'contact' => $this->faker->phoneNumber(),
-            //'position_id' => Position::pluck('id')->random(),
+            'contact_number' => $this->faker->phoneNumber(),
+            'position_id' => Position::pluck('id')->random(),
+            'password' => $this->faker->password,
             //'work_hours' => 0,
         ];
     }
