@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Employee;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class EmployeeController extends Controller
+{
+    protected function index() {
+        return view('employee_information_system.employee_list', [
+            'Lists' => Employee::all()
+        ]);
+    }
+
+    protected function show(Employee $list) {
+        return view('employee_information_system.profile', [
+            'list' => $list
+        ]);
+    }
+    protected function edit(Employee $list) {
+        return view('employee_information_system.edit', [
+            'list' => $list
+        ]);
+    }
+
+    // update employee
+    public function update(Employee $list){
+
+        //dd($list);
+        // if($list->role != "Admin"){
+        //     abort(403, 'Unauthorized Action'); 
+        // }
+        
+        $formFields = request()->validate([
+            'work_start'=>['required' , 'string'],
+            'work_end'=>['required', 'string'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
+            'birthday' => ['required', 'date'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'contact_number' => ['required', 'string'],
+        ]);
+
+        $list->update($formFields);
+
+        return redirect("/home/profile/{$list->id}");
+    }
+
+    // delete employee
+    protected function delete(Employee $list) {
+
+        if ($list->role != "Admin" || $list->id == Auth::user()->id) {
+            abort(403, 'Employee is Login!');
+        }
+
+        $list->delete();
+        return back();
+    }
+
+}

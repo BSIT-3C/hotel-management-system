@@ -5,17 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Employee extends Model
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class Employee extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
     protected $table = "employees";
 
     protected $fillable = [
-        "name",
+    
+        'first_name',
+        'last_name',
         "address",
-        "contact",
-        "work_hours",
         "position_id",
+        'work_start',
+        'work_end', 
+        'gender',
+        'birthday',
+        'email',
+        'photo',
+        'contact_number',
+        'password',
+        'deleted_at',
     ];
 
     public function getName(){
