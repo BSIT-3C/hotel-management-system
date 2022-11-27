@@ -49,3 +49,20 @@ Route::prefix('accounting')->group(function () {
     Route::get('expensesEdit', [AccountingController::class, 'expensesEdit']);
     Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
 });
+
+//guest info
+Route::get('/guestinfo/guest-form', function () {
+    return view('guest-information/Guest Information Form');
+});
+
+Route::get('/guestinfo/reservation', function () {
+    return view('guest-information/Reservation');
+});
+
+Route::get('/guestinfo/reservation-list', function () {
+    return view('guest-information/Reservation List');
+});
+
+Route::get('/guestinfo/blacklist', function () {
+    return view('guest-information/Blacklist');
+});
