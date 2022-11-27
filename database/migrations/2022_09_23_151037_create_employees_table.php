@@ -15,21 +15,19 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->time('work_start');
-            $table->time('work_end');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('address');
-            $table->string('gender');
-            $table->date('birthday');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('email')->unique();
-            $table->string('contact_number');
+            $table->string('contact_number')->nullable();
             $table->string('photo')->nullable();
-            // $table->string('position');
-            // $table->string('department');
-            // $table->string('role');
+            $table->foreignId('position_id')->nullable()->constrained();
+            $table->string('password')->nullable();
+            $table->time('work_start')->nullable();
+            $table->time('work_end')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
