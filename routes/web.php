@@ -51,18 +51,18 @@ Route::prefix('accounting')->group(function () {
 });
 
 //guest info
-Route::get('/guest-form', function () {
+Route::get('/guestinfo/guest-form', function () {
     return view('guest-information/Guest Information Form');
 });
 
-Route::get('/reservation', function () {
+Route::get('/guestinfo/reservation', function () {
     return view('guest-information/Reservation');
 });
 
-Route::get('/reservation-list', function () {
+Route::get('/guestinfo/reservation-list', function () {
     return view('guest-information/Reservation List');
 });
 
-Route::get('/blacklist', function () {
+Route::get('/guestinfo/blacklist', function () {
     return view('guest-information/Blacklist');
 });
