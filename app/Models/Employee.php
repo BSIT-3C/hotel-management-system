@@ -17,36 +17,39 @@ class Employee extends Authenticatable
     protected $table = "employees";
 
     protected $fillable = [
-    
+
         'first_name',
         'last_name',
-        "address",
         "position_id",
+        "address",
         'work_start',
-        'work_end', 
+        'work_end',
         'gender',
         'birthday',
         'email',
         'photo',
         'contact_number',
-        'password',
         'deleted_at',
     ];
 
-    public function getName(){
+    public function getName()
+    {
         return "{$this->first_name} {$this->last_name}";
     }
 
     // relationships
-    public function reservations(){
+    public function reservations()
+    {
         return $this->hasMany(Reservation::class, 'employee_id');
     }
 
-    public function payroll(){
+    public function payroll()
+    {
         return $this->hasMany(Employee_Payroll::class, 'employee_id');
     }
 
-    public function position(){
+    public function position()
+    {
         return $this->belongsTo(Position::class, 'position_id');
     }
 }
