@@ -21,7 +21,7 @@ class UserController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:employees'],
             'contact_number' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
