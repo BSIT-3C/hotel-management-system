@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Daily_Time_RecordController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +54,25 @@ Route::prefix('accounting')->group(function () {
     Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
 });
 
+
+//employee
+Route::controller(UserController::class)->group(function() {
+    Route::post('/registration', 'store')->name('home');
+});
+
+Route::controller(EmployeeController::class)->group(function() {
+    Route::get('/home/employees', 'index')->middleware('auth');
+    Route::get('/home/profile/{list}', 'show')->middleware('auth');
+    Route::get('/home/edit/{list}', 'edit')->middleware('auth');
+    Route::patch('/home/{list}', 'update')->middleware('auth');
+    Route::delete('/home/delete/{list}', 'delete')->middleware('auth');
+});
+
+Route::controller(Daily_Time_RecordController::class)->group(function () {
+    Route::get('/home/dtr', 'show')->name('home')->middleware('auth');
+    Route::get('/home/profile/dtr/{list}', 'show_employee_dtr')->middleware('auth');
+});
+
 //guest info
 Route::get('/guestinfo/guest-form', function () {
     return view('guest-information/Guest Information Form');
@@ -66,3 +89,4 @@ Route::get('/guestinfo/reservation-list', function () {
 Route::get('/guestinfo/blacklist', function () {
     return view('guest-information/Blacklist');
 });
+

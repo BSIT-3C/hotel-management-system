@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,8 +51,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'work_start'=>['required' , 'string'],
+            'work_end'=>['required', 'string'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
+            'birthday' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact_number' => ['required', 'string'],
+            'photo' => ['required', 'string'],
+            'position' => ['required', 'string'],
+            'department' => ['required', 'string'],
+            'role' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,9 +76,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+
+        return Employee::create([
+            'work_start' => $data['work_start'],
+            'work_end' => $data['work_end'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'address' => $data['address'],
+            'gender' => $data['gender'],
+            'birthday' => $data['birthday'],
             'email' => $data['email'],
+            'contact_number' => $data['contact_number'],
+            'photo' => $data['photo'],
+            //'position' => $data['position'],
+            //'role' => $data['role'],
             'password' => Hash::make($data['password']),
         ]);
     }

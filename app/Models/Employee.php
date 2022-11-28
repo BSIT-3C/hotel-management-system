@@ -5,33 +5,51 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Employee extends Model
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class Employee extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
     protected $table = "employees";
 
     protected $fillable = [
-        "name",
-        "address",
-        "contact",
-        "work_hours",
+
+        'first_name',
+        'last_name',
         "position_id",
+        "address",
+        'work_start',
+        'work_end',
+        'gender',
+        'birthday',
+        'email',
+        'photo',
+        'contact_number',
+        'deleted_at',
     ];
 
-    public function getName(){
+    public function getName()
+    {
         return "{$this->first_name} {$this->last_name}";
     }
 
     // relationships
-    public function reservations(){
+    public function reservations()
+    {
         return $this->hasMany(Reservation::class, 'employee_id');
     }
 
-    public function payroll(){
+    public function payroll()
+    {
         return $this->hasMany(Employee_Payroll::class, 'employee_id');
     }
 
-    public function position(){
+    public function position()
+    {
         return $this->belongsTo(Position::class, 'position_id');
     }
 }
