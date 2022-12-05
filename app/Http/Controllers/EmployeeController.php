@@ -42,7 +42,7 @@ class EmployeeController extends Controller
 
         $list->update($formFields);
 
-        return redirect("/home/profile/{$list->id}");
+        return redirect("/employee_information_system/profile/{$list->id}");
     }
 
     // delete employee

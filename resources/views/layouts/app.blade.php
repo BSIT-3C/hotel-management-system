@@ -75,7 +75,7 @@
                 {{ Auth::user()->last_name }}
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/home/profile/{{auth::user()->id}}">Profile</a></li>
+                <li><a class="dropdown-item" href="/employee_information_system/profile/{{auth::user()->id}}">Profile</a></li>
                 <li>
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
@@ -109,19 +109,19 @@
                     </a>
                   </li>
                   <li>
-                    <a href="/home/dtr" class="nav-link link-dark">
+                    <a href="/employee_information_system/dtr" class="nav-link link-dark">
                         <i class="fa-solid fa-business-time me-1"></i>
                       DTR
                     </a>
                   </li>
                   <li>
-                    <a href="/home/employees" class="nav-link link-dark">
+                    <a href="/employee_information_system/employees" class="nav-link link-dark">
                         <i class="fa-solid fa-user-group me-1"></i>
                       Employees
                     </a>
                   </li>
                   <li>
-                    <a href="/home/profile/dtr/{{Auth::user()->id}}" class="nav-link link-dark">
+                    <a href="/employee_information_system/profile/dtr/{{Auth::user()->id}}" class="nav-link link-dark">
                         <i class="fa-sharp fa-solid fa-clock me-1"></i>
                         DTR logs
                     </a>

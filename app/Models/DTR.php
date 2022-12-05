@@ -13,6 +13,7 @@ class DTR extends Model
     protected $table = "dtr_logs";
     protected $fillable = [
         "employee_id",
+        "date",
         "check_in",
         "check_out"
     ];

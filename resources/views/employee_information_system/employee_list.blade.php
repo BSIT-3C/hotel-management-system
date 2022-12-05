@@ -35,15 +35,15 @@
                     
                       @foreach ($Lists as $List)
                         <tr>
-                          <td><a href="/home/profile/{{$List->id}}" style="text-decoration: none; color: #000">{{$List->last_name}} {{$List->first_name}}</a></th>
+                          <td><a href="/employee_information_system/profile/{{$List->id}}" style="text-decoration: none; color: #000">{{$List->last_name}} {{$List->first_name}}</a></th>
                           <td>{{$List->id}}</td>
                           <td>{{$List->gender}}</td>
                           <td>{{$List->address}}</td>
                           <td>{{$List->birthday}}</td>
                           <td>{{$List->email}}</td>
                           <td>{{$List->contact_number}}</td>
-                          <td class="d-flex"><a href="/home/edit/{{$List->id}}"><i class="fa-solid fa-pen-to-square text-primary pe-3"></i></a>
-                          <form action="/home/delete/{{$List->id}}" method="POST">
+                          <td class="d-flex"><a href="/employee_information_system/edit/{{$List->id}}"><i class="fa-solid fa-pen-to-square text-primary pe-3"></i></a>
+                          <form action="/employee_information_system/delete/{{$List->id}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" style="background: none; border: none;"><i class="fa-solid fa-trash text-danger"></i></button>
