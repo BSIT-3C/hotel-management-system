@@ -57,7 +57,8 @@ Route::prefix('accounting')->group(function () {
 
 //employee
 Route::controller(UserController::class)->group(function() {
-    Route::post('/registration', 'store')->name('home');
+    Route::post('/registration', 'store');
+    Route::post('/login/auth', 'login');
 });
 
 Route::controller(EmployeeController::class)->group(function() {
