@@ -27,13 +27,7 @@ class EmployeeController extends Controller
     }
 
     // update employee
-    public function update(Employee $list){
-
-        //dd($list);
-        // if($list->role != "Admin"){
-        //     abort(403, 'Unauthorized Action'); 
-        // }
-        
+    public function update(Employee $list){        
         $formFields = request()->validate([
             'work_start'=>['required' , 'string'],
             'work_end'=>['required', 'string'],
@@ -48,14 +42,14 @@ class EmployeeController extends Controller
 
         $list->update($formFields);
 
-        return redirect("/home/profile/{$list->id}");
+        return redirect("/employee_information_system/profile/{$list->id}");
     }
 
     // delete employee
     protected function delete(Employee $list) {
 
         if ($list->role != "Admin" || $list->id == Auth::user()->id) {
-            abort(403, 'Employee is Login!');
+            abort(403, 'Already Logged in!');
         }
 
         $list->delete();

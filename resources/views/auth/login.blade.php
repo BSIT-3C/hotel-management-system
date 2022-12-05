@@ -15,7 +15,7 @@
                 <p class="text-white text-center fw-light">BSIT 3C's Best Hotel</p>
             </div>
             <div class="col-6 container-fluid container-lg rounded-end shadow" style="background-color: white;">
-                <form method="POST"  action="{{ route('login') }}" class="mx-5 my-5">
+                <form method="POST" action="/login/auth" class="mx-5 my-5">
                     @csrf
                     <h3 class="text-center mb-5 fw-bolder">Log in</h3>
                     <!-- Email input -->
@@ -61,12 +61,16 @@
                     @endif
                       </div>
                     </div>
-                  
+
+                    @error('auth')
+                      <p class="text-danger font-italic text-center">{{ $message }}</p>
+                    @enderror
+                   
                     <!-- Submit button -->
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary rounded-pill text-white fw-bold" style="background-color: #1840C4;" type="submit">Log in</button>
-                      </div>
-                  
+                      <button class="btn btn-primary rounded-pill text-white fw-bold" style="background-color: #1840C4;" type="submit">Log in</button>
+                    </div>
+          
                     <!-- Register buttons -->
                     <div class="text-center">
                       <p>Not a member? <a href="{{ route('register') }}">Register</a></p>

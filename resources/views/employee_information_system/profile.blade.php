@@ -19,7 +19,7 @@
       
      
           <div class="mt-3 ms-3" style="color: ;">
-            <a href="/home/edit/{{ Auth::user()->id }}"><i class="fa-solid fa-pen-to-square fa-xl" style="color: #1840C4;"></i></a>
+            <a href="/employee_information_system/edit/{{ Auth::user()->id }}"><i class="fa-solid fa-pen-to-square fa-xl" style="color: #1840C4;"></i></a>
           </div>
 
           <div class="text-center mt-3 mb-3">
@@ -65,7 +65,7 @@
             <h1 class="text-center fw-light" style="color: #1840C4;">{{$list->work_start}} - {{$list->work_end}}</h1>
             
             <div class="d-grid gap-2 my-5">
-              <a class="shadow-sm btn rounded-pill text-white fw-bold mx-5" href="/home/profile/dtr/{{Auth::user()->id}}" style="background-color:#1840C4;">DTR</a>
+              <a class="shadow-sm btn rounded-pill text-white fw-bold mx-5" href="/employee_information_system/profile/dtr/{{Auth::user()->id}}" style="background-color:#1840C4;">DTR</a>
             </div>
 
           </div>

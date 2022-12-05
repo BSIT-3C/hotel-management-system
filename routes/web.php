@@ -57,21 +57,22 @@ Route::prefix('accounting')->group(function () {
 
 //employee
 Route::controller(UserController::class)->group(function() {
-    Route::post('/registration', 'store')->name('home');
+    Route::post('/registration', 'store');
+    Route::post('/login/auth', 'login');
 });
 
 Route::controller(EmployeeController::class)->group(function() {
-    Route::get('/home/employees', 'index')->middleware('auth');
-    Route::get('/home/profile/{list}', 'show')->middleware('auth');
-    Route::get('/home/edit/{list}', 'edit')->middleware('auth');
-    Route::patch('/home/{list}', 'update')->middleware('auth');
-    Route::delete('/home/delete/{list}', 'delete')->middleware('auth');
+    Route::get('/employee_information_system/employees', 'index')->middleware('auth');
+    Route::get('/employee_information_system/profile/{list}', 'show')->middleware('auth');
+    Route::get('/employee_information_system/edit/{list}', 'edit')->middleware('auth');
+    Route::patch('/employee_information_system/{list}', 'update')->middleware('auth');
+    Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware('auth');
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
-    Route::get('/home/dtr', 'show')->name('home')->middleware('auth');
-    Route::get('/home/profile/dtr/{list}', 'show_employee_dtr')->middleware('auth');
-    Route::get('/home/record/{number}', 'store')->middleware('auth');
+    Route::get('/employee_information_system/dtr', 'show')->name('employee_information_system')->middleware('auth');
+    Route::get('/employee_information_system/profile/dtr/{list}', 'show_employee_dtr')->middleware('auth');
+    Route::get('/employee_information_system/record/{number}', 'store')->middleware('auth');
 });
 
 //guest info

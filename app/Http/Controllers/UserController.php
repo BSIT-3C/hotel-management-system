@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,11 +35,33 @@ class UserController extends Controller
 
         $user = Employee::create(Arr::except($formFields, ['password']));
 
-        $account = Account::create(["employee_id" => $user->id, "password" => $formFields['password'], "role_id" => null]);
-
+        Account::create(["employee_id" => $user->id, "password" => $formFields['password'], "role_id" => null]);
 
         auth()->login($user);
 
         return redirect('/home');
+    }
+
+    public function login(){
+        $formFields = request()->validate([
+            "email" => ['required', 'email'],
+            "password" => ['required']
+        ]);
+
+        $employee = Employee::where("email", $formFields["email"])->first();
+
+        if(!$employee){
+            return back()->withErrors((['auth' => 'Invalid credentials!']));
+        }
+
+        $account = Account::where("employee_id", $employee->id)->first();
+        
+        if(Hash::check($formFields["password"], $account->password)){
+            auth()->login($employee);
+
+            return redirect('/home');
+        }
+
+        return back()->withErrors((['auth' => 'Invalid credentials!']));
     }
 }
