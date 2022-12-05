@@ -54,6 +54,7 @@ Route::prefix('accounting')->group(function () {
     Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
 });
 
+
 //employee
 Route::controller(UserController::class)->group(function() {
     Route::post('/registration', 'store')->name('home');
@@ -72,3 +73,21 @@ Route::controller(Daily_Time_RecordController::class)->group(function () {
     Route::get('/home/profile/dtr/{list}', 'show_employee_dtr')->middleware('auth');
     Route::get('/home/record/{number}', 'store')->middleware('auth');
 });
+
+//guest info
+Route::get('/guestinfo/guest-form', function () {
+    return view('guest-information/Guest Information Form');
+});
+
+Route::get('/guestinfo/reservation', function () {
+    return view('guest-information/Reservation');
+});
+
+Route::get('/guestinfo/reservation-list', function () {
+    return view('guest-information/Reservation List');
+});
+
+Route::get('/guestinfo/blacklist', function () {
+    return view('guest-information/Blacklist');
+});
+
