@@ -14,7 +14,7 @@
               <img class=" img-fluid"  src="{{asset('images/logo2.png')}}" alt="logo" style="height: 30px; width: auto;">
             </div>
         </div>
-            <div class="d-flex justify-content-center m-auto search mb-4">
+            {{-- <div class="d-flex justify-content-center m-auto search mb-4">
                 <div class="pe-2">
                     <form class="d-flex" method="post" action="">
                         <label for="search" class="form-label pe-3 mt-1"><strong>Search</strong></label>
@@ -31,11 +31,11 @@
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                   </div>
-            </div>
+            </div> --}}
 
             <div class="dtr_Tables rounded p-2">
-                <table class="table table-hover table-primary table-striped text-center shadow-sm">
-                    <thead>
+                <table id="table" class="table table-hover table-primary table-striped text-center shadow-sm">
+                    <thead class="text-center">
                       <tr>
                         <th scope="col">Employee Name</th>
                         <th scope="col">ID Number</th>
@@ -53,14 +53,18 @@
                           <td>{{$List->last_name}} {{$List->first_name}}</th>
                           <td>{{$List->id}}</td>
                           <td>{{$List->date}}</td>
-                          <td>{{$List->time_in}}</td>
-                          <td>{{$List->time_out}}</td>
+                          <td>{{date('h:i:sa', strtotime($List->check_in))}}</td>
+                          <td>{{date('h:i:s', strtotime($List->check_out))}}pm</td>
                         </tr>
                       @endforeach
                         
                     @else
                         <tr>
-                          <td colspan="7">No Daily Time Records</td>
+                          <td class="text-center">No Daily Time Records</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                         </tr>
                     @endunless
 
