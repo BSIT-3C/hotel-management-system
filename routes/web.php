@@ -71,6 +71,7 @@ Route::controller(EmployeeController::class)->group(function() {
 Route::controller(Daily_Time_RecordController::class)->group(function () {
     Route::get('/home/dtr', 'show')->name('home')->middleware('auth');
     Route::get('/home/profile/dtr/{list}', 'show_employee_dtr')->middleware('auth');
+    Route::get('/home/record/{number}', 'store')->middleware('auth');
 });
 
 //guest info

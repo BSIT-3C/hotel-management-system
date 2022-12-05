@@ -14,7 +14,7 @@
                   <img class=" img-fluid"  src="{{asset('images/logo2.png')}}" alt="logo" style="height: 30px; width: auto;">
                 </div>
             </div>
-            <div class="d-flex justify-content-center m-auto search mb-5">
+            {{-- <div class="d-flex justify-content-center m-auto search mb-5">
                 <div class="pe-2">
                     <form class="d-flex" method="post" action="">
                         <label for="search" class="form-label pe-3 mt-1" ><strong>Search</strong></label>
@@ -30,37 +30,37 @@
                       <li><a class="dropdown-item" href="#">Another action</a></li>
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                  </div>
-            </div>
+                </div>
+            </div> --}}
             <div class="row">
                 <div class="col-6 shadow p-4">
                     <div class="row">
                         <div class="col-6">
                             <div class="col-12 mb-4 id">
-                                <p class="text-center fw-bold text-uppercase f-xl text-primary fs-5 text-uppercase">id 123456</p>
+                                <p class="text-center fw-bold text-uppercase f-xl text-primary fs-5 text-uppercase">id {{$list->id}}</p>
                             </div>
                             <div class="col-12 text-center mb-4">
                                 <img class="rounded-circle shadow" src="{{$list->photo ? asset('storage/' . $list->photo) : asset('iamges/logo.png')}}" height="238px" width="236px" alt="">
                             </div>
                             <div class="col-12 text-center">
-                                <span class="fs-4" style="font-family: 'Ubunto', sans-serif; font-weight: 600;">BILL GATES</span> <br>
+                                <span class="fs-4" style="font-family: 'Ubunto', sans-serif; font-weight: 600;">{{$list->first_name}} {{$list->last_name}}</span> <br>
                             </div>
                             <div class="col-12 text-center mb-4">
                                 <span class="d-block" style="margin-left: -50px;">Front Office</span>
                                 <span style="margin-left: -27px;">Front Manager</span>
                             </div>
                             <div class="col-12 workHour">
-                                <p class="text-center fw-bold text-primary">9:00am to 5:00pm</p>
+                                <p class="text-center fw-bold text-primary">{{$list->work_start}} to {{$list->work_end}}</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="col-12 ms-4 fs-4 mb-5">
                                 <p class="text-uppercase">Date Today</p>
-                                <p class="ms-5 text-primary">10/04/2022</p>
+                                <p class="ms-5 text-primary">{{date('Y-m-d')}}</p>
                             </div>
                             <div class="col-12 ms-4 fs-4 mb-5">
                                 <p class="text-uppercase">CURRENT TIME</p>
-                                <p class="ms-5 text-primary">3:00PM</p>
+                                <p class="ms-5 text-primary">{{date('h:i:sa')}}</p>
                             </div>
                             <div class="col-12 ms-4 fs-4">
                                 <p>CURRENT INCOME</p>
@@ -71,16 +71,16 @@
                 </div>
                 <div class="col-6">
                     <div class="row mb-3">
-
                         <div class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary fw-bold">Time - in</button>
-                        </div>
+                            <button type="submit" id="time_in" class="btn btn-primary fw-bold"><a href="/home/record/1" class="text-white text-decoration-none">Time - in</a></button>
+                        </div>           
+                        {{-- onclick="this.disabled=true;document.getElementById('time_out').disabled=false;" --}}
                         <div class="col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-danger fw-bold">Time -  out</button>
+                            <button type="button" id="time_out"  class="btn btn-danger fw-bold"><a href="/home/record/2" class="text-white text-decoration-none">Time - out</a></button>
                         </div>
                         
                     </div>
-                    <table class="table table-hover shadow table-primary table-striped text-center shadow-sm">
+                    <table id="table" class="table table-hover shadow table-primary table-striped text-center shadow-sm">
                         <thead>
                           <tr>
                             <th scope="col">Date</th>
@@ -90,23 +90,38 @@
                         </thead>
                         <tbody class="text-center">
     
-                            {{-- @unless (count($Lists) == 0)
+                            @unless (count($dtrs) == 0)
                             
-                            @foreach ($Lists as $List)
+                            @foreach ($dtrs as $dtr)
+
+                                @if ($dtr->check_out == null)
+                                    <script>
+                                        document.getElementById('time_in').disabled = true;
+                                        document.getElementById('time_out').disabled = false;
+                                    </script>
+                                @else
+                                    <script>
+                                        document.getElementById('time_out').disabled = true;
+                                        document.getElementById('time_in').disabled = false;
+                                    </script>
+                                @endif
+
                                 <tr>
-                                <td>{{$List->last_name}} {{$List->first_name}}</th>
-                                <td>{{$List->id}}</td>
-                                <td>{{$List->date}}</td>
-                                <td>{{$List->time_in}}</td>
-                                <td>{{$List->time_out}}</td>
+                                <td>{{$dtr->date}}</td>
+                                <td>{{date('h:i:sa', strtotime($dtr->check_in))}}</td>
+                                <td>@if ($dtr->check_out != null)
+                                    {{date('h:i:s', strtotime($dtr->check_out))}}pm
+                                    @endif</td>
                                 </tr>
                             @endforeach
                                 
-                            @else --}}
+                            @else
                                 <tr>
-                                <td colspan="7">No Daily Time Records</td>
+                                <td>No Daily Time Records</td>
+                                <td></td>
+                                <td></td>
                                 </tr>
-                            {{-- @endunless --}}
+                            @endunless
     
                         </tbody>
                     </table>
