@@ -16,7 +16,7 @@ class CreateDTRSTable extends Migration
         Schema::create('dtr_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained();
-            // $table->date('date')->useCurrent();
+            $table->date('date')->nullable();
             $table->timestamp('check_in')->useCurrent();
             $table->timestamp('check_out')->nullable(true)->default(null);
             $table->timestamps();
