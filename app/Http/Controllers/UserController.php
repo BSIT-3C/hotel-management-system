@@ -64,4 +64,3 @@ class UserController extends Controller
 
         return back()->withErrors((['auth' => 'Invalid credentials!']));
     }
-}
