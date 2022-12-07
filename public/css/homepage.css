@@ -1,4 +1,4 @@
-    * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -117,4 +117,29 @@
             font-size: 1.5rem;
             line-height: 1.06rem;
             color: #000;
+        }
+
+        .homepageButton{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            width:100%;
+            display:block;
+        }
+        .homepageButton {
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+        }
+        .homepageButton:hover {
+            background-color: #555555;
+            color: white;
         }
