@@ -58,7 +58,9 @@
                     </div>
                                 @if (Route::has('login'))
                                     @auth
-                                        <a href="{{ url('/home') }}">Home</a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/home') }}"><button type="button" class="btn btn-primary">Home</button></a>
+                                    </div>
                                 @else
                                     <a href="{{ route('login') }}">
                                         <div class="d-flex justify-content-center m-3"> 
