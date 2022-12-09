@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/', function () {
+Route::get('/index', function () {
     return view('welcome');
 });
 
@@ -77,18 +77,18 @@ Route::controller(Daily_Time_RecordController::class)->group(function () {
 
 //guest info
 Route::get('/guestinfo/guest-form', function () {
-    return view('guest-information/Guest Information Form');
+    return view('guest-information.guest_information_form');
 });
 
 Route::get('/guestinfo/reservation', function () {
-    return view('guest-information/Reservation');
+    return view('guest-information.reservation');
 });
 
 Route::get('/guestinfo/reservation-list', function () {
-    return view('guest-information/Reservation List');
+    return view('guest-information.reservation_list');
 });
 
 Route::get('/guestinfo/blacklist', function () {
-    return view('guest-information/Blacklist');
+    return view('guest-information.blacklist');
 });
 
