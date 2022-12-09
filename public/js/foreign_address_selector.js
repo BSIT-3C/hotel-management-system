@@ -76,7 +76,6 @@ const selectCountry = async () => {
     document.getElementById("state").innerHTML = "";
     document.getElementById("city").innerHTML = "";
 
-    console.log(country_input);
     if (country_input.length === 0) {
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -122,7 +121,6 @@ const selectStates = async () => {
 
 const selectForeignCity = () => {
     city = document.getElementById("city").value;
-    console.log("city: ", city);
 };
 
 const runForeignSelector = async () => {
