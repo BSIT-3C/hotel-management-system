@@ -1,4 +1,4 @@
-    * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -23,7 +23,6 @@
             width: 120vw;
             font-size: 2.5em;
             line-height: 1em;
-            background: #DFDFDF;
         }
 
         .wrap {
