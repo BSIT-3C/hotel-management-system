@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/index', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -76,19 +76,28 @@ Route::controller(Daily_Time_RecordController::class)->group(function () {
 });
 
 //guest info
+Route::get('/guestinfo/blacklist', function () {
+    return view('guest-information.blacklist');
+});
+Route::get('/guestinfo/guest-card-foreign', function () {
+    return view('guest-information.guest_card_(Foreign)');
+});
+Route::get('/guestinfo/guest-card-local', function () {
+    return view('guest-information.guest_card_(local)');
+});
+Route::get('/guestinfo/guest-card-form', function () {
+    return view('guest-information.guest_card_form');
+});
 Route::get('/guestinfo/guest-form', function () {
     return view('guest-information.guest_information_form');
 });
-
-Route::get('/guestinfo/reservation', function () {
-    return view('guest-information.reservation');
+Route::get('/guestinfo/guest-list', function () {
+    return view('guest-information.guest_list');
 });
-
+Route::get('/guestinfo/reservation-form', function () {
+    return view('guest-information.reservation_form');
+});
 Route::get('/guestinfo/reservation-list', function () {
     return view('guest-information.reservation_list');
-});
-
-Route::get('/guestinfo/blacklist', function () {
-    return view('guest-information.blacklist');
 });
 
