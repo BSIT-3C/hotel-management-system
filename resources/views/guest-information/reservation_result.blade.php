@@ -33,7 +33,7 @@
 
         <div class="row">
             <div class="col">
-                <a class="btn btn-primary" href="/guestinfo/reservation-list">Reservation List</a>
+                <a class="btn btn-primary" href="/guestinfo/reservation/list">Reservation List</a>
             </div>
         </div>
     </div>
