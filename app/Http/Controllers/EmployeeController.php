@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
 use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
@@ -48,11 +49,14 @@ class EmployeeController extends Controller
     // delete employee
     protected function delete(Employee $list) {
 
-        if ($list->role != "Admin" || $list->id == Auth::user()->id) {
+        if ($list->id == Auth::user()->id) {
             abort(403, 'Already Logged in!');
         }
 
-        $list->delete();
+        DB::table('employees')
+                    ->where('id', $list->id)
+                    ->update(['deleted_at' => date("Y-m-d h:i:s")]);
+
         return back();
     }
 

@@ -50,7 +50,7 @@ class UserController extends Controller
 
         $employee = Employee::where("email", $formFields["email"])->first();
 
-        if(!$employee){
+        if(!$employee || $employee->deleted_at != null){
             return back()->withErrors((['auth' => 'Invalid credentials!']));
         }
 

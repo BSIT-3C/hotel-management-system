@@ -50,7 +50,7 @@ class Daily_Time_RecordController extends Controller
         } else {
             DB::table('dtr_logs')
                     ->where('employee_id', Auth::id())
-                    ->where('date', $date)
+                    ->where('check_out', null)
                     ->update(['check_out' => $time]);
         }
 
