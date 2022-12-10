@@ -54,7 +54,10 @@
                           <td>{{$List->id}}</td>
                           <td>{{$List->date}}</td>
                           <td>{{date('h:i:sa', strtotime($List->check_in))}}</td>
-                          <td>{{date('h:i:s', strtotime($List->check_out))}}pm</td>
+                          <td>@if ($List->check_out != null)
+                            {{date('h:i:s', strtotime($List->check_out))}}pm
+                            @endif</td>
+                        </tr>
                         </tr>
                       @endforeach
                         
