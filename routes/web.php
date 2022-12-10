@@ -7,6 +7,8 @@ use App\Http\Controllers\Daily_Time_RecordController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\ReservationController;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -57,12 +59,12 @@ Route::prefix('accounting')->group(function () {
 
 //employee
 // test
-Route::controller(UserController::class)->group(function() {
+Route::controller(UserController::class)->group(function () {
     Route::post('/registration', 'store');
     Route::post('/login/auth', 'login');
 });
 
-Route::controller(EmployeeController::class)->group(function() {
+Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee_information_system/employees', 'index')->middleware('auth');
     Route::get('/employee_information_system/profile/{list}', 'show')->middleware('auth');
     Route::get('/employee_information_system/edit/{list}', 'edit')->middleware('auth');
@@ -76,29 +78,35 @@ Route::controller(Daily_Time_RecordController::class)->group(function () {
     Route::get('/employee_information_system/record/{number}', 'store')->middleware('auth');
 });
 
-//guest info
-Route::get('/guestinfo/blacklist', function () {
-    return view('guest-information.blacklist');
-});
-Route::get('/guestinfo/guest-card-foreign', function () {
-    return view('guest-information.guest_card_(Foreign)');
-});
-Route::get('/guestinfo/guest-card-local', function () {
-    return view('guest-information.guest_card_(local)');
-});
-Route::get('/guestinfo/guest-card-form', function () {
-    return view('guest-information.guest_card_form');
-});
-Route::get('/guestinfo/guest-form', function () {
-    return view('guest-information.guest_information_form');
-});
-Route::get('/guestinfo/guest-list', function () {
-    return view('guest-information.guest_list');
-});
-Route::get('/guestinfo/reservation-form', function () {
-    return view('guest-information.reservation_form');
-});
-Route::get('/guestinfo/reservation-list', function () {
-    return view('guest-information.reservation_list');
-});
 
+//guest info
+
+
+
+// GUEST-INFO
+Route::prefix('guestinfo')->group(function () {
+    Route::get('guest-form', [ReservationController::class, 'form']);
+    Route::get('reservation', [ReservationController::class, 'reservation']);
+    Route::post('reservation/save', [ReservationController::class, 'store']);
+    Route::get('reservation/result', [ReservationController::class, 'result'])->name('result');
+
+
+    // TODOS: BACKEND
+    Route::get('reservation/list', [ReservationController::class, 'list']);
+
+    Route::get('blacklist', function () {
+        return view('guest-information.blacklist');
+    });
+    Route::get('guest-card-foreign', function () {
+        return view('guest-information.guest_card_(Foreign)');
+    });
+    Route::get('guest-card-local', function () {
+        return view('guest-information.guest_card_(local)');
+    });
+    Route::get('guest-card-form', function () {
+        return view('guest-information.guest_card_form');
+    });
+    Route::get('guest-list', function () {
+        return view('guest-information.guest_list');
+    });
+});
