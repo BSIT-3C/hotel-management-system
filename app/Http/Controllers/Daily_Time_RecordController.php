@@ -36,19 +36,17 @@ class Daily_Time_RecordController extends Controller
         ]);
     }
 
-    protected function store($number) {
+    protected function timeIn() {
+        DTR::create(["employee_id" => Auth::id(), "date" => date("Y-m-d")]);
 
-        $date = date("Y-m-d");
-        $time = date("Y-m-d h:i:s");
+        return back();
+    }
 
-        if ($number == 1) {
-            DTR::create(["employee_id" => Auth::id(), "date" => $date]);
-        } else {
-            DB::table('dtr_logs')
-                    ->where('employee_id', Auth::id())
-                    ->where('date', $date)
-                    ->update(['check_out' => $time]);
-        }
+    public function timeOut(){
+        DB::table('dtr_logs')
+        ->where('employee_id', Auth::id())
+        ->where('check_out', NULL)
+        ->update(['check_out' => date("Y-m-d h:i:s")]);
 
         return back();
     }

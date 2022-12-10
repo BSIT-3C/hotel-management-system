@@ -75,7 +75,8 @@ Route::controller(EmployeeController::class)->group(function () {
 Route::controller(Daily_Time_RecordController::class)->group(function () {
     Route::get('/employee_information_system/dtr', 'show')->middleware('auth');
     Route::get('/employee_information_system/profile/dtr/{employee}', 'show_employee_dtr')->middleware('auth');
-    Route::get('/employee_information_system/record/{number}', 'store')->middleware('auth');
+    Route::post('/employee_information_system/record/timeIn', 'timeIn')->middleware('auth');
+    Route::post('/employee_information_system/record/timeOut', 'timeOut')->middleware('auth');
 });
 
 

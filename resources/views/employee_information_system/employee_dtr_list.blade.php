@@ -54,10 +54,19 @@
                 <div class="col-6">
                     <div class="row mb-3">
                         <div class="col-6 d-flex justify-content-center">
-                            <a href="/employee_information_system/record/1" class="text-white text-decoration-none"><button type="button" id="time_in" class="btn btn-primary fw-bold px-5">Time - in</button></a>
-                        </div>           
+                            <form method="POST" action="/employee_information_system/record/timeIn">
+                                @method('POST')
+                                @csrf
+                                <button type="submit" id="time_in" class="btn btn-primary fw-bold px-5">Time - in</button>
+                            </form>      
+                        </div>     
+                    
                         <div class="col-6 d-flex justify-content-center">
-                            <a href="/employee_information_system/record/2" class="text-white text-decoration-none"><button type="button" id="time_out" class="btn btn-danger fw-bold px-5">Time - out</button></a>
+                            <form method="POST" action="/employee_information_system/record/timeOut">
+                                @method('POST')
+                                @csrf
+                                <button type="submit" id="time_out" class="btn btn-danger fw-bold px-5">Time - out</button>
+                            </form>       
                         </div>
                         
                     </div>
