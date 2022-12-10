@@ -83,19 +83,20 @@
     <div class="container p-3">
         <div style="background-color:white; padding:50px; border-radius: 10px">
 
-            <form action="connect.php" method="post">
-
+            <form action="/guestinfo/reservation" method="get">
+                @csrf
                 <div class="row">
                     <div class="col-6">
                         <label for="Name">Name</label>
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First Name" required
+                                <input name="first_name" type="text" class="form-control" placeholder="First Name"
+                                    required
                                     pattern="[a-zA-Z ]{1,30}"oninvalid="this.setCustomValidity('Enter First Name Here')"
                                     oninput="this.setCustomValidity('')">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last Name"
+                                <input name="last_name" type="text" class="form-control" placeholder="Last Name"
                                     id="validationDefault02" value="" required
                                     pattern="[a-zA-Z ]{1,30}"oninvalid="this.setCustomValidity('Enter Last Name Here')"
                                     oninput="this.setCustomValidity('')">
@@ -107,19 +108,19 @@
                         <div class="row">
 
                             <div class="col-6">
-                                <label for="Gender">Gender</label>
-                                <select name="Gender" class="form-select" id="Gender"
+                                <label for="gender">Gender</label>
+                                <select name="gender" class="form-select" id="gender"
                                     aria-label="Default select example">
                                     <option value="">-- Select Gender --</option>
-                                    <option value="">Male</option>
-                                    <option value="">Female</option>
-                                    <option value="">Rather Not To Say</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="rnts">Rather Not To Say</option>
                                 </select>
                             </div>
 
                             <div class="col-6">
                                 <label for="Birth Date">Birth Date</label>
-                                <input type="date" class="form-control" placeholder="Birth Date">
+                                <input name="birthdate" type="date" class="form-control" placeholder="Birth Date">
                             </div>
 
                         </div>
@@ -133,14 +134,15 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email Address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail"
+                            <input name="email" type="email" class="form-control" id="exampleInputEmail"
                                 aria-describedby="emailHelp" placeholder="Enter Email" required>
                         </div>
                     </div>
 
                     <div class="col-3">
-                        <label for="ID Type">ID Type</label>
-                        <select name="ID Type" class="form-select" id="ID Type" aria-label="Default select example">
+                        <label for="id_type">ID Type</label>
+                        <select name="id_type" class="form-select" id="ID Type"
+                            aria-label="Default select example">
                             <option value="id type">-- Select ID Type --</option>
                             <option value="passport">Passport</option>
                             <option value="sss umid">SSS UMID</option>
@@ -150,8 +152,9 @@
                     </div>
 
                     <div class="col-3">
-                        <label for="ID Number">ID Number</label>
-                        <input type="number" class="form-control" placeholder="" pattern="[0-9]*">
+                        <label for="id_number">ID Number</label>
+                        <input name="id_number" type="number" class="form-control" placeholder=""
+                            pattern="[0-9]*">
                     </div>
 
                 </div>
@@ -166,21 +169,21 @@
                             <option value="local">Local</option>
                             <option value="foreign">Foreign</option>
                         </select>
-                        <textarea class="form-control" type="text" name="" id="entered_address" value="" readonly> </textarea>
+                        <textarea class="form-control" type="text" name="complete_address" id="entered_address" value="" readonly> </textarea>
                     </div>
 
 
 
                     <div class="col-6">
-                        <label for="Marital Status">Marital Status</label>
-                        <select id="Marital Status" class="form-select" required>
+                        <label for="marital_status">Marital Status</label>
+                        <select name="marital_status" id="marital_statu" class="form-select" required>
                             <option value="">-- Select Marital Status--</option>
-                            <option value="">Single</option>
-                            <option value="">Married</option>
-                            <option value="">Separated</option>
-                            <option value="">Divorced</option>
-                            <option value="">Widowed</option>
-                            <option value="">Life Partner</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="separated">Separated</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                            <option value="life_partner">Life Partner</option>
                         </select>
                     </div>
 
