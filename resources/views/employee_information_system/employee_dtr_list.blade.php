@@ -53,20 +53,6 @@
                 </div>
                 <div class="col-6">
                     <div class="row mb-3">
-<<<<<<< HEAD
-                        <div class="col-6 d-grid gap-2">
-                            <form action="/employee_information_system/record/1" method="GET">
-                                @csrf
-                                <button type="submit" id="time_in"  class="btn btn-primary fw-bold w-100">Time-in</button>
-                            </form>
-                        </div>           
-                        {{-- onclick="this.disabled=true;document.getElementById('time_out').disabled=false;" --}}
-                        <div class="col-6 d-grid gap-2">
-                            <form action="/employee_information_system/record/2" method="GET">
-                                @csrf
-                                <button type="submit" id="time_out"  class="btn btn-danger fw-bold w-100">Time-out</button>
-                            </form>
-=======
                         <div class="col-6 d-flex justify-content-center">
                             <form method="POST" action="/employee_information_system/record/timeIn">
                                 @method('POST')
@@ -81,7 +67,6 @@
                                 @csrf
                                 <button type="submit" id="time_out" class="btn btn-danger fw-bold px-5">Time - out</button>
                             </form>       
->>>>>>> 5612c07982073e1e4e2e751b376b2194f20762e6
                         </div>
                         
                     </div>
