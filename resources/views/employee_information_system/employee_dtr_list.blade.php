@@ -72,11 +72,11 @@
                 <div class="col-6">
                     <div class="row mb-3">
                         <div class="col-6 d-grid gap-2">
-                            <button type="submit" id="time_in" class="btn btn-primary fw-bold"><a href="/home/record/1" class="text-white text-decoration-none">Time - in</a></button>
+                            <button type="submit" id="time_in" class="btn btn-primary fw-bold"><a href="/employee_information_system/record/1" class="text-white text-decoration-none">Time - in</a></button>
                         </div>           
                         {{-- onclick="this.disabled=true;document.getElementById('time_out').disabled=false;" --}}
                         <div class="col-6 d-grid gap-2">
-                            <button type="button" id="time_out"  class="btn btn-danger fw-bold"><a href="/home/record/2" class="text-white text-decoration-none">Time - out</a></button>
+                            <button type="button" id="time_out"  class="btn btn-danger fw-bold"><a href="/employee_information_system/record/2" class="text-white text-decoration-none">Time - out</a></button>
                         </div>
                         
                     </div>
