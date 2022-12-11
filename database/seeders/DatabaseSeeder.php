@@ -20,6 +20,7 @@ use App\Models\Housekeeping;
 use App\Models\PaymentMethod;
 use App\Models\Payroll;
 use App\Models\DTR;
+use App\Models\Revenue;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -90,6 +91,7 @@ class DatabaseSeeder extends Seeder
 
 
         Blacklist::factory()->count(3)->create();
+        $this->createRevenue(2);
     }
 
     public function createTenEntryPerFactory()
@@ -122,6 +124,16 @@ class DatabaseSeeder extends Seeder
                 } else {
                     $value->create();
                 }
+            }
+        }
+    }
+    public function createRevenue($count)
+    {
+        for ($count; $count > 0; $count--) {
+
+            for ($i = 1; $i <= 4; $i++) {
+
+                Revenue::factory()->create();
             }
         }
     }
