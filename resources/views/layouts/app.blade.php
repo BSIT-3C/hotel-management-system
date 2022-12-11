@@ -43,7 +43,6 @@
         font-family: 'Poppins', sans-serif;
       }
     </style>
-
   
 </head>
 <body style="background-color: #E1DFD2;">
@@ -108,18 +107,39 @@
                       Home
                     </a>
                   </li>
-                  <li>
-                    <a href="/employee_information_system/dtr" class="nav-link link-dark">
-                        <i class="fa-solid fa-business-time me-1"></i>
-                      DTR
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/employee_information_system/employees" class="nav-link link-dark">
-                        <i class="fa-solid fa-user-group me-1"></i>
-                      Employees
-                    </a>
-                  </li>
+
+                  {{-- This code retrieve the role of login employee--}}
+                  <?php
+                    $role = DB::table('roles')
+                        ->where('employee_id', Auth::user()->id)
+                        ->select(['role'])
+                        ->get();
+                  ?>
+                  {{-- This code retrieve the role of login employee--}}
+                  
+                  {{-- If employee is not an admin or manager this side bar navs will not show --}}
+                  @if ($role['0']->role != 'Employee')
+                    <li>
+                      <a href="/employee_information_system/dtr" class="nav-link link-dark">
+                          <i class="fa-solid fa-business-time me-1"></i>
+                        DTR
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/employee_information_system/employees" class="nav-link link-dark">
+                          <i class="fa-solid fa-user-group me-1"></i>
+                        Employees
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/employee_information_system/department" class="nav-link link-dark">
+                        <i class="fa-solid fa-building"></i>
+                          Departments
+                      </a>
+                    </li>
+                  @endif
+                  {{-- If employee is not an admin or manager this side bar navs will not show --}}
+
                   <li>
                     <a href="/employee_information_system/profile/dtr/{{Auth::user()->id}}" class="nav-link link-dark">
                         <i class="fa-sharp fa-solid fa-clock me-1"></i>
@@ -142,7 +162,6 @@
                 </ul>
               
               </div>
-
 
         </div>
         @endAuth 

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use auth;
+use App\Models\Role;
+use App\Models\User;
 use App\Models\Account;
 use App\Models\Employee;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Position;
+use App\Models\Department;
 use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -23,6 +27,9 @@ class UserController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:employees'],
+            'position' => ['required', 'string'],
+            'department' => ['required', 'string'],
+            'role' => ['required', 'string'],
             'contact_number' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
@@ -36,6 +43,12 @@ class UserController extends Controller
         $user = Employee::create(Arr::except($formFields, ['password']));
 
         Account::create(["employee_id" => $user->id, "password" => $formFields['password'], "role_id" => null]);
+
+        Position::create(["employee_id" => $user->id, "position" => $formFields['position']]);
+
+        Department::create(["employee_id" => $user->id, "department" => $formFields['department']]);
+
+        Role::create(["employee_id" => $user->id, "role" => $formFields['role']]);
 
         auth()->login($user);
 

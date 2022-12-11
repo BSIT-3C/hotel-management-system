@@ -11,7 +11,7 @@ class Position extends Model
 
     protected $fillable = [
         "position",
-        "department_id"
+        "employee_id"
     ];
 
     public function department()

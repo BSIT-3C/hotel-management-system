@@ -15,6 +15,15 @@
             </div>
         </div>
 
+            {{-- This code retrieve the role of login employee--}}
+            <?php
+              $role = DB::table('roles')
+                ->where('employee_id', Auth::user()->id)
+                ->select(['role'])
+                ->get();
+            ?>
+            {{-- This code retrieve the role of login employee--}}
+
             <div class="dtr_Tables rounded p-2">
                 <table id="table" class="table table-hover table-primary table-striped text-center shadow-sm">
                     <thead>
@@ -26,7 +35,13 @@
                         <th scope="col">Birthday</th>
                         <th scope="col">Email</th>
                         <th scope="col">Contact #</th>
+
+                        {{-- If not admin the employee cannot update, delete certain data --}}
+                        @if ($role['0']->role == 'Admin')
                         <th scope="col"></th>
+                        @endif
+                        {{-- If not admin the employee cannot update, delete certain data --}}
+                      
                       </tr>
                     </thead>
                     <tbody class="text-center">
@@ -43,13 +58,19 @@
                             <td>{{$List->birthday}}</td>
                             <td>{{$List->email}}</td>
                             <td>{{$List->contact_number}}</td>
-                            <td class="d-flex"><a href="/employee_information_system/edit/{{$List->id}}"><i class="fa-solid fa-pen-to-square text-primary pe-3"></i></a>
-                            <form action="/employee_information_system/delete/{{$List->id}}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" style="background: none; border: none;"><i class="fa-solid fa-trash text-danger"></i></button>
-                            </form>
-                            </td>
+                            
+                            {{-- If not admin the employee cannot update, delete certain data --}}
+                            @if ($role['0']->role == 'Admin')
+                              <td class="d-flex"><a href="/employee_information_system/edit/{{$List->id}}"><i class="fa-solid fa-pen-to-square text-primary pe-3"></i></a>
+                                <form action="/employee_information_system/delete/{{$List->id}}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" style="background: none; border: none;"><i class="fa-solid fa-trash text-danger"></i></button>
+                                </form>
+                              </td>
+                            @endif
+                            {{-- If not admin the employee cannot update, delete certain data --}}
+
                           </tr>
                         @endif
                       @endforeach
