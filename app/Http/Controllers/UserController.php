@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use auth;
+use App\Models\Role;
+use App\Models\User;
 use App\Models\Account;
 use App\Models\Employee;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Position;
+use App\Models\Department;
 use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -23,6 +27,9 @@ class UserController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:employees'],
+            'position' => ['required', 'string'],
+            'department' => ['required', 'string'],
+            'role' => ['required', 'string'],
             'contact_number' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
@@ -37,6 +44,12 @@ class UserController extends Controller
 
         Account::create(["employee_id" => $user->id, "password" => $formFields['password'], "role_id" => null]);
 
+        Position::create(["employee_id" => $user->id, "position" => $formFields['position']]);
+
+        Department::create(["employee_id" => $user->id, "department" => $formFields['department']]);
+
+        Role::create(["employee_id" => $user->id, "role" => $formFields['role']]);
+
         auth()->login($user);
 
         return redirect('/home');
@@ -50,7 +63,7 @@ class UserController extends Controller
 
         $employee = Employee::where("email", $formFields["email"])->first();
 
-        if(!$employee){
+        if(!$employee || $employee->deleted_at != null){
             return back()->withErrors((['auth' => 'Invalid credentials!']));
         }
 

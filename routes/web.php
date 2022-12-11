@@ -70,6 +70,7 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee_information_system/edit/{list}', 'edit')->middleware('auth');
     Route::patch('/employee_information_system/{list}', 'update')->middleware('auth');
     Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware('auth');
+    Route::get('/employee_information_system/department', 'department')->middleware('auth');
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
