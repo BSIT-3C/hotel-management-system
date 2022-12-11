@@ -111,3 +111,34 @@ Route::prefix('guestinfo')->group(function () {
         return view('guest-information.guest_list');
     });
 });
+
+ //housekeeping
+Route::get('/housekeeping/manage', function () {
+    return view('housekeeping.manage');
+})->name('manage-page');
+
+Route::get('/housekeeping/filter', function () {
+    return view('housekeeping.filter');
+})->name('filter-page');
+
+Route::get('/housekeeping/select', function () {
+    return view('housekeeping.select');
+})->name('select-page');
+
+Route::get('/housekeeping/lostandfound', function () {
+    return view('housekeeping.lostandfound');
+})->name('lostandfound-page');
+
+Route::get('/housekeeping/assign', function () {
+    return view('housekeeping.assign');
+})->name('assign-page');
+
+Route::get('/housekeeping/viewall', function () {
+    return view('housekeeping.viewall');
+})->name('viewall-page');
+
+Auth::routes();
+
+Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index'])->name('home');
+
+//Route::get('/housekeeping/assign',[ShowController::class, 'show']);
