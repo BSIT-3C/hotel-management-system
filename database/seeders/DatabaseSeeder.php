@@ -20,6 +20,7 @@ use App\Models\Housekeeping;
 use App\Models\PaymentMethod;
 use App\Models\Payroll;
 use App\Models\DTR;
+use App\Models\Expenses;
 use App\Models\Revenue;
 use Illuminate\Database\Seeder;
 
@@ -91,7 +92,21 @@ class DatabaseSeeder extends Seeder
 
 
         Blacklist::factory()->count(3)->create();
+
+        //Accounting
         $this->createRevenue(2);
+        
+        Expenses::factory()->count(8)->sequence(
+            ['type' => 'Maintenance', 'name' => 'Laundry', 'unit_price' => 1000, 'date' => '2022-12-01'],
+            ['type' => 'Maintenance', 'name' => 'Soap and toiletries', 'unit_price' => 1000, 'date' => '2022-12-01'],
+            ['type' => 'Maintenance', 'name' => 'Aircon', 'unit_price' => 1000, 'date' => '2022-12-01'],
+            ['type' => 'Maintenance', 'name' => 'Beddings (sheets, pillows, etc.)', 'unit_price' => 1000, 'date' => '2022-12-01'],
+
+            ['type' => 'Utility costs', 'name' => 'Electricity', 'unit_price' => 1000, 'date' => '2022-12-01'],
+            ['type' => 'Utility costs', 'name' => 'Gas, Generator', 'unit_price' => 1000, 'date' => '2022-12-01'],
+            ['type' => 'Utility costs', 'name' => 'Water', 'unit_price' => 1000, 'date' => '2022-12-01'],
+            ['type' => 'Utility costs', 'name' => 'Cable TV and Internet services', 'unit_price' => 1000, 'date' => '2022-12-01'],
+        )->create();
     }
 
     public function createTenEntryPerFactory()
