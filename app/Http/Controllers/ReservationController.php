@@ -87,16 +87,17 @@ class ReservationController extends Controller
             }
         }
 
-        return redirect()->route('result')->with(['availed_rooms' => $availed_rooms]);
+        return redirect()->route('result')->with(['availed_rooms' => $availed_rooms, 'entered_room_count' => $request->rooms_count]);
         // dd($check_in);
         // dd($available_rooms);
     }
 
     protected function result()
     {
-        $availed_rooms = session()->get('availed_rooms');
+        $availed_rooms = session()->get('availed_rooms') ?? null;
+        $erc = session()->get('entered_room_count') ?? 0;
 
-        return view('guest-information.reservation_result', ['availed_rooms' => $availed_rooms]);
+        return view('guest-information.reservation_result', ['availed_rooms' => $availed_rooms, 'entered_room_count' => $erc]);
     }
 
     protected function list()
