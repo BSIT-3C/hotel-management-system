@@ -90,8 +90,41 @@
             <section class="section collection" data-block-section="2" id="collection" >
                 images/features/etc. go here
             </section>
-            <section class="section material" data-block-section="3" id="material">
-                images/features/etc. go here
+            <section class="section material" data-block-section="3" id="material" style="background-image:url('{{asset("assets/landingpage/Room_bg.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/Room_bg.jpg")}}')">
+                <div class="container">
+                    <div class="row mb-2 ">
+                        <h1><i>"Indulge in the <b>tranquility</b> of our hotel rooms"</i></h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/demos/common_room.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3>Club Room</h3>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, ea. Alias animi doloribus, nihil error id suscipit, aut dolores a voluptates assumenda ad neque ullam amet? Ullam, neque quam. Magni.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/demos/Luxury_demo.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-text">Luxury Room</h3>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, ea. Alias animi doloribus, nihil error id suscipit, aut dolores a voluptates assumenda ad neque ullam amet? Ullam, neque quam. Magni.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/demos/mid_hotel_room.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3>Superior Room</h3>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, ea. Alias animi doloribus, nihil error id suscipit, aut dolores a voluptates assumenda ad neque ullam amet? Ullam, neque quam. Magni.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </section>
             <section class="section production" data-block-section="4" id="production">
                 images/features/etc. go here
