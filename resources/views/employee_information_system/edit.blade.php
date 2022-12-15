@@ -22,7 +22,7 @@
                     <div class="card-header pt-3"><h4 class="fw-bold" style="color: #1840C4;">Update Profile <i class="fa-solid fa-pen-to-square"></i></h4></div>
                     
                     <div class="card-body">
-                        <form method="POST" action="/employee_information_system/{{$list->id}}">
+                        <form method="POST" action="/home/{{$list->id}}">
                             @csrf
                             @method('PATCH')
                         
@@ -106,12 +106,10 @@
                                 <label class="col-form-label" for="gender">{{ __('Gender') }}</label>
                                 <div class="col-form-label">
                                 <input type="radio" name="gender" value="" class="invisible" checked="checked">
-                                <input type="radio" name="gender" id="male" value="Male" @if( $list->gender =="Male") checked @endif class="form-check-input">
+                                <input type="radio" name="gender" id="male" value="male" @if( $list->gender =="male") checked @endif class="form-check-input">
                                 <label for="male">Male</label>
-                                <input type="radio" name="gender" id="female" value="Female" @if( $list->gender =="Female") checked @endif  class="form-check-input ms-3">
+                                <input type="radio" name="gender" id="female" value="female" @if( $list->gender =="female") checked @endif  class="form-check-input ms-3">
                                 <label for="female">Female</label>
-                                <input type="radio" name="gender" id="female" value="Cannot Specify" @if( $list->gender =="Cannot Specify") checked @endif class="form-check-input ms-3">
-                                <label for="female">Cannot Specify</label>
                                 </div>
                             </div>
                         </div> <!-- ADDRESS AND GENDER-->
@@ -163,66 +161,6 @@
                                 </div>
                             </div>
                         </div> <!--EMAIL AND CONTACT NUMBER ROW-->
-
-                        <div class="row"><!-- DEPARTMENT AND ROLE -->
-                            <div class="col-6">
-                                <label  for="department" class="col-form-label text-md-end">{{ __('Department') }}</label>
-                                <div class="col-form-label text-md-end">
-                                    <select name="department" type="text" id="position" class="form-select">
-                                        <option value="{{$list->department}}">{{$list->department}}</option>
-                                        <option value="Reception">Reception</option>
-                                        <option value="Housekeeping">Housekeeping</option>
-                                        <option value="Accounting">Accounting</option>
-                                        <option value="Human Resource">Human Resource</option>
-                                        <option value="Back Office">Back Office</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="col-6">
-                                <label class="col-form-label text-md-end" for="Role">{{ __('Role') }}</label>
-                                <div class="col-form-label ">
-                                <input type="radio" name="role" value="" class="invisible" checked="checked">
-                                <input type="radio" name="role" id="role" value=Admin @if( $list->role =="Admin") checked @endif class="form-check-input">
-                                <label for="male">Admin</label>
-                                <input type="radio" name="role" id="role" value=Manager @if( $list->role =="Manager") checked @endif class="form-check-input ms-3">
-                                <label for="female">Manager</label>
-                                <input type="radio" name="role" id="role" value="Employee" @if( $list->role =="Employee") checked @endif class="form-check-input ms-3">
-                                <label for="female">Employee</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                            <div class="">
-                                <select name="position" type="text" id="position" class="form-select">
-                                    <option value="{{$list->position}}">{{$list->position}}</option>
-                                    <option value="Front Office Manager">Front Office Manager</option>
-                                    <option value="Front Office Assistant">Front Office Assistant</option>
-                                    <option value="Receptionist">Receptionist</option>
-                                    <option value="Senior Receptionist">Senior Receptionist</option>
-                                    <option value="Concierge Manager">Concierge Manager</option>
-                                    <option value="Concierge Staff">Concierge Staff</option>
-                                    <option value="House Keeping Manager">House Keeping Manager</option>
-                                    <option value="House Keeping Staff">House Keeping Staff</option>
-                                    <option value="Accountant">Accountant</option>
-                                    <option value="Accounting Supervisor">Accounting Supervisor</option>
-                                    <option value="Auditor">Auditor</option>
-                                    <option value="Senior Cashier">Senior Cashier</option>
-                                    <option value="Cashier">Cashier</option>
-                                    <option value="HR Manager">HR Manager</option>
-                                    <option value="Senior HR Manager">Senior HR Manager</option>
-                                    <option value="HR Assistant">HR Assistant</option>
-                                    <option value="Reservation Accountant">Reservation Accountant</option>
-                                    <option value="Senior Reservation Accountant">Senior Reservation Accountant</option>
-                                    <option value="Reservation Auditor">Reservation Auditor</option>
-                                    <option value="Information Security Supervisor">Information Security Supervisor</option>
-                                    <option value="IT Staff">IT Staff</option>
-                                </select>
-                            </div>
-                        </div>
 
                         {{--
                         <div class="row"><!--PHOTO and POSITION-->

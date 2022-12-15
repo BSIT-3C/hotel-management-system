@@ -29,15 +29,6 @@ class Daily_Time_RecordController extends Controller
                     ->where('employee_id', $employee->id)
                     ->get();
 
-        $employee = DB::table('employees')
-            ->join('roles', 'employees.id', '=', 'roles.employee_id')
-            ->join('positions', 'employees.id', '=', 'positions.employee_id')
-            ->join('departments', 'employees.id', '=', 'departments.employee_id')
-            ->where('roles.employee_id', $employee->id)
-            ->where('positions.employee_id', $employee->id)
-            ->where('departments.employee_id', $employee->id)
-            ->select(['employees.*', 'role', 'position', 'department'])
-            ->first();
                   
         return view('employee_information_system.employee_dtr_list', [
             'employee' => $employee,

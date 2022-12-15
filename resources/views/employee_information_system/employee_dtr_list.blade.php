@@ -28,8 +28,8 @@
                                 <span class="fs-4" style="font-family: 'Ubunto', sans-serif; font-weight: 600;">{{$employee->first_name}} {{$employee->last_name}}</span> <br>
                             </div>
                             <div class="col-12 text-center mb-4">
-                                <span class="d-block" >{{$employee->department}}</span>
-                                <span >{{$employee->position}}</span>
+                                <span class="d-block" style="margin-left: -50px;">Front Office</span>
+                                <span style="margin-left: -27px;">Front Manager</span>
                             </div>
                             <div class="col-12 workHour">
                                 <p class="text-center fw-bold text-primary">{{$employee->work_start}} to {{$employee->work_end}}</p>
@@ -42,27 +42,8 @@
                             </div>
                             <div class="col-12 ms-4 fs-4 mb-5">
                                 <p class="text-uppercase">CURRENT TIME</p>
-                                <p class="ms-5 text-primary" id="current"></p>
+                                <p class="ms-5 text-primary">{{date('h:i:sa')}}</p>
                             </div>
-
-                            <script>
-                                setInterval(() => {
-                                    const time = document.querySelector('#current');
-                                    let date = new Date();
-                                    let hours = date.getHours();
-                                    let minutes = date.getMinutes();
-                                    let seconds = date.getSeconds();
-                                    let day_night = "am";
-
-                                    if (hours > 12) {
-                                        day_night = "pm";
-                                        hours = hours - 12;
-                                    }
-
-                                    time.textContent = hours + ":" + minutes + ":" + seconds + day_night
-                                });
-                            </script>
-
                             <div class="col-12 ms-4 fs-4">
                                 <p>CURRENT INCOME</p>
                                 <p class="ms-5 text-primary">Php 30,000.00</p>

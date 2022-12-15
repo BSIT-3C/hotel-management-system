@@ -103,12 +103,10 @@
                             <label class="col-form-label" for="gender">{{ __('Gender') }}</label>
                             <div class="col-form-label">
                             <input type="radio" name="gender" value="" class="invisible" checked="checked">
-                            <input type="radio" name="gender" id="male" value="Male" class="form-check-input">
+                            <input type="radio" name="gender" id="male" value="male" class="form-check-input">
                             <label for="male">Male</label>
-                            <input type="radio" name="gender" id="female" value="Female" class="form-check-input ms-3">
+                            <input type="radio" name="gender" id="female" value="female" class="form-check-input ms-3">
                             <label for="female">Female</label>
-                            <input type="radio" name="gender" id="female" value="Cannot Specify" class="form-check-input ms-3">
-                            <label for="female">Cannot Specify</label>
                             </div>
                         </div>
                     </div> <!-- ADDRESS AND GENDER-->
@@ -178,61 +176,31 @@
                         </div>
 
 
-                        <div class="col-6">
+                         {{-- <div class="col-6">
                             <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
                             <div class="">
                                 <select name="position" type="text" id="position" class="form-select">
                                     <option value="" selected disabled>Choose your position...</option>
-                                    <option value="Front Office Manager">Front Office Manager</option>
-                                    <option value="Front Office Assistant">Front Office Assistant</option>
-                                    <option value="Receptionist">Receptionist</option>
-                                    <option value="Senior Receptionist">Senior Receptionist</option>
-                                    <option value="Concierge Manager">Concierge Manager</option>
-                                    <option value="Concierge Staff">Concierge Staff</option>
-                                    <option value="House Keeping Manager">House Keeping Manager</option>
-                                    <option value="House Keeping Staff">House Keeping Staff</option>
-                                    <option value="Accountant">Accountant</option>
-                                    <option value="Accounting Supervisor">Accounting Supervisor</option>
-                                    <option value="Auditor">Auditor</option>
-                                    <option value="Senior Cashier">Senior Cashier</option>
-                                    <option value="Cashier">Cashier</option>
-                                    <option value="HR Manager">HR Manager</option>
-                                    <option value="Senior HR Manager">Senior HR Manager</option>
-                                    <option value="HR Assistant">HR Assistant</option>
-                                    <option value="Reservation Accountant">Reservation Accountant</option>
-                                    <option value="Senior Reservation Accountant">Senior Reservation Accountant</option>
-                                    <option value="Reservation Auditor">Reservation Auditor</option>
-                                    <option value="Information Security Supervisor">Information Security Supervisor</option>
-                                    <option value="IT Staff">IT Staff</option>
+                                    <option value="Role1">Position1</option>
+                                    <option value="Role2">Position2</option>
+                                    <option value="Role3">Position3</option>
+                                    <option value="Role4">Position4</option>
                                 </select>
-
-                                @error('position')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                           </div> 
                     </div><!--PHOTO and POSITION-->
 
-                    <div class="row"><!-- DEPARTMENT AND ROLE -->
+                    {{-- <div class="row"><!-- DEPARTMENT AND ROLE -->
                           <div class="col-6">
                             <label  for="department" class="col-form-label text-md-end">{{ __('Department') }}</label>
                             <div class="col-form-label text-md-end">
                                 <select name="department" type="text" id="position" class="form-select">
-                                    <option value="" selected disabled>Choose your department...</option>
-                                    <option value="Reception">Reception</option>
-                                    <option value="Housekeeping">Housekeeping</option>
-                                    <option value="Accounting">Accounting</option>
-                                    <option value="Human Resource">Human Resource</option>
-                                    <option value="Back Office">Back Office</option>
+                                    <option value="" selected disabled>Choose your position...</option>
+                                    <option value="Department1">Department1</option>
+                                    <option value="Department2">Department2</option>
+                                    <option value="Department3">Department3</option>
+                                    <option value="Department4">Department4</option>
                                 </select>
-
-                                @error('department')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                           </div>
 
@@ -242,20 +210,14 @@
                             <div class="col-form-label ">
                             <input type="radio" name="role" value="" class="invisible" checked="checked">
                             <input type="radio" name="role" id="role" value=Admin class="form-check-input">
-                            <label for="male">Admin</label>
+                            <label for="male">1 - Admin</label>
                             <input type="radio" name="role" id="role" value=Manager class="form-check-input ms-3">
-                            <label for="female">Manager</label>
-                            <input type="radio" name="role" id="role" value="Employee" class="form-check-input ms-3">
-                            <label for="female">Employee</label>
+                            <label for="female">2 - Manager</label>
+                            <input type="radio" name="role" id="role" value=others class="form-check-input ms-3">
+                            <label for="female">3 - Others</label>
                             </div>
                         </div>
-
-                        @error('role')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                    </div> --}}
 
 
                     <div class="row"><!-- PASSWORD AND PASSWROD CONFIRMATION -->

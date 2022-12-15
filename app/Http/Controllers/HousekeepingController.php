@@ -136,10 +136,9 @@ class HousekeepingController extends Controller
     public function process_delete_lostandfound($id)
     {
         $datetime_today = date('Y-m-d H:i:s');
-        // dd($id);
 
         $lfitems = Lost_And_Found_Item::find($id);
-        //$lfitems-> deleted_at = $datetime_today;
+
         Lost_And_Found_Item::destroy($lfitems->id);
 
         $items = Lost_And_Found_Item::all(); 

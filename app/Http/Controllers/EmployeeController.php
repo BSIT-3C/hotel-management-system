@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
@@ -17,35 +16,13 @@ class EmployeeController extends Controller
     }
 
     protected function show(Employee $list) {
-
-        $lists = DB::table('employees')
-            ->join('roles', 'employees.id', '=', 'roles.employee_id')
-            ->join('positions', 'employees.id', '=', 'positions.employee_id')
-            ->join('departments', 'employees.id', '=', 'departments.employee_id')
-            ->where('roles.employee_id', $list->id)
-            ->where('positions.employee_id', $list->id)
-            ->where('departments.employee_id', $list->id)
-            ->select(['employees.*', 'role', 'position', 'department'])
-            ->first();
-
         return view('employee_information_system.profile', [
-            'list' => $lists
+            'list' => $list
         ]);
     }
     protected function edit(Employee $list) {
-
-        $lists = DB::table('employees')
-            ->join('roles', 'employees.id', '=', 'roles.employee_id')
-            ->join('positions', 'employees.id', '=', 'positions.employee_id')
-            ->join('departments', 'employees.id', '=', 'departments.employee_id')
-            ->where('roles.employee_id', $list->id)
-            ->where('positions.employee_id', $list->id)
-            ->where('departments.employee_id', $list->id)
-            ->select(['employees.*', 'role', 'position', 'department'])
-            ->first();
-
         return view('employee_information_system.edit', [
-            'list' => $lists
+            'list' => $list
         ]);
     }
 
@@ -60,25 +37,10 @@ class EmployeeController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'position' => ['required', 'string'],
-            'department' => ['required', 'string'],
-            'role' => ['required', 'string'],
             'contact_number' => ['required', 'string'],
         ]);
 
         $list->update($formFields);
-
-        DB::table('positions')
-        ->where('employee_id', $list->id)
-        ->update(['position' => $formFields['position']]);
-
-        DB::table('departments')
-        ->where('employee_id', $list->id)
-        ->update(['department' => $formFields['department']]);
-
-        DB::table('roles')
-        ->where('employee_id', $list->id)
-        ->update(['role' => $formFields['role']]);
 
         return redirect("/employee_information_system/profile/{$list->id}");
     }
@@ -86,28 +48,12 @@ class EmployeeController extends Controller
     // delete employee
     protected function delete(Employee $list) {
 
-        if ($list->id == Auth::user()->id) {
+        if ($list->role != "Admin" || $list->id == Auth::user()->id) {
             abort(403, 'Already Logged in!');
         }
 
-        DB::table('employees')
-                    ->where('id', $list->id)
-                    ->update(['deleted_at' => date("Y-m-d h:i:s")]);
-
+        $list->delete();
         return back();
-    }
-
-    protected function department() {
-        $Lists = DB::table('employees')
-            ->join('roles', 'employees.id', '=', 'roles.employee_id')
-            ->join('positions', 'employees.id', '=', 'positions.employee_id')
-            ->join('departments', 'employees.id', '=', 'departments.employee_id')
-            ->select('employees.first_name', 'employees.last_name', 'employees.id', 'roles.role', 'positions.position', 'departments.department')
-            ->get();
-
-        return view('employee_information_system.department', [
-            'Lists' => $Lists
-        ]);
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\BlacklistController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HousekeepingController;
 use App\Http\Controllers\UserController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Daily_Time_RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ReservationController;
+use App\Models\Blacklist;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,7 +73,6 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee_information_system/edit/{list}', 'edit')->middleware('auth');
     Route::patch('/employee_information_system/{list}', 'update')->middleware('auth');
     Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware('auth');
-    Route::get('/employee_information_system/department', 'department')->middleware('auth');
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
@@ -97,9 +98,16 @@ Route::prefix('guestinfo')->group(function () {
     // TODOS: BACKEND
     Route::get('reservation/list', [ReservationController::class, 'list']);
 
-    Route::get('blacklist', function () {
-        return view('guest-information.blacklist');
-    });
+    // Blacklist
+    Route::get('blacklist', [BlacklistController::class, 'index']);
+    Route::put('blacklist/store', [BlacklistController::class, 'store']);
+    Route::get('blacklist/form', [BlacklistController::class, 'form']);
+    Route::delete('blacklist/delete/{blacklist}', [BlacklistController::class, 'delete']);
+    Route::get('blacklist/update/form/{blacklist}', [BlacklistController::class, 'update_form']);
+    Route::patch('blacklist/update/{blacklist}', [BlacklistController::class, 'update']);
+    // End Blacklist Route
+
+    // Guest Card
     Route::get('guest-card-foreign', function () {
         return view('guest-information.guest_card_(Foreign)');
     });
@@ -109,6 +117,8 @@ Route::prefix('guestinfo')->group(function () {
     Route::get('guest-card-form', function () {
         return view('guest-information.guest_card_form');
     });
+
+    // Guest List
     Route::get('guest-list', function () {
         return view('guest-information.guest_list');
     });

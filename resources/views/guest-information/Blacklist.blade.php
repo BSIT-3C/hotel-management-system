@@ -7,6 +7,11 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.css"/>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.js"></script>
   
  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -95,120 +100,61 @@
     <main>
           <div class="container shadow-sm p-3 mb-5 bg-body rounded" aria-setsize="">
               <div class="row m-0 p-4">
-                  <div style="clear: both">
-                      <h2 style="float: left" class="fw-bolder">BLACKLIST</h2>
-                      <h6 style="float: right">
-                      <input class="search" size="60%" type="text" name="" id="" placeholder="  Search Blacklist"> </h6>
+                  <div>
+                      <h2 class="fw-bolder">BLACKLIST</h2>
                   </div>  
               </div>
 
-              <div class="contents p-2">
+              <div class="contents p-2" >
                 
-                      <table>
-
+                      <table id="table" class="table table-striped">
+                        <thead>
                           <tr>
                             <th>GUEST ID</th>
-                            <th>FIRST NAME</th>
-                            <th>LAST NAME</th>
+                            <th>NAME</th>
                             <th>EMAIL</th>
-                            <th>COUNTRY</th>
-                            <th>NATIONALITY</th>
+                            <th>ADDRESS</th>
+                            <th>CONTACT</th>
                             <th>REASON</th>
-                            <th>RECOMENDATION</th>
-                            <th>ACTIONS</th>
-
-                                <tr class="guest">
-                                    <td>OO51</td>
-                					          <td>Jack</td><td>Randall</td>
-                					          <td>jackrandall@gmail.com</td>
-                          					<td>Scotland</td><td>Scottish</td>
-                          					<td>Disturbance</td>
-                          					<td>Do not host!</td>
-                          					<td><a href="#"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td>0045</td>
-                          					<td>Dan Tae</td>
-                          					<td>Joo</td>
-                          					<td>joodantae@gmail.com</td>
-                          					<td>South Korea</td><td>Korean</td>
-                          					<td>Assault</td>
-                          					<td>Do not host!</td>
-                          					<td><a href="#"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td>0039</td>
-                          					<td>Ramsay</td>
-                          					<td>Bolton</td>
-                          					<td>ramsaybolton@gmail.com</td>
-                          					<td>Northern Ireland</td>
-                          					<td>British</td>
-                          					<td>Assault</td>
-                          					<td>Do not host!</td>
-                          					<td><a href="#"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></a></td>
-                                </tr>
-
-                                <tr>
-                                    <td>0036</td>
-                          					<td>Fiona</td>
-                          					<td>Pembroke</td>
-                          					<td>fionapembroke@gmail.com</td>
-                          					<td>Philippines</td><td>Filipino</td>
-                          					<td>Disturbance</td>
-                          					<td>Do not host!</td>
-                          					<td><a href="#"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></a></td>
-                                </tr>
-
-      				                  <tr>
-                                    <td>0022</td>
-                          					<td>Damien</td>
-                          					<td>Marcos</td>
-                          					<td>fionapembroke@gmail.com</td>
-                          					<td>Philippines</td>
-                          					<td>Filipino</td>
-                          					<td>Fraud</td>
-                          					<td>Do not host!</td>
-                          					<td><a href="#"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></a></td>
-                                </tr>
-
-                                <tr>
-                                  <td>0015</td>
-                        					<td>Cersie</td>
-                        					<td>Lanister</td>
-                        					<td>lanistercersie@gmail.com</td>
-                        					<td>Croatia</td><td>Croatian</td>
-                        					<td>Disturbance</td>
-                        					<td>Do not host!</td>
-                        					<td><a href="#"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></a></td>
-                        				</tr>
-
+                            <th>ACTIONS</th>      
       				            </tr>
+                          <thead>
+                          
+                        <tbody>
+
+                          @if(!$blacklists->isEmpty())
+                            @foreach ($blacklists as $blacklist)
+                              <tr>
+                                <td>{{$blacklist->guest->id}}</td>
+                                <td>{{$blacklist->guest->name}}</td>
+                                <td>{{$blacklist->guest->email}}</td>
+                                <td>{{$blacklist->guest->address}}</td>
+                                <td>{{$blacklist->guest->contact}}</td>
+                                <td>{{$blacklist->reason}}</td>
+                                <td class="d-flex justify-content-center">
+                                  <form action="/guestinfo/blacklist/delete/{{$blacklist->id}}" method="POST">
+                                  @csrf
+                                  @method("DELETE")
+                                  <button type="submit" class="btn btn-primary"><i class="fa-sharp fa-solid fa-trash" style="color: black;"></i></button>
+                                  </form>
+                                  <a href="/guestinfo/blacklist/update/form/{{$blacklist->id}}"><button type="button" class="btn btn-primary mx-2"><i class="fa-sharp fa-solid fa-pen" style="color: black;"></i></button></a>
+                                </td>
+                              </tr>
+                            @endforeach
+                          @endif
+                         
+                        </tbody>
 
                       </table>
-
-                      <div class="row">
-                            <div class="p-4">
-                                <h5 style="float: left" class="show" >Showing <a class="entries" href="">6</a> of   <a class="entries" href="">13</a> entries </h5>
-                                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-                                        <div class="btn-group">
-                            								<a href="#" class="btn btn-outline-primary btn-sm">Previous</a>
-                            								<a href="#" class="btn btn-outline-primary btn-sm active" aria-current="page">1</a>
-                            								<a href="#" class="btn btn-outline-primary btn-sm">2</a>
-                            								<a href="#" class="btn btn-outline-primary btn-sm">Next</a>
-          								              </div>
-
-                                  </div>
-                            </div> 
-                      </div> 
-
               </div>
           </div>				
     </main> 
   
-
 </body>
 </html>
+
+
+<script>
+  $('#table').DataTable()
+</script>
 
