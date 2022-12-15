@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HousekeepingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Daily_Time_RecordController;
 
@@ -113,33 +114,27 @@ Route::prefix('guestinfo')->group(function () {
     });
 });
 
-//housekeeping
-Route::get('/housekeeping/manage', function () {
-    return view('housekeeping.manage');
-})->name('manage-page');
 
-Route::get('/housekeeping/filter', function () {
-    return view('housekeeping.filter');
-})->name('filter-page');
+ //housekeeping
+ Route::controller(HousekeepingController::class)->group(function () {
+    
+    Route::delete('/housekeeping/lostandfound/delete/{id}', 'process_delete_lostandfound')->middleware('auth');
+    Route::get('/housekeeping/manage', 'show_manage')->middleware('auth')->name('manage-page');
+    Route::get('/housekeeping/viewall', 'show_rooms')->middleware('auth')->name('viewall-page');
+    Route::get('/housekeeping/lostandfound', 'show_lostandfound')->middleware('auth')->name('lostandfound-page');
+    Route::get('/housekeeping/assign', 'show_assign_housekeeper')->middleware('auth')->name('assign-page');
 
-Route::get('/housekeeping/select', function () {
-    return view('housekeeping.select');
-})->name('select-page');
+    Route::get('/housekeeping/viewall/{id}', 'view_single_room')->middleware('auth');
 
-Route::get('/housekeeping/lostandfound', function () {
-    return view('housekeeping.lostandfound');
-})->name('lostandfound-page');
+    Route::get('/housekeeping/lostandfound/{id}', 'update_lostandfound')->middleware('auth');
+    Route::post('/housekeeping/lostandfound-process_update/{id}', 'process_update_lostandfound')->middleware('auth');
+    Route::post('/housekeeping/lostandfound', 'create_lostandfound')->middleware('auth');
 
-Route::get('/housekeeping/assign', function () {
-    return view('housekeeping.assign');
-})->name('assign-page');
+    Route::get('/housekeeping/manage/{id}', 'update_manage')->middleware('auth');
+    Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
 
-Route::get('/housekeeping/viewall', function () {
-    return view('housekeeping.viewall');
-})->name('viewall-page');
-
+ });
+ 
 Auth::routes();
 
-Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index'])->name('home');
-
-//Route::get('/housekeeping/assign',[ShowController::class, 'show']);
+Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index']);

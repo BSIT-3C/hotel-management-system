@@ -1,22 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class= "container" style="width: 90%; margin-top: 130px;">
-        <a href="/housekeeping/home" class="inline-block text-black ml-4 mb-4">
-            <button class="btn btn-light mb-2"><i class="fa-solid fa-arrow-left"></i></i> Back</button>
-        </a>
-        <div class="card border-primary mb-3" style="max-width: 100%; height: 520px; margin-left: 10px; border-radius: 15px;">
-            <div class="container">
-                <h1>Rooms List</h1>
-                <table border="1">
-                    <tr>
-                        <td>ID</td>
-                        <td style="padding-right:10px;">Employee ID</td>
-                        <td>Employee Name</td>
-                        <td>Employee Position</td>
-                        <td>Employee Status</td>
-                    </tr>
-                </table>
+<div class= "container" style="width: 90%; margin-top: 130px;">
+    <a href="/housekeeping/home" class="inline-block text-black ml-4 mb-4">
+        <button class="btn btn-light mb-2"><i class="fa-solid fa-arrow-left"></i></i> Back</button>
+    </a>
+    <div class="card border-primary mb-3" style="max-width: 100%; height: 520px; margin-left: 10px; border-radius: 15px;">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Room List
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered" id="list">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Room Number</th>
+                                <th>Room Type</th>
+                                <th>Room Status</th>
+                                <th>Timestamp</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @unless (count($view_rooms) == 0)
+                                @foreach ($view_rooms as $room)
+                                    <tr>
+                                        <td>{{$room['id']}}</td>
+                                        <td>{{$room['room_number']}}</td>
+                                        <td>{{$room['room_type_id']}}</td>
+                                        <td>{{$room['room_status_id']}}</td>
+                                        <td>{{$room['updated_at']}}</td>
+                                        <td><a href="/housekeeping/manage/{{$room->id}}"><i class="fa-solid fa-pen-to-square text-primary "></i></a></td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                  <td colspan="7">No Room Records</td>
+                                </tr>
+                            @endunless
+                        </tbody>
+                    </table>
+                    <label class="text-success">
+                        @if(!empty($message))
+                            {{$message}}
+                        @endif
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#list').DataTable();
+        });
+    </script>
