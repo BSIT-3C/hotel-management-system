@@ -34,9 +34,15 @@ Route::get('/frontdesk/dashboard', function () {
     return view('frontdesk/dashboard');
 });
 
+Route::get('/frontdesk/checkin', function () {
+    return view('frontdesk/checkin');
+});
+
 Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
 });
+
+
 
 
 // accounting
