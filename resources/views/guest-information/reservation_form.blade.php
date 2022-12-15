@@ -136,8 +136,9 @@
                                         <h6 class="fw-bold" style="margin-top: 10px;">No. of Room(s)</h6>
                                     </div>
                                     <div class="col-1">
-                                        <input type="number" style="width: 60px; height:50px; text-align:center;"
-                                            id="rooms_count" name="rooms_count">
+                                        <input required type="number"
+                                            style="width: 60px; height:50px; text-align:center;" id="rooms_count"
+                                            name="rooms_count" min="1">
                                     </div>
 
                                 </div>
@@ -149,8 +150,8 @@
                                         <h6 class="fw-bold" style="margin-top: 10px;">Type of Room(s)</h6>
                                     </div>
                                     <div class="col-auto" style="width: 50%;">
-                                        <select id="room" style="width:100%; height:50px;" id="room_type"
-                                            name="room_type">
+                                        <select required id="room" style="width:100%; height:50px;"
+                                            id="room_type" name="room_type">
                                             <option value="">-- Select Room --</option>
                                             <option value="Luxury">Luxury </option>
                                             <option value="Superior">Superior </option>
@@ -173,13 +174,15 @@
                                     </div>
 
                                     <div class="col-3">
-                                        <input type="date" style="width: 100%; height:50px; text-align:center;"
-                                            id="check_in_date" name="check_in_date">
+                                        <input required type="date"
+                                            style="width: 100%; height:50px; text-align:center;" id="check_in_date"
+                                            name="check_in_date">
                                     </div>
 
                                     <div class="col-3">
-                                        <input type="time" style=" width: 100%; height:50px; text-align:center;"
-                                            id="check_in_time" name="check_in_time">
+                                        <input required type="time"
+                                            style=" width: 100%; height:50px; text-align:center;" id="check_in_time"
+                                            name="check_in_time">
                                     </div>
 
                                     <div class="col-2" style=" width: 15%;">
@@ -187,8 +190,9 @@
                                     </div>
 
                                     <div class="col-1">
-                                        <input type="number" style="width: 60px; height:50px; text-align:center;"
-                                            id="adults" name="adults">
+                                        <input required type="number"
+                                            style="width: 60px; height:50px; text-align:center;" id="adults"
+                                            name="adults" min="1">
                                     </div>
 
                                 </div>
@@ -200,13 +204,15 @@
                                     </div>
 
                                     <div class="col-3">
-                                        <input type="date" style="width: 100%; height:50px;text-align:center;"
-                                            id="check_out_date" name="check_out_date">
+                                        <input required type="date"
+                                            style="width: 100%; height:50px;text-align:center;" id="check_out_date"
+                                            name="check_out_date">
                                     </div>
 
                                     <div class="col-3">
-                                        <input type="time" style="width: 100%; height:50px;text-align:center;"
-                                            id="check_out_time" name="check_out_time">
+                                        <input required type="time"
+                                            style="width: 100%; height:50px;text-align:center;" id="check_out_time"
+                                            name="check_out_time">
                                     </div>
 
                                     <div class="col-2" style=" width: 15%;">
@@ -214,8 +220,9 @@
                                     </div>
 
                                     <div class="col-1">
-                                        <input type="number" style="width: 60px; height:50px; text-align:center;"
-                                            id="children" name="children">
+                                        <input required type="number"
+                                            style="width: 60px; height:50px; text-align:center;" id="children"
+                                            name="children" min="0">
                                     </div>
 
                                 </div>
@@ -230,8 +237,7 @@
                             <div class="d-grid gap-2 d-md-block">
                                 <div class="fw-bold-"
                                     style="margin-top: 20px; margin-bottom: 20px;  text-align: right;">
-                                    <button class="btn btn-primary" type="submit">PROCEED TO RESERVATION
-                                        LIST</button>
+                                    <button class="btn btn-primary" type="submit">Reserve</button>
                                 </div>
                             </div>
                         </div>

@@ -34,10 +34,8 @@ class ReservationController extends Controller
     protected function store(Request $request)
     {
 
-        // todo: chnage variable to dynamic
-        $employee_id = 1;
+        $employee_id = Auth::user()->id;
 
-        // dd($request->all());
         $email = $request->email;
 
         $guest = Guest::where('email', $email)->first();
@@ -79,17 +77,15 @@ class ReservationController extends Controller
             }
         }
 
-        // dd($availed_rooms);
-
+        $rooms = null;
         if ($availed_rooms) {
             foreach ($availed_rooms as $room) {
-                Reservation::create(['room_id' => $room->room_id, 'guest_id' => $guest->id, 'employee_id' => $employee_id, 'check_in' => $check_in, 'check_out' => $check_out]);
+                $rooms[] = Reservation::create(['room_id' => $room->room_id, 'guest_id' => $guest->id, 'employee_id' => $employee_id, 'check_in' => $check_in, 'check_out' => $check_out]);
             }
         }
 
-        return redirect()->route('result')->with(['availed_rooms' => $availed_rooms, 'entered_room_count' => $request->rooms_count]);
-        // dd($check_in);
-        // dd($available_rooms);
+
+        return redirect()->route('result')->with(['availed_rooms' => $rooms, 'entered_room_count' => $request->rooms_count]);
     }
 
     protected function result()

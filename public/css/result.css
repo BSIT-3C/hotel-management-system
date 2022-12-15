@@ -1,5 +1,6 @@
 .room-id {
     width: fit-content;
+    height: max-content;
     background-color: var(--bs-gray-100);
     padding: 1em;
     border-radius: 8px;
@@ -24,4 +25,14 @@ li {
     border-radius: 30px;
 
     color: var(--bs-gray-500);
+}
+
+.chevron {
+    background-color: var(--bs-gray-100);
+    color: var(--bs-gray-500);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-radius: 50%;
 }
