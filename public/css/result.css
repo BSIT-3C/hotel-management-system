@@ -1,0 +1,38 @@
+.room-id {
+    width: fit-content;
+    height: max-content;
+    background-color: var(--bs-gray-100);
+    padding: 1em;
+    border-radius: 8px;
+}
+
+li {
+    list-style: none;
+}
+
+.content .title {
+    display: flex;
+    align-items: center;
+}
+.content .title h3 {
+    margin: 0 !important;
+}
+.content .chip {
+    margin-left: 1em;
+    background-color: var(--bs-gray-200);
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    border-radius: 30px;
+
+    color: var(--bs-gray-500);
+}
+
+.chevron {
+    background-color: var(--bs-gray-100);
+    color: var(--bs-gray-500);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-radius: 50%;
+}

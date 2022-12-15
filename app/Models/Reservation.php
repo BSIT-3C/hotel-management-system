@@ -16,18 +16,23 @@ class Reservation extends Model
         "check_in",
         "check_out"
     ];
+    protected $dates = [
+        "check_in",
+        "check_out"
+    ];
 
-    public function room(){
+    public function room()
+    {
         return $this->belongsTo(Room::class, 'room_id');
     }
 
-    public function guest(){
+    public function guest()
+    {
         return $this->belongsTo(Guest::class, 'guest_id');
     }
 
-    public function employee(){
+    public function employee()
+    {
         return $this->belongsTo(Employee::class, 'employee_id');
     }
-
-    
 }
