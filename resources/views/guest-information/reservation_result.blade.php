@@ -47,13 +47,24 @@
                                             <h3>{{ $room->room_id }}</h3>
                                         </div>
                                     </div>
-                                    <div class=" col-10">
-                                        <h4><b>{{ $room->room_type }}</b>
-                                        </h4>
-                                        <p class="text-muted" style="margin: 0 !important">Check In: December 25,
-                                            2022</p>
-                                        <p class="text-muted" style="margin: 0 !important">Check Out: December 31,
-                                            2022</p>
+                                    <div class="col-5">
+                                        <h4>{{ $room->room->roomType->room_type }}</h4>
+                                        <div class="row mt-4">
+
+                                            <div class="col-5">
+                                                <p class="text-muted" style="margin: 0 !important">Check In</p>
+                                                <p class="text" style="margin: 0 !important">
+                                                    {{ $room->check_in->format('M j, Y @ g:i a') }}</p>
+                                            </div>
+                                            <div class="col-2 d-inline-flex align-items-center justify-content-center">
+                                                <i class="bi bi-chevron-right chevron"></i>
+                                            </div>
+                                            <div class="col-5">
+                                                <p class="text-muted" style="margin: 0 !important">Check Out</p>
+                                                <p class="text" style="margin: 0 !important">
+                                                    {{ $room->check_out->format('M j, Y @ g:i a') }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                         @endforeach
