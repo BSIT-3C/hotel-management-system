@@ -59,26 +59,35 @@
                                 @if (Route::has('login'))
                                     @auth
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ url('/home') }}"><button type="button" class="btn btn-primary">Home</button></a>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href="{{ url('/home') }}">Home</a>
+                                        </button>
                                     </div>
                                 @else
-                                    <a href="{{ route('login') }}">
+                                    
                                         <div class="d-flex justify-content-center m-3"> 
-                                            <button type="button" class="btn btn-primary">Login</button>
+                                            <button type="button" class="btn btn-primary">
+                                                <a style="color:white; text-decoration: none;" href="{{ route('login') }}">
+                                                    Login
+                                                </a>
+                                            </button>
                                         </div>
-                                    </a>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}">
+                                    
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" class="btn btn-primary">Register</button>
+                                            <button type="button" class="btn btn-primary">
+                                                <a style="color:white; text-decoration: none;"  href="{{ route('register') }}">
+                                                    Register
+                                                </a>
+                                            </button>
                                         </div>
-                                    </a>
+                                    
                                 @endif
                                     @endauth
                                 @endif
                 </div>
             </section>
-            <section class="section collection" data-block-section="2" id="collection">
+            <section class="section collection" data-block-section="2" id="collection" >
                 images/features/etc. go here
             </section>
             <section class="section material" data-block-section="3" id="material">
