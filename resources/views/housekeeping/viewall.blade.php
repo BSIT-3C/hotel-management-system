@@ -20,6 +20,7 @@
                                 <th>Room Type</th>
                                 <th>Room Status</th>
                                 <th>Timestamp</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,11 +32,12 @@
                                         <td>{{$room['room_type_id']}}</td>
                                         <td>{{$room['room_status_id']}}</td>
                                         <td>{{$room['updated_at']}}</td>
+                                        <td><a href="/housekeeping/viewall/{{$room->id}}"><i class="fa-solid fa-eye text-success"></i></a></td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                  <td colspan="7">No Employee Records</td>
+                                  <td colspan="7">No Room Records</td>
                                 </tr>
                             @endunless
                         </tbody>

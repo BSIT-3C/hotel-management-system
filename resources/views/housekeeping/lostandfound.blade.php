@@ -26,7 +26,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
                                 @foreach ($items as $item)
                                     <tr>
                                         <td>{{$item['id']}}</td>
@@ -35,10 +34,12 @@
                                         <td>{{$item['room_no_found_at']}}</td>
                                         <td>{{$item['item_status']}}</td>
                                         <td>{{$item['date_and_time']}}</td>
-                                        <td><a class="btn btn-sm btn-primary" href="/housekeeping/lostandfound/{{$item->id}}">Update</a></td>
+                                        <td>
+                                            <a href="/housekeeping/lostandfound/{{$item->id}}"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
+                                            <a href="/housekeeping/lostandfound/{{$item->id}}" onclick="return confirm('Do you really want to Delete {{$item->item_name}}?')"><i class="fa-solid fa-trash text-danger"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
-                           
                         </tbody>
                     </table>
                     <label class="text-success">

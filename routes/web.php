@@ -115,15 +115,21 @@ Route::prefix('guestinfo')->group(function () {
 
  //housekeeping
  Route::controller(HousekeepingController::class)->group(function () {
-    Route::get('/housekeeping/manage', 'show_rooms')->middleware('auth')->name('manage-page');
+    Route::get('/housekeeping/manage', 'show_manage')->middleware('auth')->name('manage-page');
     Route::get('/housekeeping/viewall', 'show_rooms')->middleware('auth')->name('viewall-page');
     Route::get('/housekeeping/lostandfound', 'show_lostandfound')->middleware('auth')->name('lostandfound-page');
-    Route::get('/housekeeping/assign', 'show_rooms')->middleware('auth')->name('assign-page');
+    Route::get('/housekeeping/assign', 'show_assign_housekeeper')->middleware('auth')->name('assign-page');
+
+    Route::get('/housekeeping/viewall/{id}', 'view_single_room')->middleware('auth');
 
     Route::get('/housekeeping/lostandfound/{id}', 'update_lostandfound')->middleware('auth');
     Route::post('/housekeeping/lostandfound-process_update/{id}', 'process_update_lostandfound')->middleware('auth');
-
     Route::post('/housekeeping/lostandfound', 'create_lostandfound')->middleware('auth');
+
+    Route::get('/housekeeping/manage/{id}', 'update_manage')->middleware('auth');
+    Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
+
+    Route::get('/housekeeping/lostandfound/{id}', 'process_delete_lostandfound')->middleware('auth');
  });
  
 Auth::routes();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lost_And_Found_Item;
 use App\Models\Room;
-use App\Models\User;
+use App\Models\Employee;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 
@@ -21,11 +21,40 @@ class HousekeepingController extends Controller
     }
 
     //Manage Room Status
-    public function manage_rooms()
+
+    public function show_manage()
     {
         $rooms = Room::all();
 
-        return view('/housekeeping/manage'); 
+        return view('/housekeeping/manage', [
+            'view_rooms' => $rooms
+        ]); 
+    }
+
+    //update room status
+    public function update_manage($id)
+    {
+        $rooms = Room::find($id);
+
+        return view('/housekeeping/manage_update', [
+            'view_rooms' => $rooms
+        ]);
+    }
+
+    //Update Manage Room Status ID
+    public function process_update_manage(Request $request, $id)
+    {
+        $rooms = Room::find($id);
+
+        $rooms-> room_status_id = $request -> input('room_status');
+
+        $rooms -> save();
+
+        $rooms = Room::all();
+
+        return view('/housekeeping/manage', [
+            'view_rooms' => $rooms , 'message' => 'The Rooms Status ID was Successfully Updated!'
+        ]);
     }
 
     //View Rooms
@@ -38,16 +67,29 @@ class HousekeepingController extends Controller
         ]); 
     }
 
+    //View Single Room
+    public function view_single_room($id)
+    {
+        $rooms = Room::find($id);
+
+        return view('/housekeeping/singleroom', [
+            'view_rooms' => $rooms
+        ]);
+    }
+
     //Lost and Found
     public function show_lostandfound()
     {
-        $lfitems = Lost_And_Found_Item::all();
+        //$lfitems = Lost_And_Found_Item::all();
+
+        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL);
 
         return view('/housekeeping/lostandfound', [
             'items' => $lfitems
         ]); 
     }
 
+    //create lost and found
     public function create_lostandfound(Request $request)
     {
         $item = new Lost_And_Found_Item();
@@ -58,13 +100,14 @@ class HousekeepingController extends Controller
         $item -> date_and_time = $request -> input('date_and_time');
         $item -> save();
 
-        $lfitems = Lost_And_Found_Item::all();
+        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL);
 
         return view('/housekeeping/lostandfound', [
             'items' => $lfitems , 'message' => 'The Item Was Successfully Added!'
         ]);
     }
 
+    //update lost and found item status
     public function update_lostandfound($id)
     {
         $lfitems = Lost_And_Found_Item::find($id);
@@ -82,19 +125,37 @@ class HousekeepingController extends Controller
 
         $lfitems -> save();
 
-        $lfitems = Lost_And_Found_Item::all();
+        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL);
 
         return view('/housekeeping/lostandfound', [
             'items' => $lfitems , 'message' => 'The Item Status was Successfully Updated!'
         ]);
     }
 
-    //Assign Housekeeper
-    public function assign_housekeeper()
+    //Soft-Delete Lost and Found Items
+    public function process_delete_lostandfound($id)
     {
-        //$rooms = Room::all();
+        $datetime_today = date('Y-m-d H:i:s');
 
-        return view('/housekeeping/assign'); 
+        $lfitems = Lost_And_Found_Item::find($id);
+        $lfitems-> deleted_at = $datetime_today;
+        $lfitems -> save();
+
+        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL); 
+
+        return view('/housekeeping/lostandfound', [
+            'items' => $lfitems , 'message' => 'The Item was Successfully Deleted!'
+        ]);
+    }
+
+    //Assign Housekeeper
+    public function show_assign_housekeeper()
+    {
+        $employees = Employee::all();
+
+        return view('/housekeeping/assign', [
+            'employees' => $employees
+        ]);
     }
 
     /**
