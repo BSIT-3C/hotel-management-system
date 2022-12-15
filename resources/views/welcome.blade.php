@@ -84,7 +84,7 @@
                                 @endif
                 </div>
             </section>
-            <section class="section collection" data-block-section="2" id="collection" style="background-image:url('{{asset("assets/landingpage/bg_image2.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/Room_bg.jpg")}}')">
+            <section class="section collection" data-block-section="2" id="collection" style="background-image:url('{{asset("assets/landingpage/bg_image2.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/bg_image2.jpg")}}')">
                 <div class="container">
                     <div class="row">
                         <div class="row mb-2 ">
@@ -92,9 +92,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4">
-                                <img src="{{URL::asset('assets/landingpage/featured_spots/featured_1.jpg')}}" alt="Card image cap" alt="Card image cap">       
-                        </div>
+                        <h1>NOTE: ADD CAROUSEL HERE!!!</h1>
                     </div>
                 </div>
             </section>
@@ -136,8 +134,28 @@
             <section class="section production" data-block-section="4" id="production">
                 images/features/etc. go here
             </section>
-            <section class="section journal" data-block-section="5" id="journal">
-                images/features/etc. go here
+            <section class="section journal" data-block-section="5" id="journal" style="background-image:url('{{asset("assets/landingpage/bg_image2.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/Room_bg.jpg")}}')">
+                <div class="dropshadow-effect">    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="https://bicol-u.edu.ph/">
+                                    <img src="{{URL::asset('assets/landingpage/icons/BU-logo.png')}}" alt="BU LOGO" style="width:150px;height:150px">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://github.com/BSIT-3C/hotel-management-system">
+                                        <img src="{{URL::asset('assets/landingpage/icons/github-logo.png')}}" alt="GitHub Logo" style="width:150px;height:150px">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://www.facebook.com/groups/400556715509239">
+                                    <img src="{{URL::asset('assets/landingpage/icons/facebook-logo.png')}}" alt="Facebook Logo" style="width:150px;height:150px">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
