@@ -86,10 +86,10 @@ Route::controller(Daily_Time_RecordController::class)->group(function () {
 
 // GUEST-INFO
 Route::prefix('guestinfo')->group(function () {
-    Route::get('guest-form', [ReservationController::class, 'form']);
-    Route::get('reservation', [ReservationController::class, 'reservation']);
-    Route::post('reservation/save', [ReservationController::class, 'store']);
-    Route::get('reservation/result', [ReservationController::class, 'result'])->name('result');
+    Route::get('guest-form', [ReservationController::class, 'form'])->middleware('auth');;
+    Route::get('reservation', [ReservationController::class, 'reservation'])->middleware('auth');;
+    Route::post('reservation/save', [ReservationController::class, 'store'])->middleware('auth');;
+    Route::get('reservation/result', [ReservationController::class, 'result'])->name('result')->middleware('auth');;
 
 
     // TODOS: BACKEND
@@ -112,7 +112,7 @@ Route::prefix('guestinfo')->group(function () {
     });
 });
 
- //housekeeping
+//housekeeping
 Route::get('/housekeeping/manage', function () {
     return view('housekeeping.manage');
 })->name('manage-page');
