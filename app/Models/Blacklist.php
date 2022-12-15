@@ -9,6 +9,7 @@ class Blacklist extends Model
 {
     use HasFactory;
 
+    protected $table = "blacklists";
     protected $fillable = [
         "guest_id",
         "reason",
