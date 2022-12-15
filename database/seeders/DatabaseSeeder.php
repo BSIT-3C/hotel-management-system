@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         Payroll::factory()->count(3)->sequence(['position_id' => 1, 'gross_amount' => 20000, 'total_deduction' => 2000], ['position_id' => 2, 'gross_amount' => 21000, 'total_deduction' => 2000], ['position_id' => 3, 'gross_amount' => 22000, 'total_deduction' => 2000])
             ->create();
 
-        RoomStatus::factory()->count(3)->sequence(['room_status' => 'Vacant'], ['room_status' => 'Occupied'], ['room_status' => 'Out-of-Order'])
+        RoomStatus::factory()->count(7)->sequence(['room_status' => 'Vacant'], ['room_status' => 'Occupied'], ['room_status' => 'Out-of-Order'], ['room_status' => 'Clean'], ['room_status' => 'Dirty'], ['room_status' => 'Cleaning'], ['room_status' => 'Under Maintenance'])
             ->create();
 
         RoomType::factory()->count(4)->sequence(
