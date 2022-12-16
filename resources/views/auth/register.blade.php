@@ -107,6 +107,10 @@
                             <label for="male">Male</label>
                             <input type="radio" name="gender" id="female" value="female" class="form-check-input ms-3">
                             <label for="female">Female</label>
+                            <input type="radio" name="gender" id="not_specified" value="not_specified" class="form-check-input ms-3">
+                            <label for="not_specified">Prefer not to Specify</label>
+                            
+                            
                             </div>
                         </div>
                     </div> <!-- ADDRESS AND GENDER-->
