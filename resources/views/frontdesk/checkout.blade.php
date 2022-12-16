@@ -162,16 +162,35 @@
             </div>
             <div class="offcanvas-body m-3 ms-4">
                 <!-- Timestamp -->
-                <div class="mb-3">
+                <div class="mb-3" id="currentDateTime">
                     <span class="d-block fs-2">9:33 AM</span>
                     <span class="d-block">December 25, 2022</span>
                 </div>
+
+                <script>
+                    let date = new Date();
+                    let cDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var ampm = hours >= 12 ? 'pm' : 'am';
+                    hours = hours % 12;
+                    hours = hours ? hours : 12;
+                    minutes = minutes < 10 ? '0' + minutes : minutes;
+                    var strTime = hours + ':' + minutes + ' ' + ampm;
+
+                    console.log(cDate, strTime);
+                    document.querySelector("#currentDateTime").innerHTML = `
+                        <span class="d-block fs-2">${strTime}</span>
+                        <span class="d-block">${cDate}</span>
+                    `
+                </script>
+
                 <!-- Reservation details -->
                 <div>
                     <span>Transaction ID:</span>
                     <span>0000124</span>
                 </div>
-                
+
                 <div>
                     <span>Guest name:</span>
                     <span>Tyronne Lannister</span>
@@ -209,22 +228,37 @@
                         </div>
                         <div class="row">
                             <span class="col-5">Total rate:</span>
-                            <span class="col-5">Php 18,396</span>
+                            <span class="col-5" id="totalRate">Php 18,396</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Change calculation -->
+                <script>
+                    function calculateChange() {
+                        var received = document.querySelector("#receivedPayment").value; 
+                        var totalRate = document.querySelector("#totalRate").innerHTML.replace( /[^\d.]/g, '' );
+                        var change = received - totalRate;
+                        change = new Intl.NumberFormat('en-PH', {style: 'currency', currency: 'PHP'}).format(change);
+
+                        var changeSpan = document.querySelector("#changeSpan");
+                        changeSpan.innerHTML = change;
+                    }
+                </script>
+
                 <div class="row">
                     <span class="col-5">Received amount:</span>
-                    <div class="col-5">
+                    <div class="col-6">
                         <div class="input-group">
                             <span class="input-group-text">Php</span>
-                            <input class="form-control" type="number">
+                            <input class="form-control" id="receivedPayment" type="number" min="0">
+                            <button class="btn btn-outline-secondary" type="button" onclick="calculateChange()">Done</button>
                         </div>
                     </div>
                 </div>
                 <div class="row my-2">
                     <span class="col-5">Change:</span>
-                    <span class="col-5">Php 604</span>
+                    <span class="col-5" id="changeSpan"></span>
                 </div>
                 <div class="row my-2">
                     <span class="col-5">Received by:</span>
@@ -260,9 +294,6 @@
                 </script>
             </div>
         </div>
-
-
-
 
     </div>
 
