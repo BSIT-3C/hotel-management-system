@@ -19,6 +19,7 @@
                                 <th>Room Number</th>
                                 <th>Room Type</th>
                                 <th>Room Status</th>
+                                <th>Room Sub Status</th>
                                 <th>Timestamp</th>
                                 <th>Actions</th>
                             </tr>
@@ -29,7 +30,8 @@
                                     <tr>
                                         <td>{{$room['id']}}</td>
                                         <td>{{$room['room_number']}}</td>
-                                        <td>{{$room->roomType->room_type}}</td>
+                                        <td>{{$room->roomTypeBeds->room_type->room_type}}</td>
+                                        <td></td>
                                         <td>{{$room->roomStatus->room_status}}</td>
                                         <td>{{$room['updated_at']}}</td>
                                         <td><a href="/housekeeping/manage/{{$room->id}}"><i class="fa-solid fa-pen-to-square text-primary "></i></a></td>
@@ -37,7 +39,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                  <td colspan="7">No Room Records</td>
+                                  <td colspan="8">No Room Records</td>
                                 </tr>
                             @endunless
                         </tbody>
