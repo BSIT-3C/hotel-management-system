@@ -95,6 +95,8 @@ class DatabaseSeeder extends Seeder
 
         $this->createTenEntryPerFactory();
 
+        HouseKeeping::factory()->count(1)->create();
+
         Employee_Payroll::factory()->count(2)->sequence(['position_id' => 3, 'employee_id' => 1,  'cut_off' => "2022-11-28"], ['position_id' => 3, 'employee_id' => 1,  'cut_off' => "2022-11-15"])
             ->create();
         DTR::factory()->count(1)->sequence(['employee_id' => 1])
@@ -134,7 +136,6 @@ class DatabaseSeeder extends Seeder
             'employee' => Employee::factory(),
             'guest' => Guest::factory(),
             'reservation' => Reservation::factory(),
-            'housekeeping' => Housekeeping::factory(),
             'account' => Account::factory(),
             'transaction' => Transaction::factory(),
         ];
