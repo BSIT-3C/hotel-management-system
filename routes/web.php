@@ -48,13 +48,16 @@ Route::get('/frontdesk/information', function () {
 Route::prefix('accounting')->group(function () {
     Route::get('home', [AccountingController::class, 'index']);
 
+    // Payrolls
     Route::get('payrolls', [AccountingController::class, 'payrolls']);
     Route::post('payrollEdit/{employee_payrolls}', [AccountingController::class, 'payrollEdit']);
     Route::get('payrollPrint/{employee_payrolls}', [AccountingController::class, 'payrollPrint']);
 
+    // Revenue
     Route::get('revenueEdit', [AccountingController::class, 'revenueEdit']);
     Route::get('revenuePrint', [AccountingController::class, 'revenuePrint']);
 
+    // Expenses
     Route::get('expensesEdit', [AccountingController::class, 'expensesEdit']);
     Route::get('expensesPrint', [AccountingController::class, 'expensesPrint2']);
 
@@ -62,13 +65,16 @@ Route::prefix('accounting')->group(function () {
     Route::get('expensesEdit/rooms_list', [AccountingController::class, 'expensesRoomsList']);
     Route::get('expensesEdit/utility_cost', [AccountingController::class, 'expensesUtilityCost']);
 
+    # Expenses Crud
     Route::get('expensesEdit/edit/{id}', [AccountingController::class, 'edit']);
     Route::patch('expensesEdit/{id}', [AccountingController::class, 'update']);
     Route::get('expensesEdit/new', [AccountingController::class, 'new']);
     Route::post('expensesEdit', [AccountingController::class, 'store']);
     Route::delete('expensesEdit/{id}', [AccountingController::class, 'delete']);
 
+    # Expenses Home
     Route::get('expenses', [AccountingController::class, 'expenses']);
+    # Expense View
     Route::get('expenses/{date}', [AccountingController::class, 'expensesShow']);
 });
 
