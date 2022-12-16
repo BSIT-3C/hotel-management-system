@@ -38,6 +38,10 @@ class Employee extends Authenticatable
     }
 
     // relationships
+    public function account()
+    {
+        return $this->hasMany(Account::class, 'employee_id');
+    }
     public function reservations()
     {
         return $this->hasMany(Reservation::class, 'employee_id');
