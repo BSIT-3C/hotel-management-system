@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="{{ URL::asset('css/homepage.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ URL::asset('css/homepage.scss') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ URL::asset('resources/carousel.css')}}" rel ="stylesheet" type ="text/css">
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -91,15 +92,14 @@
                             <h1><i>"Savor the <b>tranquility</b> of our featured spots..."</i></h1>
                         </div>
                     </div>
-                    <div class="row">
-                        <h1>NOTE: ADD CAROUSEL HERE!!!</h1>
-                    </div>
-                </div>
+                    
             </section>
             <section class="section material" data-block-section="3" id="material" style="background-image:url('{{asset("assets/landingpage/Room_bg.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/Room_bg.jpg")}}')">
                 <div class="container">
+                    <div class="row">
                     <div class="row mb-2 ">
                         <h1><i>"Indulge in the <b>tranquility</b> of our hotel rooms"</i></h1>
+                    </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
@@ -107,7 +107,7 @@
                                 <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/demos/common_room.jpg')}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h3>Club Room</h3>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, ea. Alias animi doloribus, nihil error id suscipit, aut dolores a voluptates assumenda ad neque ullam amet? Ullam, neque quam. Magni.</p>
+                                    <p class="card-text"> Our Club room can be used for  meetings, activities, socializing, and other event you are hosting. While enjoying our clubroom</p>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                 <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/demos/Luxury_demo.jpg')}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h3 class="card-text"><i>Luxury Room</i></h3>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, ea. Alias animi doloribus, nihil error id suscipit, aut dolores a voluptates assumenda ad neque ullam amet? Ullam, neque quam. Magni.</p>
+                                    <p class="card-text">Lavish bathrooms  high-end, lush linens and towels. Deluxe pillows and mattresses so your sleeping hours are as blissful as your waking ones.</p>
                                 </div>
                             </div>
                         </div> </i></b>
@@ -125,14 +125,48 @@
                                 <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/demos/mid_hotel_room.jpg')}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h3><b>Superior Room</b></h3>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, ea. Alias animi doloribus, nihil error id suscipit, aut dolores a voluptates assumenda ad neque ullam amet? Ullam, neque quam. Magni.</p>
+                                    <p class="card-text">The Superior Room comprises of 1 Double bed or 2 Twin Beds, 2 Bedside Tables, a Desk & Chair. This room is larger than the Standard Room.</p>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
             </section>
-            <section class="section production" data-block-section="4" id="production">
-                images/features/etc. go here
+            <section class="section material" data-block-section="4" id="material" style="background-image:url('{{asset("assets/landingpage/Room_bg.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/Room_bg.jpg")}}')">
+                <div class="container">
+                    <div class="row mb-2 ">
+                        <h1><i>"Experience the <b>tranquility</b> of our Fancy Restaurants"</i></h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/restau.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3>Dining Hall</h3>
+                                    <p class="card-text">Enjoy the fancy restaurant of ours together with your loved ones.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/food.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-text"><i>Our Signature Foods</i></h3>
+                                    <p class="card-text">Enjoy Savoring our Yummy Delicious Fancy Foods, While having a moments with your loved ones.</p>
+                                </div>
+                            </div>
+                        </div> </i></b>
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/function.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3>Function Hall</h3>
+                                    <p class="card-text">Our function hall where you can hosts your celebration it can be a meeting, birthdays, wedding and much more</p>
+                                </div>
+                            </div>
+                        </div>
+                  
+                </div> 
             </section>
             <section class="section journal" data-block-section="5" id="journal" style="background-image:url('{{asset("assets/landingpage/bg_image2.jpg")}}');background-size:100%;color:#FFFF;background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('{{asset("assets/landingpage/Room_bg.jpg")}}')">
                 <div class="dropshadow-effect">    
@@ -152,13 +186,19 @@
                                 <a href="https://www.facebook.com/groups/400556715509239">
                                     <img src="{{URL::asset('assets/landingpage/icons/facebook-logo.png')}}" alt="Facebook Logo" style="width:150px;height:150px">
                                 </a>
+                            
+
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+       
     </main>
 </body>
 </html>
 <script type="text/javascript" src="{{ URL::asset('js/homepage.js') }}"></script>
+<!-- Footer -->
+<footer>
+  

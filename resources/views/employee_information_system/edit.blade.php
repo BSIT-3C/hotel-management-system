@@ -180,12 +180,34 @@
 
                         <div class="col-6 ">
                             <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                                <select name="position_id" id="position" class="form-select">
+                                <select name="position_id" id="position" name="position" class="form-select">
                                     <option @if(count($Positions)==0) selected @else  @endif value="">-- Position --</option>
                                 @foreach ($Positions as $position)
                                     <option @if($position->id==$list->position_id) selected @endif value="{{$position->id}}">{{$position->position}}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="col-6 ">
+                            <label  for="position" class="col-form-label text-md-end">{{ __('Department') }}</label>
+                                <select id="position" name="department" class="form-select">
+                                    <option value="" disabled selected hidden>-- Department --</option>
+                                @foreach ($Departments as $department)
+                                    <option value="{{$department->id}}">{{$department->department}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label class="col-form-label text-md-end" for="Role">{{ __('Role') }}</label>
+                            <div class="col-form-label ">
+                            <input type="radio" name="role" value="" class="invisible" checked="checked">
+                            @foreach($Roles as $role)
+                                <input type="radio" name="role" id="{{$role->role}}" value="{{$role->id}}" class="form-check-input">
+                                <label for="{{$role->role}}">{{$role->role}}</label>
+                            @endforeach
+                            </div>
+
                         </div>
                     </div>
                     @if($is_admin)

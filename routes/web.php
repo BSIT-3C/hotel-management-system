@@ -6,7 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HousekeepingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Daily_Time_RecordController;
-
+use App\Http\Controllers\FrontDeskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ReservationController;
@@ -35,9 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 // frontdesk
-Route::get('/frontdesk/dashboard', function () {
-    return view('frontdesk/dashboard');
-});
+Route::get('/frontdesk/dashboard', [FrontDeskController::class, "index"]);
 
 Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
@@ -89,13 +87,15 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee_information_system/employees', 'index')->middleware(['auth', 'role.manager']);
     Route::get('/employee_information_system/profile/{list}', 'show')->middleware('auth');
-    Route::get('/employee_information_system/edit/{list}', 'edit')->middleware(['auth', 'role.manager']);
+    Route::get('/employee_information_system/edit/{list}', 'edit')->middleware(['auth','role.admin']);
     Route::patch('/employee_information_system/{list}', 'update')->middleware(['auth', 'role.manager']);
-    Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware(['auth', 'role.manager']);
+    Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware(['auth', 'role.admin']);
+    Route::get('/employee_information_system/verification', 'verification')->middleware('auth', 'role.admin' );
+    Route::get('/employee_information_system/verification/verified/{list}', 'verified')->middleware('auth' , 'role.admin');
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
-    Route::get('/employee_information_system/dtr', 'show')->middleware('auth');
+    Route::get('/employee_information_system/dtr', 'show')->middleware('auth', 'role.manager');
     Route::get('/employee_information_system/profile/dtr/{employee}', 'show_employee_dtr')->middleware('auth');
     Route::post('/employee_information_system/record/timeIn', 'timeIn')->middleware('auth');
     Route::post('/employee_information_system/record/timeOut', 'timeOut')->middleware('auth');

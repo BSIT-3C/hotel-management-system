@@ -169,7 +169,7 @@
                             <label for="photo" class="col-form-label text-md-end">{{ __('Photo') }}</label>
 
                             <div class="">
-                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo" autofocus>
+                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" autocomplete="photo" autofocus>
 
                                 @error('photo')
                                     <span class="invalid-feedback" role="alert">
@@ -180,48 +180,13 @@
                         </div>
 
 
-                         {{-- <div class="col-6">
-                            <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                            <div class="">
-                                <select name="position" type="text" id="position" class="form-select">
-                                    <option value="" selected disabled>Choose your position...</option>
-                                    <option value="Role1">Position1</option>
-                                    <option value="Role2">Position2</option>
-                                    <option value="Role3">Position3</option>
-                                    <option value="Role4">Position4</option>
-                                </select>
-                            </div>
-                          </div> 
-                    </div><!--PHOTO and POSITION-->
 
-                    {{-- <div class="row"><!-- DEPARTMENT AND ROLE -->
-                          <div class="col-6">
-                            <label  for="department" class="col-form-label text-md-end">{{ __('Department') }}</label>
-                            <div class="col-form-label text-md-end">
-                                <select name="department" type="text" id="position" class="form-select">
-                                    <option value="" selected disabled>Choose your position...</option>
-                                    <option value="Department1">Department1</option>
-                                    <option value="Department2">Department2</option>
-                                    <option value="Department3">Department3</option>
-                                    <option value="Department4">Department4</option>
-                                </select>
-                            </div>
-                          </div>
-
-
-                          <div class="col-6">
-                            <label class="col-form-label text-md-end" for="Role">{{ __('Role') }}</label>
-                            <div class="col-form-label ">
-                            <input type="radio" name="role" value="" class="invisible" checked="checked">
-                            <input type="radio" name="role" id="role" value=Admin class="form-check-input">
-                            <label for="male">1 - Admin</label>
-                            <input type="radio" name="role" id="role" value=Manager class="form-check-input ms-3">
-                            <label for="female">2 - Manager</label>
-                            <input type="radio" name="role" id="role" value=others class="form-check-input ms-3">
-                            <label for="female">3 - Others</label>
-                            </div>
-                        </div>
-                    </div> --}}
+                        @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
 
                     <div class="row"><!-- PASSWORD AND PASSWROD CONFIRMATION -->
