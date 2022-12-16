@@ -6,7 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HousekeepingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Daily_Time_RecordController;
-
+use App\Http\Controllers\FrontDeskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ReservationController;
@@ -35,9 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 // frontdesk
-Route::get('/frontdesk/dashboard', function () {
-    return view('frontdesk/dashboard');
-});
+Route::get('/frontdesk/dashboard', [FrontDeskController::class, "index"]);
 
 Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
