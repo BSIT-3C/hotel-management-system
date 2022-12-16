@@ -23,30 +23,38 @@
         .print {
             position: absolute;
             top: 0;
-            left: 0;
-            margin: 0;
-            border: 0 !important;
+            left: 0px;
+            width: 100%;
+            margin: 0 !important;
 
+            /* border: 1px solid red !important; */
+            padding: 0 !important;
             /* transform: scale(50%) */
             /* display: none */
+            border: 0 !important;
+            color-adjust: exact;
+        }
+
+        .header .row>div {
+            background: var(--bs-gray-200)
+        }
+
+        h6 {
+            font-size: .8em !important;
         }
 
         body {
             zoom: 75%;
             padding: 0 !important;
             margin: 0 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
-        .container-fluid {
+        /* .container-fluid {
             padding: 0 !important;
             margin: 0 !important;
-        }
-
-        .container-fluid div {
-            margin-left: 0 !important;
-            /* margin-top: 0 !important; */
-
-        }
+        } */
 
         .no-print {
             display: none
@@ -58,7 +66,7 @@
 <body>
     <div class="container-fluid ">
 
-        <div class="container m-5 p-5 rounded border print" id="DivIdToPrint">
+        <div class="container m-5 p-5 rounded border print">
             <div class="row">
                 <div class="col">
                     <img alt="tranquil13611" src="{{ asset('images/playground_assets/tranquil13611-w3f2-200h.png') }}"
@@ -220,7 +228,8 @@
 
         <div class="row mb-5 no-print" style="margin-right: 8em">
             <div class="col d-flex justify-content-end">
-                <button class="btn btn-primary" id="printBtn" onclick="window.print()">Print</button>
+                <button class="btn btn-primary" id="printBtn" onclick="window.print()"><i
+                        class="bi bi-printer-fill"></i> Print</button>
             </div>
         </div>
     </div>
