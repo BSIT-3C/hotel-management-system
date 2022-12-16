@@ -62,7 +62,7 @@
         <header class="shadow-sm d-flex flex-wrap justify-content-center py-3 mb-3 border-bottom"
             style="background-color: #1840C4 ;">
             <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
-                <img class="ps-5 img-fluid" src="header_logo.jpg" alt="logo" style="height: 50px; width: auto;">
+                <img class="ps-5 img-fluid" src="{{asset("assets/tranquil.png")}}" alt="logo" style="height: 50px; width: auto;">
             </div>
 
             <ul class="nav pe-5">
