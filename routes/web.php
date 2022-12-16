@@ -92,12 +92,12 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee_information_system/edit/{list}', 'edit')->middleware(['auth','role.manager']);
     Route::patch('/employee_information_system/{list}', 'update')->middleware(['auth', 'role.manager']);
     Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware(['auth', 'role.admin']);
-    Route::get('/employee_information_system/verification', 'verification')->middleware('auth');
-    Route::get('/employee_information_system/verification/verified/{list}', 'verified')->middleware('auth');
+    Route::get('/employee_information_system/verification', 'verification')->middleware('auth', 'role.admin' );
+    Route::get('/employee_information_system/verification/verified/{list}', 'verified')->middleware('auth' , 'role.admin');
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
-    Route::get('/employee_information_system/dtr', 'show')->middleware('auth');
+    Route::get('/employee_information_system/dtr', 'show')->middleware('auth', 'role.manager');
     Route::get('/employee_information_system/profile/dtr/{employee}', 'show_employee_dtr')->middleware('auth');
     Route::post('/employee_information_system/record/timeIn', 'timeIn')->middleware('auth');
     Route::post('/employee_information_system/record/timeOut', 'timeOut')->middleware('auth');
