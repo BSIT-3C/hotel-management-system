@@ -87,11 +87,11 @@ Route::controller(UserController::class)->group(function () {
 });
 
 Route::controller(EmployeeController::class)->group(function () {
-    Route::get('/employee_information_system/employees', 'index')->middleware('auth');
+    Route::get('/employee_information_system/employees', 'index')->middleware(['auth', 'role.manager']);
     Route::get('/employee_information_system/profile/{list}', 'show')->middleware('auth');
-    Route::get('/employee_information_system/edit/{list}', 'edit')->middleware('auth');
-    Route::patch('/employee_information_system/{list}', 'update')->middleware('auth');
-    Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware('auth');
+    Route::get('/employee_information_system/edit/{list}', 'edit')->middleware(['auth', 'role.manager']);
+    Route::patch('/employee_information_system/{list}', 'update')->middleware(['auth', 'role.manager']);
+    Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware(['auth', 'role.manager']);
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
@@ -144,9 +144,9 @@ Route::prefix('guestinfo')->group(function () {
 });
 
 
- //housekeeping
- Route::controller(HousekeepingController::class)->group(function () {
-    
+//housekeeping
+Route::controller(HousekeepingController::class)->group(function () {
+
     Route::delete('/housekeeping/lostandfound/delete/{id}', 'process_delete_lostandfound')->middleware('auth');
     Route::get('/housekeeping/manage', 'show_manage')->middleware('auth')->name('manage-page');
     Route::get('/housekeeping/viewall', 'show_rooms')->middleware('auth')->name('viewall-page');
@@ -161,9 +161,8 @@ Route::prefix('guestinfo')->group(function () {
 
     Route::get('/housekeeping/manage/{id}', 'update_manage')->middleware('auth');
     Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
+});
 
- });
- 
 Auth::routes();
 
 Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index']);
