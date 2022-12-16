@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\Employee;
+use App\Models\EmployeeRole;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -36,7 +37,8 @@ class UserController extends Controller
         $user = Employee::create(Arr::except($formFields, ['password']));
 
         Account::create(["employee_id" => $user->id, "password" => $formFields['password'], "role_id" => null]);
-
+        EmployeeRole::create(['employee_id' => $user->id, "role_id" => 3]);
+        
         auth()->login($user);
 
         return redirect('/home');
