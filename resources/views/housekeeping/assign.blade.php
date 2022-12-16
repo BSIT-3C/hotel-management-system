@@ -7,8 +7,8 @@
     </a>
     
         <div class="row">
-            <div class="card">
-                <div class="card-header">
+            <div class="card"><br>
+                <div class="card-header" style="background-color:#1840C4; color:#FFFFFF; border-radius: 5px;">
                     Employee List
                 </div>
                 <div class="card-body">

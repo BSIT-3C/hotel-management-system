@@ -27,7 +27,7 @@ class HousekeepingFactory extends Factory
 
         return [
 
-            'housekeeper_id' => Employee::where('position_id', 3)->pluck('id')->random(),
+            'housekeeper_id' => Employee::where('position_id', 15)->pluck('id')->random(),
             'room_id' => Room::pluck('id')->random(),
             'start_time' => $start,
             'end_time' => $end
