@@ -10,7 +10,7 @@
             <div class="card"><br>
                 <div class="card-header" style="background-color:#1840C4; color:#FFFFFF; border-radius: 5px;">
                     Lost and Found Items List
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="createLostandFoundModal" id="btnInputModal">Add Items</button>
+                    <button type="button" class="btn btn-primary" style="float:right" data-toggle="modal" data-target="createLostandFoundModal" id="btnInputModal">Add Items</button>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered" id="list">
@@ -42,11 +42,18 @@
 
                                                         @csrf
                                                         @method('delete')
+                                                        
+                                                    </form>
+                                                    @if($item->item_status == "Claimed")
+                                                    <div style="width: 100%; ">
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn"><i class="fa-solid fa-trash text-danger "></i></button>
-                                                    </form>
-                                                <a href="/housekeeping/lostandfound/{{$item->id}}" class="col d-flex justify-content-center my-2"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
-                                            
+                                                    </div>
+                                                    @else
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn"><i class="fa-solid fa-trash text-danger "></i></button>
+                                                        <a href="/housekeeping/lostandfound/{{$item->id}}" class="col d-flex justify-content-center my-2"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
+                                                    @endif
                                                 </div>
                                         </div>
                                         </td>
@@ -69,7 +76,7 @@
     <div class="modal-dialog">
         <div class="modal-content" style="max-width: 100%; margin:auto; border-radius: 15px;">
             <div class="modal-header" style="background-color:cornflowerblue;">
-                <h4>Add New Items</h4>
+                <h4>Add Items</h4>
             </div>
             <div class="modal-body" style="max-width: 100%; margin:auto;">
                 <h1 style="text-align:center;">Lost and Found Items</h1>
@@ -90,8 +97,11 @@
                             <label for="floatingInput">Item Quantity</label>
                         </div>
                         <div class="form-floating mb-2" style="width: 400px; margin:auto;">
-                            <input type="text" class="form-control" id="floatingInput" name="item_status" placeholder="item_status" style="background-color: #DFDFDF;" required />
-                            <label for="floatingInput">Item Status</label>
+                            <select class="form-control" id="floatingInput" name="item_status" style="background-color: #DFDFDF;" required>
+                                <option selected="true" disabled="true">Item Status</option>
+                                <option value="Claimed">Claimed</option>
+                                <option value="Found">Found</option>
+                            </select>
                         </div>
                         <div class="form-floating mb-2" style="width: 400px; margin:auto;">
                             <input type="date" class="form-control" id="floatingInput" name="date_and_time" placeholder="date" style="background-color: #DFDFDF;" required />
