@@ -12,4 +12,8 @@ class RoomType extends Model
     protected $fillable = [
         "room_type",
     ];
+
+    public function beds(){
+        return $this->hasMany(RoomTypeBed::class, 'room_type_id');
+    }
 }

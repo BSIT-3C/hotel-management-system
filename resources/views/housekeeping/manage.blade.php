@@ -5,10 +5,10 @@
     <a href="/housekeeping/home" class="inline-block text-black ml-4 mb-4">
         <button class="btn btn-light mb-2"><i class="fa-solid fa-arrow-left"></i></i> Back</button>
     </a>
-    <div class="card border-primary mb-3" style="max-width: 100%; height: 520px; margin-left: 10px; border-radius: 15px;">
+    <div class="card mb-3" style="max-width: 100%; height: 520px; margin-left: 10px; border-radius: 15px;">
         <div class="row">
-            <div class="card">
-                <div class="card-header">
+            <div class="card"><br>
+                <div class="card-header" style="background-color:#1840C4; color:#FFFFFF; border-radius: 5px;">
                     Room List
                 </div>
                 <div class="card-body">
@@ -29,8 +29,8 @@
                                     <tr>
                                         <td>{{$room['id']}}</td>
                                         <td>{{$room['room_number']}}</td>
-                                        <td>{{$room['room_type_id']}}</td>
-                                        <td>{{$room['room_status_id']}}</td>
+                                        <td>{{$room->roomType->room_type}}</td>
+                                        <td>{{$room->roomStatus->room_status}}</td>
                                         <td>{{$room['updated_at']}}</td>
                                         <td><a href="/housekeeping/manage/{{$room->id}}"><i class="fa-solid fa-pen-to-square text-primary "></i></a></td>
                                     </tr>
