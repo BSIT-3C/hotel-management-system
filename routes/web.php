@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\BlacklistController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HousekeepingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Daily_Time_RecordController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ReservationController;
+use App\Models\Blacklist;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
@@ -108,9 +111,16 @@ Route::prefix('guestinfo')->group(function () {
     // TODOS: BACKEND
     Route::get('reservation/list', [ReservationController::class, 'list']);
 
-    Route::get('blacklist', function () {
-        return view('guest-information.blacklist');
-    });
+    // Blacklist
+    Route::get('blacklist', [BlacklistController::class, 'index']);
+    Route::put('blacklist/store', [BlacklistController::class, 'store']);
+    Route::get('blacklist/form', [BlacklistController::class, 'form']);
+    Route::delete('blacklist/delete/{blacklist}', [BlacklistController::class, 'delete']);
+    Route::get('blacklist/update/form/{blacklist}', [BlacklistController::class, 'update_form']);
+    Route::patch('blacklist/update/{blacklist}', [BlacklistController::class, 'update']);
+    // End Blacklist Route
+
+    // Guest Card
     Route::get('guest-card-foreign', function () {
         return view('guest-information.guest_card_(Foreign)');
     });
@@ -120,38 +130,34 @@ Route::prefix('guestinfo')->group(function () {
     Route::get('guest-card-form', function () {
         return view('guest-information.guest_card_form');
     });
+
+    // Guest List
     Route::get('guest-list', function () {
         return view('guest-information.guest_list');
     });
 });
 
-//housekeeping
-Route::get('/housekeeping/manage', function () {
-    return view('housekeeping.manage');
-})->name('manage-page');
 
-Route::get('/housekeeping/filter', function () {
-    return view('housekeeping.filter');
-})->name('filter-page');
+ //housekeeping
+ Route::controller(HousekeepingController::class)->group(function () {
+    
+    Route::delete('/housekeeping/lostandfound/delete/{id}', 'process_delete_lostandfound')->middleware('auth');
+    Route::get('/housekeeping/manage', 'show_manage')->middleware('auth')->name('manage-page');
+    Route::get('/housekeeping/viewall', 'show_rooms')->middleware('auth')->name('viewall-page');
+    Route::get('/housekeeping/lostandfound', 'show_lostandfound')->middleware('auth')->name('lostandfound-page');
+    Route::get('/housekeeping/assign', 'show_assign_housekeeper')->middleware('auth')->name('assign-page');
 
-Route::get('/housekeeping/select', function () {
-    return view('housekeeping.select');
-})->name('select-page');
+    Route::get('/housekeeping/viewall/{id}', 'view_single_room')->middleware('auth');
 
-Route::get('/housekeeping/lostandfound', function () {
-    return view('housekeeping.lostandfound');
-})->name('lostandfound-page');
+    Route::get('/housekeeping/lostandfound/{id}', 'update_lostandfound')->middleware('auth');
+    Route::post('/housekeeping/lostandfound-process_update/{id}', 'process_update_lostandfound')->middleware('auth');
+    Route::post('/housekeeping/lostandfound', 'create_lostandfound')->middleware('auth');
 
-Route::get('/housekeeping/assign', function () {
-    return view('housekeeping.assign');
-})->name('assign-page');
+    Route::get('/housekeeping/manage/{id}', 'update_manage')->middleware('auth');
+    Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
 
-Route::get('/housekeeping/viewall', function () {
-    return view('housekeeping.viewall');
-})->name('viewall-page');
-
+ });
+ 
 Auth::routes();
 
-Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index'])->name('home');
-
-//Route::get('/housekeeping/assign',[ShowController::class, 'show']);
+Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index']);

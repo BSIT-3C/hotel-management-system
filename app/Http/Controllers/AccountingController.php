@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Employee_Payroll;
 use App\Models\Expenses;
 use App\Models\Payroll;
+
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
 use Illuminate\Http\Request;
+use App\Models\Revenue;
 
 /**
  * Controller class for accounting module
@@ -78,10 +80,11 @@ class AccountingController extends Controller
      * for editing revenue
      * 
      * @return View
-     */
-    public function revenueEdit()
-    {
-        return view('/accounting_information_system/revenueEdit');
+     */ 
+    public function revenueEdit(){
+        return view('/accounting_information_system/revenueEdit', [
+            "revenues" => Revenue::all()
+        ]);
     }
 
     /**
