@@ -180,28 +180,48 @@
 
                         <div class="col-6 ">
                             <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                                <select id="position" class="form-select">
+                                <select id="position" name="position" class="form-select">
                                     <option value="" disabled selected hidden>-- Position --</option>
                                 @foreach ($Positions as $position)
                                     <option value="{{$position->id}}">{{$position->position}}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="col-6 ">
+                            <label  for="position" class="col-form-label text-md-end">{{ __('Department') }}</label>
+                                <select id="position" name="department" class="form-select">
+                                    <option value="" disabled selected hidden>-- Department --</option>
+                                @foreach ($Departments as $department)
+                                    <option value="{{$department->id}}">{{$department->department}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label class="col-form-label text-md-end" for="Role">{{ __('Role') }}</label>
+                            <div class="col-form-label ">
+                            <input type="radio" name="role" value="" class="invisible" checked="checked">
+                            @foreach($Roles as $role)
+                                <input type="radio" name="role" id="{{$role->role}}" value="{{$role->id}}" class="form-check-input">
+                                <label for="{{$role->role}}">{{$role->role}}</label>
+                            @endforeach
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-12">
                             <label  for="position" class="col-form-label">{{ __('Role') }}</label>
                             <div class="form-check">
                                 @foreach($Roles as $role) 
-                                <input class="form-check-input" type="checkbox" id="{{$role->role}}" name="roles" value="{{$role->id}}">
+                                <input class="form-check-input" type="checkbox" id="{{$role->role}}" name="roles[]" value="{{$role->id}}">
                                 <label class="form-check-label" for="{{$role->role}}"> {{$role->role}}</label><br>
                                 @endforeach
-                                    
-
                             </div>
                         
                         </div>
-                    </div>    
+                    </div>     --}}
 
                         <!--EMAIL AND CONTACT NUMBER ROW-->
 
