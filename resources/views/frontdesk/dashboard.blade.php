@@ -51,7 +51,7 @@
                     <a href="{{ url('/guestinfo/guest-form') }}"><button class="btn btn-outline-primary p-4 w-100">Add Reservation</button></a>
                 </div>
                 <div class="col">
-                    <button class="btn btn-outline-primary  p-4 w-100">Add Transaction</button>
+                    <a href="{{ url('/frontdesk/extendstay') }}"><button class="btn btn-outline-primary  p-4 w-100">Extend stay</button></a>
                 </div>
                 <div class="col">
                     <button class="btn btn-outline-primary p-4 w-100">Check Out</button>
