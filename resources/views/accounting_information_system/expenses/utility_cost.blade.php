@@ -29,7 +29,7 @@
                 <thead>
                     <tr>
                         <th scope="col" class="col-2 text-center">Date</th>
-                        <th scope="col" class="col-4 text-center">Maintenance</th>
+                        <th scope="col" class="col-4 text-center">Name</th>
                         <th scope="col" class="col-3 text-center">Unit Price</th>
                         <th scope="col" class="col-3 text-center">Actions</th>
                     </tr>
