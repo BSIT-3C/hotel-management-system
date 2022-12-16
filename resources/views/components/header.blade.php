@@ -3,9 +3,9 @@
         <button class="btn border-0" style="padding: 0;" ><img src="{{ asset('assets/tranquil.png') }}" width="" height="58"  href=""></button>   
         
         <div>
-            <a href="/dashboard" class="text-decoration-none"><button class="bi bi-house-door btn text-light"> Dashboard</button></a>
-            <a href="/information" class="text-decoration-none"><button class="bi bi-info-circle btn text-light"> Information</button></a>
-            <button class="bi bi-card-list btn text-light"> All Bookings</button>
+            <a href="/frontdesk/dashboard" class="text-decoration-none"><button class="bi bi-house-door btn text-light"> Dashboard</button></a>
+            <a href="/frontdesk/information" class="text-decoration-none"><button class="bi bi-info-circle btn text-light"> Information</button></a>
+            <a href="/guestinfo/reservation/list" class="text-decoration-none"><button class="bi bi-card-list btn text-light"> All Bookings</button></a>
         </div> 
     
         <div class="d-flex align-items-center">

@@ -45,16 +45,19 @@
         <div class="container p-5">
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-outline-primary p-4 w-100">Check In</button>
+                    <a href="{{ url('/frontdesk/checkin') }}"><button class="btn btn-outline-primary p-4 w-100">Check In</button></a>
                 </div>
                 <div class="col">
-                    <a href="{{ url('/guest-form') }}"><button class="btn btn-outline-primary p-4 w-100">Add Reservation</button></a>
+                    <a href="{{ url('/guestinfo/guest-form') }}"><button class="btn btn-outline-primary p-4 w-100">Add Reservation</button></a>
                 </div>
                 <div class="col">
-                    <button class="btn btn-outline-primary p-4 w-100">Add Transaction</button>
+                    <a href="{{ url('/frontdesk/extendstay') }}"><button class="btn btn-outline-primary p-4 w-100">Extend Stay</button></a>
                 </div>
                 <div class="col">
-                    <button class="btn btn-outline-primary p-4 w-100">Check Out</button>
+                    <a href="{{ url('/frontdesk/checkout') }}"><button class="btn btn-outline-primary p-4 w-100">Check Out</button></a>
+                </div>
+                <div class="col">
+                    <a href="{{ url('/frontdesk/claimitem') }}"><button class="btn btn-outline-primary p-4 w-100">Claim Lost Item</button></a>
                 </div>
             </div>
         </div>
@@ -73,7 +76,7 @@
                     <div class="row ms-2 mt-2 mb-4">
                         <div class="ps-1 pe-2 col-md-3   border-3 border-dark dashed">
                             <h6 style="font-family: Inter; font-size: 24px; font-style: Semi Bold;">Checked In</h6>
-                            <h6 style="font-family: Inter; font-size: 70px; font-style: normal;">86</h6>
+                            <h6 style="font-family: Inter; font-size: 70px; font-style: normal;">{{$occupiedRooms}}</h6>
                         </div>
                         <div class="ps-1 pe-2 col-md-3   border-3 border-dark dashed">
                             <h6 style="font-family: Inter; font-size: 23px; font-style: Semi Bold;">Available Rooms</h6>

@@ -52,8 +52,8 @@
 
 </head>
 
-<body style="background-color: #E1DFD2;">
-    <div class="">
+<body style="background-color: #E1DFD2; padding: 0 !important;">
+    <div class="container row">
         <header class="shadow-sm d-flex flex-wrap justify-content-center py-4 border-bottom"
             style="background-color: #1840C4 ; position: fixed; width: 100%; z-index: 10">
 
@@ -84,12 +84,10 @@
                             {{ Auth::user()->last_name }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item"
-                                    href="/employee_information_system/profile/{{ auth::user()->id }}">Profile</a></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
+                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                             </li>
@@ -102,76 +100,15 @@
             </ul>
         </header>
     </div>
-    <main style="" class="min-vh-100">
-        <div class="row">
-            @Auth
-                <div class="col-2">
-                    <div class="min-vh-100 p-3 bg-light" style="width: 280px; position: fixed; margin-top: 6.2rem">
-                        <a href="/"
-                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                            <svg class="bi me-2" width="40" height="32">
-                                <use xlink:href="#bootstrap" />
-                            </svg>
-                            <span class="fs-4">Tranquil</span>
-                        </a>
-                        <hr>
-                        <ul class="nav nav-pills flex-column mb-auto">
-                            <li class="nav-item">
-                                <a href="/home" class="nav-link link-dark" aria-current="page">
-                                    <i class="fa-solid fa-house me-1"></i>
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/employee_information_system/dtr" class="nav-link link-dark">
-                                    <i class="fa-solid fa-business-time me-1"></i>
-                                    DTR
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/employee_information_system/employees" class="nav-link link-dark">
-                                    <i class="fa-solid fa-user-group me-1"></i>
-                                    Employees
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/employee_information_system/profile/dtr/{{ Auth::user()->id }}"
-                                    class="nav-link link-dark">
-                                    <i class="fa-sharp fa-solid fa-clock me-1"></i>
-                                    DTR logs
-                                </a>
-                            </li>
-                            <hr>
-                            <li class="mb-1 ms-3">
-                                <div class="dropdown">
-                                    <button class="fw-bold btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        Modules
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Frontdesk</a></li>
-                                        <li><a class="dropdown-item" href="/housekeeping/home">House Keeping</a></li>
-                                        <li><a class="dropdown-item" href="/guestinfo/guest-form">Guest Information</a></li>
-                                        <li><a class="dropdown-item" href="/accounting/home">Accounting</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </div>
-
-
-                </div>
-            @endAuth
-            <div class="col">
-                @yield('content')
-            </div>
-
-
-
+    <div class="row text-center d-flex align-items-center border" style="height: 100vh !important;" >
+        <div class="col text-center text-muted">
+            <h4>VERIFY ACCOUNT FIRST</h4>
+            <h6>Contact Admin</h6>
         </div>
-
-    </main>
+    </div>
+    {{-- <main class="row text-center d-flex align-items-center border" style="margin-top: 130px; height: 100% !important;">
+        
+    </main> --}}
 </body>
 
 </html>
