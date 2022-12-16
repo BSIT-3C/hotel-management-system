@@ -82,7 +82,7 @@ class HousekeepingController extends Controller
     {
         //$lfitems = Lost_And_Found_Item::all();
 
-        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL);
+        $lfitems = Lost_And_Found_Item::all();
 
         return view('/housekeeping/lostandfound', [
             'items' => $lfitems
@@ -100,7 +100,7 @@ class HousekeepingController extends Controller
         $item -> date_and_time = $request -> input('date_and_time');
         $item -> save();
 
-        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL);
+        $lfitems = Lost_And_Found_Item::all();
 
         return view('/housekeeping/lostandfound', [
             'items' => $lfitems , 'message' => 'The Item Was Successfully Added!'
@@ -125,7 +125,7 @@ class HousekeepingController extends Controller
 
         $lfitems -> save();
 
-        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL);
+        $lfitems = Lost_And_Found_Item::all();
 
         return view('/housekeeping/lostandfound', [
             'items' => $lfitems , 'message' => 'The Item Status was Successfully Updated!'
@@ -136,15 +136,17 @@ class HousekeepingController extends Controller
     public function process_delete_lostandfound($id)
     {
         $datetime_today = date('Y-m-d H:i:s');
+        // dd($id);
 
         $lfitems = Lost_And_Found_Item::find($id);
-        $lfitems-> deleted_at = $datetime_today;
-        $lfitems -> save();
+        //$lfitems-> deleted_at = $datetime_today;
+        Lost_And_Found_Item::destroy($lfitems->id);
 
-        $lfitems = Lost_And_Found_Item::get()->where('deleted_at', NULL); 
+        $items = Lost_And_Found_Item::all(); 
 
+        
         return view('/housekeeping/lostandfound', [
-            'items' => $lfitems , 'message' => 'The Item was Successfully Deleted!'
+            'items' => $items , 'message' => 'The Item was Successfully Deleted!'
         ]);
     }
 

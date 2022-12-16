@@ -35,8 +35,20 @@
                                         <td>{{$item['item_status']}}</td>
                                         <td>{{$item['date_and_time']}}</td>
                                         <td>
-                                            <a href="/housekeeping/lostandfound/{{$item->id}}"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
-                                            <a href="/housekeeping/lostandfound/{{$item->id}}" onclick="return confirm('Do you really want to Delete {{$item->item_name}}?')"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            <div class="row d-flex">
+                                                
+                                                <div class="col d-flex justify-content-center align-items-center">
+                                                    <form action="/housekeeping/lostandfound/delete/{{$item->id}}" method="post" class="d-flex m-auto">
+
+                                                        @csrf
+                                                        @method('delete')
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn"><i class="fa-solid fa-trash text-danger "></i></button>
+                                                    </form>
+                                                <a href="/housekeeping/lostandfound/{{$item->id}}" class="col d-flex justify-content-center my-2"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
+                                            
+                                                </div>
+                                        </div>
                                         </td>
                                     </tr>
                                 @endforeach
