@@ -8,7 +8,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
 
@@ -31,7 +32,7 @@
 
 <style>
     .rectangle{
-        height: 15ch;
+        height: 12ch;
         width: auto;
         background-color: #1840C4;
         margin-top: auto;
@@ -68,11 +69,11 @@
 <body>
     <!--Header-->
     <div class="rectangle">
-        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" style="position:absolute; left:40px; top:20px" height="100px" width="120px">
+        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" style="position:absolute; left:40px; top:15px" height="85px" width="100px">
     </div>
     
     <div class="d-flex justify-content-center">
-        <h1 class="my-4"><b>Payroll</b></h1>
+        <h1 class="my-4"><b>PAYROLL</b></h1>
     </div>
     
     <div class="row">
@@ -96,14 +97,22 @@
                 <tbody>
                     @foreach ($payrolls as $payroll)
                         <tr>
-                            <th scope="row">{{$i++}}</th>
+                            <th scope="row">{{$payroll->id}}</th>
                             <td>{{$payroll->employee->getName()}}</td>
-                            <td>{{$payroll->employee->position_id}}</td>
-                            <td>{{$i}}</td> {{--- change nyo to para sa day, dummy data lng ngayon to ---}}
+                            <td>{{$payroll->position->position}}</td>
+                            <td>{{date('d-m-Y', strtotime($payroll->employee->created_at))}}</td>
                             <td>{{$payroll->employee->position->payroll[0]->gross_amount}}</td>
                             <td>{{$payroll->employee->position->payroll[0]->total_deduction}}</td>
                             <td>{{$payroll->employee->position->payroll[0]->getTotalSalary()}}</td>
-                            <td>to be implmented</td>
+                            <td>
+                            <form action="/accounting/payrolls/{{ $payroll->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger"><i
+                                    class="fa-solid fa-trash"></i>
+                                        Delete</button>
+                            </form>
+                            </td>
                         </tr>
                     @endforeach            
                 </tbody>

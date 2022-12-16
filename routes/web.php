@@ -90,6 +90,8 @@ Route::prefix('accounting')->group(function () {
     Route::get('expenses', [AccountingController::class, 'expenses']);
     # Expense View
     Route::get('expenses/{date}', [AccountingController::class, 'expensesShow']);
+
+    Route::delete('payrolls/{id}', [AccountingController::class, 'delete_payroll']);
 });
 
 
