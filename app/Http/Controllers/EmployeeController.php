@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Auth;
 class EmployeeController extends Controller
 {
     protected function index() {
+        $Lists = DB::table('employees')
+                ->join('accounts', 'employees.id', 'accounts.employee_id')
+                ->where('is_verified', '1')
+                ->get();
+
         return view('employee_information_system.employee_list', [
             'Lists' => $Lists
         ]);

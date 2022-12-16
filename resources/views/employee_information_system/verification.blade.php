@@ -34,22 +34,24 @@
                     @unless (count($Lists) == 0)
                     
                       @foreach ($Lists as $List)
-                        <tr>
-                          <td><a href="/employee_information_system/profile/{{$List->id}}" style="text-decoration: none; color: #000;">{{$List->last_name}} {{$List->first_name}}</a></th>
-                          <td>{{$List->id}}</td>
-                          <td>{{$List->gender}}</td>
-                          <td>{{$List->address}}</td>
-                          <td>{{$List->birthday}}</td>
-                          <td>{{$List->email}}</td>
-                          <td>{{$List->contact_number}}</td>
-                          <td class="d-flex"><a href="/employee_information_system/verification/verified/{{$List->id}}"><i class="fa-solid fa-square-check text-primary fs-3 me-3 ms-3 shadow"></i></a>
-                          <form action="/employee_information_system/delete/{{$List->id}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" style="background: none; border: none;"><i class="fa-solid fa-square-xmark text-danger fs-3 shadow"></i></button>
-                          </form>
-                          </td>
-                        </tr>
+                        @if ($List->deleted_at == null)
+                          <tr>
+                            <td><a href="/employee_information_system/profile/{{$List->id}}" style="text-decoration: none; color: #000;">{{$List->last_name}} {{$List->first_name}}</a></th>
+                            <td>{{$List->id}}</td>
+                            <td>{{$List->gender}}</td>
+                            <td>{{$List->address}}</td>
+                            <td>{{$List->birthday}}</td>
+                            <td>{{$List->email}}</td>
+                            <td>{{$List->contact_number}}</td>
+                            <td class="d-flex"><a href="/employee_information_system/verification/verified/{{$List->id}}"><i class="fa-solid fa-square-check text-primary fs-3 me-3 ms-3 shadow"></i></a>
+                            <form action="/employee_information_system/delete/{{$List->id}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" style="background: none; border: none;"><i class="fa-solid fa-square-xmark text-danger fs-3 shadow"></i></button>
+                            </form>
+                            </td>
+                          </tr>
+                        @endif
                       @endforeach
                         
                     @else
