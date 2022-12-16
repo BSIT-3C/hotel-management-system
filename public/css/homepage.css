@@ -117,3 +117,12 @@
             line-height: 1.06rem;
             color: #000;
         }
+        h3{
+            color: #000;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        p{
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+            font-size: 16px;
+        }
