@@ -48,15 +48,34 @@ Route::get('/frontdesk/information', function () {
 Route::prefix('accounting')->group(function () {
     Route::get('home', [AccountingController::class, 'index']);
 
+    // Payrolls
     Route::get('payrolls', [AccountingController::class, 'payrolls']);
     Route::post('payrollEdit/{employee_payrolls}', [AccountingController::class, 'payrollEdit']);
     Route::get('payrollPrint/{employee_payrolls}', [AccountingController::class, 'payrollPrint']);
 
+    // Revenue
     Route::get('revenueEdit', [AccountingController::class, 'revenueEdit']);
     Route::get('revenuePrint', [AccountingController::class, 'revenuePrint']);
 
+    // Expenses
     Route::get('expensesEdit', [AccountingController::class, 'expensesEdit']);
-    Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
+    Route::get('expensesPrint', [AccountingController::class, 'expensesPrint2']);
+
+    Route::get('expensesEdit/maintenance', [AccountingController::class, 'expensesMaintenance']);
+    Route::get('expensesEdit/rooms_list', [AccountingController::class, 'expensesRoomsList']);
+    Route::get('expensesEdit/utility_cost', [AccountingController::class, 'expensesUtilityCost']);
+
+    # Expenses Crud
+    Route::get('expensesEdit/edit/{id}', [AccountingController::class, 'edit']);
+    Route::patch('expensesEdit/{id}', [AccountingController::class, 'update']);
+    Route::get('expensesEdit/new', [AccountingController::class, 'new']);
+    Route::post('expensesEdit', [AccountingController::class, 'store']);
+    Route::delete('expensesEdit/{id}', [AccountingController::class, 'delete']);
+
+    # Expenses Home
+    Route::get('expenses', [AccountingController::class, 'expenses']);
+    # Expense View
+    Route::get('expenses/{date}', [AccountingController::class, 'expensesShow']);
 });
 
 
@@ -68,13 +87,16 @@ Route::controller(UserController::class)->group(function () {
 });
 
 Route::controller(EmployeeController::class)->group(function () {
-    Route::get('/employee_information_system/employees', 'index')->middleware('auth');
+    Route::get('/employee_information_system/employees', 'index')->middleware(['auth', 'role.manager']);
     Route::get('/employee_information_system/profile/{list}', 'show')->middleware('auth');
     Route::get('/employee_information_system/edit/{list}', 'edit')->middleware('auth');
     Route::patch('/employee_information_system/{list}', 'update')->middleware('auth');
     Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware('auth');
     Route::get('/employee_information_system/verification', 'verification')->middleware('auth');
     Route::get('/employee_information_system/verification/verified/{list}', 'verified')->middleware('auth');
+    Route::get('/employee_information_system/edit/{list}', 'edit')->middleware(['auth', 'role.manager']);
+    Route::patch('/employee_information_system/{list}', 'update')->middleware(['auth', 'role.manager']);
+    Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware(['auth', 'role.manager']);
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
@@ -127,9 +149,9 @@ Route::prefix('guestinfo')->group(function () {
 });
 
 
- //housekeeping
- Route::controller(HousekeepingController::class)->group(function () {
-    
+//housekeeping
+Route::controller(HousekeepingController::class)->group(function () {
+
     Route::delete('/housekeeping/lostandfound/delete/{id}', 'process_delete_lostandfound')->middleware('auth');
     Route::get('/housekeeping/manage', 'show_manage')->middleware('auth')->name('manage-page');
     Route::get('/housekeeping/viewall', 'show_rooms')->middleware('auth')->name('viewall-page');
@@ -144,9 +166,8 @@ Route::prefix('guestinfo')->group(function () {
 
     Route::get('/housekeeping/manage/{id}', 'update_manage')->middleware('auth');
     Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
+});
 
- });
- 
 Auth::routes();
 
 Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index']);
