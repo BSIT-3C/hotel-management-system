@@ -23,7 +23,7 @@ class ManagerAccess
             return $next($request);
         }
 
-        // return redirect('home');
+         //return redirect('home');
 
         abort(403, "You don't have a permission to access this page.");
     }
