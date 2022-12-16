@@ -38,6 +38,10 @@ class Employee extends Authenticatable
     }
 
     // relationships
+    public function account()
+    {
+        return $this->hasMany(Account::class, 'employee_id');
+    }
     public function reservations()
     {
         return $this->hasMany(Reservation::class, 'employee_id');
@@ -64,7 +68,6 @@ class Employee extends Authenticatable
 
     public function hasAnyRole($role)
     {
-        // $all_roles = Role::where('role', $role)->first();
         return $this->roles->whereIn('role_id', $role)->first();
     }
 }

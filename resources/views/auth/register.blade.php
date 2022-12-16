@@ -169,7 +169,7 @@
                             <label for="photo" class="col-form-label text-md-end">{{ __('Photo') }}</label>
 
                             <div class="">
-                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo" autofocus>
+                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" autocomplete="photo" autofocus>
 
                                 @error('photo')
                                     <span class="invalid-feedback" role="alert">
