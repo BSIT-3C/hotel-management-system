@@ -37,6 +37,22 @@ Auth::routes();
 // frontdesk
 Route::get('/frontdesk/dashboard', [FrontDeskController::class, "index"]);
 
+Route::get('/frontdesk/checkin', function () {
+    return view('frontdesk/checkin');
+});
+
+Route::get('/frontdesk/extendstay', function () {
+    return view('frontdesk/extendstay');
+});
+
+Route::get('/frontdesk/checkout', function () {
+    return view('frontdesk/checkout');
+});
+
+Route::get('/frontdesk/claimitem', function () {
+    return view('frontdesk/claimitem');
+});
+
 Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
 });
