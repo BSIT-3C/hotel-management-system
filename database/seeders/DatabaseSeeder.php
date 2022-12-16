@@ -34,11 +34,31 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Department::factory()->count(3)->sequence(['department' => 'Front Office'], ['department' => 'Accounting'], ['department' => 'House Keeping'],)
-            ->create();
+        Department::factory()->count(5)->sequence(['department' => 'Front Office'], ['department' => 'Accounting'], ['department' => 'House Keeping'],['department' => 'Human Resource'],['department' => 'Guest Information Office'],)->create();
 
-        Position::factory()->count(3)->sequence(['position' => 'Receptionist', 'department_id' => 1], ['position' => 'Accountant', 'department_id' => 2], ['position' => 'House Keeper', 'department_id' => 3])
-            ->create();
+        Position::factory()->count(18)->sequence(
+        ['position' => 'Receptionist', 'department_id' => 1],
+        ['position' => 'Front Office Manager', 'department_id' => 1],
+        ['position' => 'Front Office Assistant', 'department_id' => 1],
+        ['position' => 'Senior Receptionist', 'department_id' => 1],
+        ['position' => 'Concierge', 'department_id' => 1], 
+
+        ['position' => 'Accountant', 'department_id' => 2],  
+        ['position' => 'Accountant Supervisor', 'department_id' => 2],
+        ['position' => 'Auditor', 'department_id' => 2],
+        ['position' => 'Senior Cashier', 'department_id' => 2],
+        ['position' => 'Cashier', 'department_id' => 2],
+         
+        ['position' => 'House Keeping Manager', 'department_id' => 3],
+        ['position' => 'House Keeper', 'department_id' => 3],
+
+        ['position' => 'Senior HR Manager', 'department_id' => 4],
+        ['position' => 'HR manager', 'department_id' => 4],
+        ['position' => 'HR assistant', 'department_id' => 4],
+        ['position' => 'IT', 'department_id' => 4],
+
+        ['position' => 'Reservation Accountant', 'department_id' => 5],
+        ['position' => 'Reservation Auditor', 'department_id' => 5],)->create();
 
         Payroll::factory()->count(3)->sequence(['position_id' => 1, 'gross_amount' => 20000, 'total_deduction' => 2000], ['position_id' => 2, 'gross_amount' => 21000, 'total_deduction' => 2000], ['position_id' => 3, 'gross_amount' => 22000, 'total_deduction' => 2000])
             ->create();
@@ -55,13 +75,11 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         // edit this accordingly
-        Role::factory()->count(6)->sequence(
-            ['role' => 'Receptionist'],
-            ['role' => 'Accountant'],
-            ['role' => 'House Keeper'],
+        Role::factory()->count(3)->sequence(
             ['role' => 'Admin'],
-            ['role' => 'Front Desk'],
-            ['role' => 'Manager']
+            ['role' => 'Manager'],
+            ['role' => 'Staff'],
+            
         )
             ->create();
 

@@ -22,7 +22,7 @@
                     <div class="card-header pt-3"><h4 class="fw-bold" style="color: #1840C4;">Update Profile <i class="fa-solid fa-pen-to-square"></i></h4></div>
                     
                     <div class="card-body">
-                        <form method="POST" action="/home/{{$list->id}}">
+                        <form method="POST" action="/employee_information_system/{{$list->id}}">
                             @csrf
                             @method('PATCH')
                         
@@ -110,6 +110,11 @@
                                 <label for="male">Male</label>
                                 <input type="radio" name="gender" id="female" value="female" @if( $list->gender =="female") checked @endif  class="form-check-input ms-3">
                                 <label for="female">Female</label>
+
+                                <input type="radio" name="gender" id="not_specified" value="not_specified" @if( $list->gender =="not_specified") checked @endif class="form-check-input">
+                                <label for="male">Prefer not to specify</label>
+                                
+                                
                                 </div>
                             </div>
                         </div> <!-- ADDRESS AND GENDER-->
@@ -146,7 +151,7 @@
                                     @enderror
                                 </div>
                             </div>
-
+                    
                             <div class="col-6">
                                 <label for="contact_number" class="col-form-label text-md-end">{{ __('Contact Number') }}</label>
 
@@ -160,7 +165,45 @@
                                     @enderror   
                                 </div>
                             </div>
-                        </div> <!--EMAIL AND CONTACT NUMBER ROW-->
+                        </div>
+                        
+                        <div class="row">
+                        {{-- <div class="col-6 ">
+                            <label  for="department" class="col-form-label text-md-end">{{ __('Department') }}</label>
+                                    <select id="department" class="form-select">
+                                    @foreach ($Departments as $department )
+                                        <option value="{{$department->id}}">{{$department->department}}</option>
+                                    @endforeach
+                                </select>
+                        </div> --}}
+                        
+
+                        <div class="col-6 ">
+                            <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
+                                <select id="position" class="form-select">
+                                    <option value="" disabled selected hidden>-- Position --</option>
+                                @foreach ($Positions as $position)
+                                    <option value="{{$position->id}}">{{$position->position}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label  for="position" class="col-form-label">{{ __('Role') }}</label>
+                            <div class="form-check">
+                                @foreach($Roles as $role) 
+                                <input class="form-check-input" type="checkbox" id="{{$role->role}}" name="roles" value="{{$role->id}}">
+                                <label class="form-check-label" for="{{$role->role}}"> {{$role->role}}</label><br>
+                                @endforeach
+                                    
+
+                            </div>
+                        
+                        </div>
+                    </div>    
+
+                        <!--EMAIL AND CONTACT NUMBER ROW-->
 
                         {{--
                         <div class="row"><!--PHOTO and POSITION-->
