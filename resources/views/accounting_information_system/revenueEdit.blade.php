@@ -110,14 +110,14 @@ table.dataTable td {
         </thead>
         <tbody>
 
-            @foreach ($revenues as $revenue_data)
+            @foreach ($revenues as $revenue)
                 <tr>
-                    <td>{{$revenue_data["date"]}}</td>
+                    <td>{{$revenue["date"]}}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{$revenue_data["amount"]}}</td>
+                    <td>{{$revenue["amount"]}}</td>
                 </tr>
             @endforeach
 
