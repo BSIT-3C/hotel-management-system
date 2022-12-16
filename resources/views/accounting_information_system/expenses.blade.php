@@ -10,7 +10,7 @@
                 <div class="col-8 ">
                     <h1>Expenses</h1>
                 </div>
-                <div class="col d-flex justify-content-end align-items-center "><a href="new" class="btn btn-primary">Add
+                <div class="col d-flex justify-content-end align-items-center "><a href="/accounting/expensesEdit/new" class="btn btn-primary">Add
                         New</a></div>
             </div>
             <table id="table" class="table text-center shadow-sm">

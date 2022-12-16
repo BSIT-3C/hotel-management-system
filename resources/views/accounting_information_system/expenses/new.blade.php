@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <div class="container rounded px-5 py-5" style="background: #fff;margin-top: 130px; width: 90%">
-        <h1>Edit Item</h1>
+        <h1>New Item</h1>
 
 
         <section class="py-5">
