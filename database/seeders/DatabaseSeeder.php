@@ -22,7 +22,9 @@ use App\Models\Payroll;
 use App\Models\DTR;
 use App\Models\Expenses;
 use App\Models\Revenue;
+use App\Models\RoomTypeBed;
 use Illuminate\Database\Seeder;
+use Nette\Utils\Random;
 
 class DatabaseSeeder extends Seeder
 {
@@ -51,8 +53,21 @@ class DatabaseSeeder extends Seeder
             ['room_type' => 'Luxury'],
             ['room_type' => 'Club Room'],
             ['room_type' => 'Suite']
-        )
-            ->create();
+        )->create();
+
+        $limiter = 1;
+        $iteration = 1;
+        $roomTypeBedFactory = RoomTypeBed::factory();
+        for($i = 1; $i <= 12; $i++){
+            $roomTypeBedFactory->create(
+                ['room_type_id' => $limiter++, 'amount_of_beds' => $iteration]
+            );
+
+            if($i == 4 || $i == 8 || $i == 12){
+                $limiter = 1;
+                $iteration++;
+            }
+        }
 
         // edit this accordingly
         Role::factory()->count(6)->sequence(
@@ -74,6 +89,8 @@ class DatabaseSeeder extends Seeder
             ['payment_method' => 'Other']
         )
             ->create();
+
+        Room::factory()->count(50)->create();
 
         $this->createTenEntryPerFactory();
 
@@ -112,7 +129,6 @@ class DatabaseSeeder extends Seeder
     public function createTenEntryPerFactory()
     {
         $factoryArray = [
-            'room' => Room::factory(),
             'employee' => Employee::factory(),
             'guest' => Guest::factory(),
             'reservation' => Reservation::factory(),
