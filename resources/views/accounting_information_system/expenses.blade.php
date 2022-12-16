@@ -10,8 +10,11 @@
                 <div class="col-8 ">
                     <h1>Expenses</h1>
                 </div>
-                <div class="col d-flex justify-content-end align-items-center "><a href="/accounting/expensesEdit/new" class="btn btn-primary">Add
-                        New</a></div>
+                <div class="col gap-3 d-flex justify-content-end align-items-center ">
+                    <a href="/accounting/expensesEdit/" class="btn btn-primary">See All</a>
+                    <a href="/accounting/expensesEdit/new" class="btn btn-primary">Add
+                        New</a>
+                </div>
             </div>
             <table id="table" class="table text-center shadow-sm">
                 <thead>
@@ -22,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($list != null)
+                    @if ($list != null)
                         @foreach ($list as $index => $value)
                             <tr>
                                 <td>{{ $value['year'] }}</td>
