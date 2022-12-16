@@ -27,8 +27,8 @@ class Room extends Model
         return $this->belongsTo(RoomStatus::class, 'room_status_id');
     }
 
-    public function roomType(){
-        return $this->belongsTo(RoomType::class, 'room_type_id');
+    public function roomTypeBeds(){
+        return $this->belongsTo(RoomTypeBed::class);
     }
 
 }
