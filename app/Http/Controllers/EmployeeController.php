@@ -34,8 +34,6 @@ class EmployeeController extends Controller
     }
     protected function edit(Employee $list)
     {
-        //$user_role=$list::find(auth()->id)->get();
-        //dd(Auth::user()->roles);
         $list_roles = $list->roles;
 
         $array = null;
@@ -64,7 +62,7 @@ class EmployeeController extends Controller
             'Roles' => Role::all(),
             'Positions' => Position::all(),
             'is_admin' => $is_admin,
-            'user_roles' => $array
+            'user_roles' => $array == null ? [] : $array
         ]);
     }
 

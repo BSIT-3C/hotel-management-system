@@ -18,11 +18,8 @@ class AdminAccess
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->hasAnyRole(1)) {
-
             return $next($request);
         }
-
-        // return redirect('home');
 
         abort(403, "You don't have a permission to access this page.");
     }

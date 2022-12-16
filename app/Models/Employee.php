@@ -68,7 +68,6 @@ class Employee extends Authenticatable
 
     public function hasAnyRole($role)
     {
-        // $all_roles = Role::where('role', $role)->first();
         return $this->roles->whereIn('role_id', $role)->first();
     }
 }
