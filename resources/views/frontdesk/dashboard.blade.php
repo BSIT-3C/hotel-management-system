@@ -73,7 +73,7 @@
                     <div class="row ms-2 mt-2 mb-4">
                         <div class="ps-1 pe-2 col-md-3   border-3 border-dark dashed">
                             <h6 style="font-family: Inter; font-size: 24px; font-style: Semi Bold;">Checked In</h6>
-                            <h6 style="font-family: Inter; font-size: 70px; font-style: normal;">86</h6>
+                            <h6 style="font-family: Inter; font-size: 70px; font-style: normal;">{{$occupiedRooms}}</h6>
                         </div>
                         <div class="ps-1 pe-2 col-md-3   border-3 border-dark dashed">
                             <h6 style="font-family: Inter; font-size: 23px; font-style: Semi Bold;">Available Rooms</h6>
