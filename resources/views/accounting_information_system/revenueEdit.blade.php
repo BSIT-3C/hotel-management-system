@@ -14,22 +14,24 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title> REVENUE </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
 
-    <!-- FOR JQUERY AND DATEPICKER  -->
+    <!-- FOR JQUERY -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.js"></script>
 
@@ -39,50 +41,62 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+
 </head>
 
 <style>
-body {
-    margin: 0;
-    background: white;
-}
+    body {
+        margin: 0;
+        background: white;
+    }
 
-.navbar {
-    background:#1840C4;
-}
+    .navbar {
+        background:#1840C4;
+    }
 
-img {
-    margin-left: 15px;
-}
+    img {
+        margin-left: 15px;
+    }
 
-h1{
-    font-size: 50px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-left: 10px;
-    margin-top: 10px;
-}
+    h1{
+        font-size: 50px;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
 
-#logo {
-    margin-left: 20px
-}
+    #logo {
+        margin-left: 20px
+    }
 
-table caption {
-    padding: .5em 0;
-}
+    .button {
+        border: none;
+        color: white;
+        padding: 2px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
 
-table.dataTable th{
-    white-space: nowrap;
-}
+    .button1 {
+        background-color: #1840C4;
+    }
 
-table.dataTable td {
-    white-space: nowrap;
-}
+    .button1:hover {
+        background-color: black;
+    }
 
-.p {
-    text-align: center;
-    padding-top: 140px;
-    font-size: 14px;
-}
+    .button2 {
+        background-color: firebrick;
+    }
+
+    .button2:hover {
+        background-color: black;
+    }
 
 </style>
 
@@ -100,12 +114,11 @@ table.dataTable td {
       <table class="table table-bordered table-hover dt-responsive">
         <thead>
           <tr>
-            <th> Date </th>
-            <th> Superior </th>
-            <th> Luxury </th>
-            <th> Suite </th>
-            <th> Club Room </th>
-            <th> Total </th>
+            <th>Date</th>
+            <th>Room Type</th>
+            <th>Occupied</th>
+            <th>Amount</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -113,11 +126,14 @@ table.dataTable td {
             @foreach ($revenues as $revenue)
                 <tr>
                     <td>{{$revenue["date"]}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$revenue["room_type_id"]}}</td>
+                    <td>{{$revenue["occupied"]}}</td>
                     <td>{{$revenue["amount"]}}</td>
+                    <td>
+                        <!-- Call to action buttons -->
+                        <button type="button" class="button button1"><span class="bi bi-pencil"></span></button>
+                        <button type="button" class="button button2"><span class="bi bi-trash"></span></button>
+                    </td>
                 </tr>
             @endforeach
 
@@ -125,9 +141,9 @@ table.dataTable td {
       </table>
     </div>
 
-<script>
-$('table').DataTable();
-</script>
-
 </body>
 </html>
+
+<script>
+    $('table').DataTable();
+</script>
