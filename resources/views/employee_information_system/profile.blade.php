@@ -19,7 +19,7 @@
 
 
                     <div class="mt-3 ms-3" style="color: ;">
-                        <a href="/employee_information_system/edit/{{ Auth::user()->id }}"><i
+                        <a href="/employee_information_system/edit/{{ $list->id }}"><i
                                 class="fa-solid fa-pen-to-square fa-xl" style="color: #1840C4;"></i></a>
                     </div>
 
@@ -65,8 +65,12 @@
                     <div class="row ms-3 mt-5">
                         <div class="col-4">
                             <h5 class="fw-light" style="color: #4a66c1;">Job Information</h5>
-                            <h5> {{ $list->department }}</h5>
-                            <h5> {{ $list->position }}</h5>
+                            @if ( $list->position )
+                                <h5> {{ $list->position->department->department }}</h5>
+                                <h5> {{ $list->position->position }}</h5>
+                            @else <h5>No assigned position</h5>    
+                            @endif
+                            
                         </div>
                         <div class="col-8">
                             <h5 class="fw-light" style="color: #4a66c1;">Basic Information</h5>

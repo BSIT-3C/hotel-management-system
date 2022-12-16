@@ -11,7 +11,7 @@ class Account extends Model
 
     protected $fillable = [
         "employee_id",
-        "role_id",
+        
         "password",
         "is_verified"
     ];
@@ -21,8 +21,5 @@ class Account extends Model
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class, 'role_id');
-    }
+   
 }

@@ -17,7 +17,6 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained();
-            $table->foreignId('role_id')->nullable()->constrained()->default(null);
             $table->string('password');
             $table->boolean('is_verified')->default(0);
             $table->timestamps();
