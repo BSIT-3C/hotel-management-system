@@ -180,28 +180,28 @@
 
                         <div class="col-6 ">
                             <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                                <select id="position" class="form-select">
-                                    <option value="" disabled selected hidden>-- Position --</option>
+                                <select name="position_id" id="position" class="form-select">
+                                    <option @if(count($Positions)==0) selected @else  @endif value="">-- Position --</option>
                                 @foreach ($Positions as $position)
-                                    <option value="{{$position->id}}">{{$position->position}}</option>
+                                    <option @if($position->id==$list->position_id) selected @endif value="{{$position->id}}">{{$position->position}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <label  for="position" class="col-form-label">{{ __('Role') }}</label>
-                            <div class="form-check">
-                                @foreach($Roles as $role) 
-                                <input class="form-check-input" type="checkbox" id="{{$role->role}}" name="roles" value="{{$role->id}}">
-                                <label class="form-check-label" for="{{$role->role}}"> {{$role->role}}</label><br>
-                                @endforeach
-                                    
-
+                    @if($is_admin)
+                        <div class="row">
+                            <div class="col-12">
+                                <label  for="position" class="col-form-label">{{ __('Role') }}</label>
+                                <div class="form-check">
+                                    @foreach($Roles as $role) 
+                                    <input @if (in_array($role->id,$user_roles)) checked @endif class="form-check-input" type="checkbox" id="{{$role->role}}" name="roles[]" value="{{$role->id}}">
+                                    <label class="form-check-label" for="{{$role->role}}"> {{$role->role}}</label><br>
+                                    @endforeach
+                                </div>
                             </div>
+                        </div>    
+                    @endif
                         
-                        </div>
-                    </div>    
 
                         <!--EMAIL AND CONTACT NUMBER ROW-->
 
