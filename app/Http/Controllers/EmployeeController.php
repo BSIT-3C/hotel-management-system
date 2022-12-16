@@ -138,4 +138,9 @@ class EmployeeController extends Controller
         return redirect('employee_information_system/employees');
     }
 
+    // unverified employee
+    protected function unverified() { 
+        return view('employee_information_system/unverified');
+    }
+
 }
