@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($list->isNotEmpty())
+                    @if($list != null)
                         @foreach ($list as $index => $value)
                             <tr>
                                 <td>{{ $value['year'] }}</td>
