@@ -46,6 +46,10 @@ Route::get('/frontdesk/checkout', function () {
     return view('frontdesk/checkout');
 });
 
+Route::get('/frontdesk/claimitem', function () {
+    return view('frontdesk/claimitem');
+});
+
 Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
 });

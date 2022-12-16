@@ -56,6 +56,9 @@
                 <div class="col">
                     <a href="{{ url('/frontdesk/checkout') }}"><button class="btn btn-outline-primary p-4 w-100">Check Out</button></a>
                 </div>
+                <div class="col">
+                    <a href="{{ url('/frontdesk/claimitem') }}"><button class="btn btn-outline-primary p-4 w-100">Claim Lost Item</button></a>
+                </div>
             </div>
         </div>
     </section>
