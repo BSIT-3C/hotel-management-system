@@ -22,6 +22,7 @@ use App\Models\Payroll;
 use App\Models\DTR;
 use App\Models\Expenses;
 use App\Models\Revenue;
+use App\Models\RoomSubStatus;
 use App\Models\RoomTypeBed;
 use Illuminate\Database\Seeder;
 use Nette\Utils\Random;
@@ -36,36 +37,39 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Department::factory()->count(5)->sequence(['department' => 'Front Office'], ['department' => 'Accounting'], ['department' => 'House Keeping'],['department' => 'Human Resource'],['department' => 'Guest Information Office'],)->create();
+        Department::factory()->count(5)->sequence(['department' => 'Front Office'], ['department' => 'Accounting'], ['department' => 'House Keeping'], ['department' => 'Human Resource'], ['department' => 'Guest Information Office'],)->create();
 
         Position::factory()->count(18)->sequence(
-        ['position' => 'Receptionist', 'department_id' => 1],
-        ['position' => 'Front Office Manager', 'department_id' => 1],
-        ['position' => 'Front Office Assistant', 'department_id' => 1],
-        ['position' => 'Senior Receptionist', 'department_id' => 1],
-        ['position' => 'Concierge', 'department_id' => 1], 
+            ['position' => 'Receptionist', 'department_id' => 1],
+            ['position' => 'Front Office Manager', 'department_id' => 1],
+            ['position' => 'Front Office Assistant', 'department_id' => 1],
+            ['position' => 'Senior Receptionist', 'department_id' => 1],
+            ['position' => 'Concierge', 'department_id' => 1],
 
-        ['position' => 'Accountant', 'department_id' => 2],  
-        ['position' => 'Accountant Supervisor', 'department_id' => 2],
-        ['position' => 'Auditor', 'department_id' => 2],
-        ['position' => 'Senior Cashier', 'department_id' => 2],
-        ['position' => 'Cashier', 'department_id' => 2],
-         
-        ['position' => 'House Keeping Manager', 'department_id' => 3],
-        ['position' => 'House Keeper', 'department_id' => 3],
+            ['position' => 'Accountant', 'department_id' => 2],
+            ['position' => 'Accountant Supervisor', 'department_id' => 2],
+            ['position' => 'Auditor', 'department_id' => 2],
+            ['position' => 'Senior Cashier', 'department_id' => 2],
+            ['position' => 'Cashier', 'department_id' => 2],
 
-        ['position' => 'Senior HR Manager', 'department_id' => 4],
-        ['position' => 'HR manager', 'department_id' => 4],
-        ['position' => 'HR assistant', 'department_id' => 4],
-        ['position' => 'IT', 'department_id' => 4],
+            ['position' => 'House Keeping Manager', 'department_id' => 3],
+            ['position' => 'House Keeper', 'department_id' => 3],
 
-        ['position' => 'Reservation Accountant', 'department_id' => 5],
-        ['position' => 'Reservation Auditor', 'department_id' => 5],)->create();
+            ['position' => 'Senior HR Manager', 'department_id' => 4],
+            ['position' => 'HR manager', 'department_id' => 4],
+            ['position' => 'HR assistant', 'department_id' => 4],
+            ['position' => 'IT', 'department_id' => 4],
+
+            ['position' => 'Reservation Accountant', 'department_id' => 5],
+            ['position' => 'Reservation Auditor', 'department_id' => 5],
+        )->create();
 
         Payroll::factory()->count(3)->sequence(['position_id' => 1, 'gross_amount' => 20000, 'total_deduction' => 2000], ['position_id' => 2, 'gross_amount' => 21000, 'total_deduction' => 2000], ['position_id' => 3, 'gross_amount' => 22000, 'total_deduction' => 2000])
             ->create();
 
-        RoomStatus::factory()->count(7)->sequence(['room_status' => 'Vacant'], ['room_status' => 'Occupied'], ['room_status' => 'Out-of-Order'], ['room_status' => 'Clean'], ['room_status' => 'Dirty'], ['room_status' => 'Cleaning'], ['room_status' => 'Under Maintenance'])
+        RoomStatus::factory()->count(3)->sequence(['room_status' => 'Vacant'], ['room_status' => 'Occupied'], ['room_status' => 'Out-of-Order'])
+            ->create();
+        RoomSubStatus::factory()->count(4)->sequence(['sub_status' => 'Clean'], ['sub_status' => 'Dirty'], ['sub_status' => 'Cleaning'], ['sub_status' => 'Under Maintenance'])
             ->create();
 
         RoomType::factory()->count(4)->sequence(
@@ -78,12 +82,12 @@ class DatabaseSeeder extends Seeder
         $limiter = 1;
         $iteration = 1;
         $roomTypeBedFactory = RoomTypeBed::factory();
-        for($i = 1; $i <= 12; $i++){
+        for ($i = 1; $i <= 12; $i++) {
             $roomTypeBedFactory->create(
                 ['room_type_id' => $limiter++, 'amount_of_beds' => $iteration]
             );
 
-            if($i == 4 || $i == 8 || $i == 12){
+            if ($i == 4 || $i == 8 || $i == 12) {
                 $limiter = 1;
                 $iteration++;
             }
@@ -94,7 +98,7 @@ class DatabaseSeeder extends Seeder
             ['role' => 'Admin'],
             ['role' => 'Manager'],
             ['role' => 'Staff'],
-            
+
         )
             ->create();
 
@@ -132,7 +136,7 @@ class DatabaseSeeder extends Seeder
 
         //Accounting
         $this->createRevenue(2);
-        
+
         Expenses::factory()->count(8)->sequence(
             ['type' => 'Maintenance', 'name' => 'Laundry', 'unit_price' => 1000, 'date' => '2022-12-01'],
             ['type' => 'Maintenance', 'name' => 'Soap and toiletries', 'unit_price' => 1000, 'date' => '2022-12-01'],

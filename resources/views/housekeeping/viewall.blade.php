@@ -29,8 +29,8 @@
                                     <tr>
                                         <td>{{$room['id']}}</td>
                                         <td>{{$room['room_number']}}</td>
-                                        <td>{{$room['room_type_id']}}</td>
-                                        <td>{{$room['room_status_id']}}</td>
+                                        <td>{{$room->roomTypeBeds->room_type->room_type}}</td>
+                                        <td>{{$room->roomStatus->room_status}}</td>
                                         <td>{{$room['updated_at']}}</td>
                                         <td><a href="/housekeeping/viewall/{{$room->id}}"><i class="fa-solid fa-eye text-success"></i></a></td>
                                     </tr>

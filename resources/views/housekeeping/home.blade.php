@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-3" style="background-image: url('/images/housekeeping/HK.jpg'); border-radius:10px;">
             <div class="z-10">
-                <h1 class="text-6xl font-bold uppercase" style="color: #1840C4">
-                    House<span class="text-black">Keeping</span>
+                <h1 class="text-6xl font-bold uppercase" style="color: #1840C4; font-weight: bold;" >
+                    House<span style="color: #000000">Keeping</span>
                 </h1>
-                <p class="paragraph"><h5>
+                <p class="paragraph"><h5 style="color:black; background-color: rgb(245, 245, 245, 0.5); font-weight: 550;">
                     Cleans and sanitizes hotel and guest rooms.<br>Vacuums and sweeps floors, carpets, and rugs.<br>
                     Makes beds and changes linens. Cleans and sanitizes bathrooms, showers, toilets, sinks, and countertops.<br>
                     Replenishes toiletries and towels.</h5>
