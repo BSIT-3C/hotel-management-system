@@ -16,6 +16,10 @@ class Employee_Payroll extends Model
         "cut_off"
     ];
 
+    protected $dates = [
+        "cut_off"
+    ];
+
 
     public function employee()
     {
