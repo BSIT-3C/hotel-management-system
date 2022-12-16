@@ -49,7 +49,7 @@
             <section class="section home" data-block-section="1" id="home" style="background-image:url('{{asset("assets/landingpage/mainBG.jpg")}}');background-size:100%;color:#FFFF";>
                 <div class="container m-5">
                     <div class="d-flex justify-content-center">
-                        <h1>Welcome to <i><b>Tranquil</b></i></h1>
+                        <h1>Welcome to <i><b>Tranquil Hotel</b></i></h1>
                     </div>
                     <div class="d-flex justify-content-center">
                         <h4><i>Where one's comfort begins...</i></h4>
