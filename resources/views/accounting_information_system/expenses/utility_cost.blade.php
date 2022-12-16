@@ -59,10 +59,6 @@
 
                             </tr>
                         @endforeach
-                    @else
-                        <tr>
-                            <td colspan="3">No Records</td>
-                        </tr>
                     @endunless
 
 

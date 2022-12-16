@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @unless(count($list) == 0)
+                    @if($list->isNotEmpty())
                         @foreach ($list as $index => $value)
                             <tr>
                                 <td>{{ $value['year'] }}</td>
@@ -42,11 +42,7 @@
 
                             </tr>
                         @endforeach
-                    @else
-                        <tr>
-                            <td colspan="3">No Records</td>
-                        </tr>
-                    @endunless
+                    @endif
 
 
                 </tbody>
