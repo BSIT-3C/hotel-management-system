@@ -1,12 +1,23 @@
+<?php
 
-@php
-    $i = '';
-@endphp
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=hotel_management_system', 'root', '');
 
-<!DOCTYPE html>
+// set error
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$statement = $pdo->prepare('
+        SELECT * FROM `revenues`
+    ');
+
+$statement->execute();
+$revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+<! DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>RevenueEdit</title>
+<head>
+    <title> REVENUE </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -28,11 +39,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <style>
-
 body {
     margin: 0;
     background: white;
@@ -42,6 +51,10 @@ body {
     background:#1840C4;
 }
 
+img {
+    margin-left: 15px;
+}
+
 h1{
     font-size: 50px;
     font-family: 'Times New Roman', Times, serif;
@@ -49,109 +62,72 @@ h1{
     margin-top: 10px;
 }
 
-.bootstrap-iso {
-    float: right;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    margin-right: 20px;
+#logo {
+    margin-left: 20px
 }
 
-table {
-            border: 1px solid black;
-            width: 100%;
-        }
+table caption {
+    padding: .5em 0;
+}
 
-        table thead tr td {
-            border: 1px solid black;
-            text-align: center;
-            background-color: #E1DFD2;
-        }
+table.dataTable th{
+    white-space: nowrap;
+}
 
-        table tbody tr td {
-            padding: 15px;
-        }
+table.dataTable td {
+    white-space: nowrap;
+}
 
-        tbody tr td {
-            border: 1px solid black;
-        }
-
-        .club {
-            grid-column: 1/3;
-
-        }
-
-        .cell_date {
-
-            grid-column: 1/3;
-        }
-
-        .col_total {
-            grid-column: 1/3;
-
-        }
+.p {
+    text-align: center;
+    padding-top: 140px;
+    font-size: 14px;
+}
 
 </style>
 
-  <body>
+<body>
     <nav class="navbar navbar-expand-md">
-        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo3" width="80" height="40">
+        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo" width="80" height="40">
     </nav>
 
     <h1><b> REVENUE</b></h1>
 
-    <div class="bootstrap-iso">
-           <form method="post">
-               <input type="date" id="date" name="date">
-               <button style="background-color: #E1DFD2" class="btn btn-light" name="search" type="search">Search</button>
-           </form>
-    </div>
-
     <hr>
-    <div class="container">
-        Latest Update...
 
-        <table id="revenue">
-            <thead>
+    <div class="container">
+
+      <table class="table table-bordered table-hover dt-responsive">
+        <thead>
+          <tr>
+            <th> Date </th>
+            <th> Superior </th>
+            <th> Luxury </th>
+            <th> Suite </th>
+            <th> Club Room </th>
+            <th> Total </th>
+          </tr>
+        </thead>
+        <tbody>
+
+            @foreach ($revenues as $revenue_data)
                 <tr>
-                    <td id="a">Date</td>
-                    <td id="b">Superior</td>
-                    <td id="c">Luxury</td>
-                    <td id="d">Suite</td>
-                    <td class="club">Club Room</td>
-                    <td class="col_total">Total</td>
+                    <td>{{$revenue_data["date"]}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{$revenue_data["amount"]}}</td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td id="a"></td>
-                    <td id="b"></td>
-                    <td id="c"></td>
-                    <td id="d"></td>
-                    <td class="club"></td>
-                    <td class="col_total"></td>
-                </tr>
-                <tr>
-                    <td id="a"></td>
-                    <td id="b"></td>
-                    <td id="c"></td>
-                    <td id="d"></td>
-                    <td class="club"></td>
-                    <td class="col_total"></td>
-                </tr>
-                <tr>
-                    <td id="a"></td>
-                    <td id="b"></td>
-                    <td id="c"></td>
-                    <td id="d"></td>
-                    <td class="club"></td>
-                    <td class="col_total"></td>
-                </tr>
-            </tbody>
-        </table>
+            @endforeach
+
+        </tbody>
+      </table>
     </div>
-  </body>
-</html>
 
 <script>
-     $('#revenue').DataTable();
+$('table').DataTable();
 </script>
+
+</body>
+</html>
