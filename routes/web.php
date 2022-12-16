@@ -42,6 +42,10 @@ Route::get('/frontdesk/extendstay', function () {
     return view('frontdesk/extendstay');
 });
 
+Route::get('/frontdesk/checkout', function () {
+    return view('frontdesk/checkout');
+});
+
 Route::get('/frontdesk/information', function () {
     return view('frontdesk/information');
 });
