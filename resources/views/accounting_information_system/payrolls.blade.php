@@ -31,13 +31,9 @@
 </head> 
 
 <style>
-    .rectangle{
-        height: 12ch;
-        width: auto;
-        background-color: #1840C4;
-        margin-top: auto;
-        margin-left: auto;
-        margin-right: auto;
+    .navbar {
+        background:#1840C4;
+        height: 80px;
     }
 
     h1{
@@ -68,14 +64,16 @@
 
 <body>
     <!--Header-->
-    <div class="rectangle">
-        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" style="position:absolute; left:40px; top:15px" height="85px" width="100px">
-    </div>
+    <nav class="navbar navbar-expand-md">
+        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo" margin-right="20px" width="80" height="40">
+    </nav>
     
     <div class="d-flex justify-content-center">
         <h1 class="my-4"><b>PAYROLL</b></h1>
     </div>
     
+    <hr>
+
     <div class="row">
         <div class="col-10 mx-auto mb-3">
             <table id="table" class="table table-striped">
@@ -101,9 +99,9 @@
                             <td>{{$payroll->employee->getName()}}</td>
                             <td>{{$payroll->position->position}}</td>
                             <td>{{date('d-m-Y', strtotime($payroll->employee->created_at))}}</td>
-                            <td>{{$payroll->employee->position->payroll[0]->gross_amount}}</td>
-                            <td>{{$payroll->employee->position->payroll[0]->total_deduction}}</td>
-                            <td>{{$payroll->employee->position->payroll[0]->getTotalSalary()}}</td>
+                            <td>{{$payroll->position->payroll[0]->gross_amount}}</td>
+                            <td>{{$payroll->position->payroll[0]->total_deduction}}</td>
+                            <td>{{$payroll->position->payroll[0]->getTotalSalary()}}</td>
                             <td>
                             <form action="/accounting/payrolls/{{ $payroll->id }}" method="POST">
                                 @csrf
