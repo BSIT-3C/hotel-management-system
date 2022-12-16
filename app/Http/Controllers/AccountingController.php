@@ -48,6 +48,13 @@ class AccountingController extends Controller
         ]);
     }
 
+    public function delete_payroll(Employee_Payroll $id)
+    {
+
+        $id->delete();
+        return back();
+    }
+
     /**
      * for editing payroll
      *
@@ -75,6 +82,8 @@ class AccountingController extends Controller
             'employee_payroll' => $employee_payrolls
         ]);
     }
+
+    
 
     /**
      * for editing revenue
