@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +25,11 @@ class EmployeeController extends Controller
     }
     protected function edit(Employee $list) {
         return view('employee_information_system.edit', [
-            'list' => $list
+            'list' => $list,
+            'Departments' => Department::all(),
+            'Roles' => Role::all(),
+            'Positions' => Position::all()
+            
         ]);
     }
 
