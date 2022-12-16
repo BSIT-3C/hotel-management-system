@@ -56,7 +56,20 @@ Route::prefix('accounting')->group(function () {
     Route::get('revenuePrint', [AccountingController::class, 'revenuePrint']);
 
     Route::get('expensesEdit', [AccountingController::class, 'expensesEdit']);
-    Route::get('expensesPrint', [AccountingController::class, 'expensesPrint']);
+    Route::get('expensesPrint', [AccountingController::class, 'expensesPrint2']);
+
+    Route::get('expensesEdit/maintenance', [AccountingController::class, 'expensesMaintenance']);
+    Route::get('expensesEdit/rooms_list', [AccountingController::class, 'expensesRoomsList']);
+    Route::get('expensesEdit/utility_cost', [AccountingController::class, 'expensesUtilityCost']);
+
+    Route::get('expensesEdit/edit/{id}', [AccountingController::class, 'edit']);
+    Route::patch('expensesEdit/{id}', [AccountingController::class, 'update']);
+    Route::get('expensesEdit/new', [AccountingController::class, 'new']);
+    Route::post('expensesEdit', [AccountingController::class, 'store']);
+    Route::delete('expensesEdit/{id}', [AccountingController::class, 'delete']);
+
+    Route::get('expenses', [AccountingController::class, 'expenses']);
+    Route::get('expenses/{date}', [AccountingController::class, 'expensesShow']);
 });
 
 
