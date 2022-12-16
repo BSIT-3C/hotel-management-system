@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\RoomStatus;
-use App\Models\RoomType;
+use App\Models\RoomTypeBed;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoomFactory extends Factory
@@ -19,7 +19,7 @@ class RoomFactory extends Factory
         return [
             'room_number' => $number++,
             'room_status_id' => RoomStatus::pluck('id')->random(),
-            'room_type_id' => RoomType::pluck('id')->random(),
+            'room_type_beds_id' => rand(1, 12),
         ];
     }
 }

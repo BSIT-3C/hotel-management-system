@@ -7,8 +7,8 @@
     </a>
     
         <div class="row">
-            <div class="card">
-                <div class="card-header">
+            <div class="card"><br>
+                <div class="card-header" style="background-color:#1840C4; color:#FFFFFF; border-radius: 5px;">
                     Lost and Found Items List
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="createLostandFoundModal" id="btnInputModal">Add Items</button>
                 </div>
@@ -67,33 +67,33 @@
 <!--Modal for adding Lost and Found Items-->
 <div id="createLostandFoundModal" class="modal fade">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="max-width: 100%; margin:auto; border-radius: 15px;">
+            <div class="modal-header" style="background-color:cornflowerblue;">
                 <h4>Add New Items</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="max-width: 100%; margin:auto;">
                 <h1 style="text-align:center;">Lost and Found Items</h1>
                 <br>
                 <div class="row">
                     <form method="post" action="/housekeeping/lostandfound">
                         @csrf <!--Security Measure-->
-                        <div class="form-floating mb-2" style="width: 500px; margin:auto;">
+                        <div class="form-floating mb-2" style="width: 400px; margin:auto;">
                             <input type="number" min="1" max="50" class="form-control" id="floatingInput" name="room_number" placeholder="room_number" style="background-color: #DFDFDF;" required />
                             <label for="floatingInput">Room Number</label>
                         </div>
-                        <div class="form-floating mb-2" style="width: 500px; margin:auto;">
+                        <div class="form-floating mb-2" style="width: 400px; margin:auto;">
                             <input type="text" class="form-control" id="floatingInput" name="item_name" placeholder="item_name" style="background-color: #DFDFDF;" required />
                             <label for="floatingInput">Item Name</label>
                         </div>
-                        <div class="form-floating mb-2" style="width: 500px; margin:auto;">
+                        <div class="form-floating mb-2" style="width: 400px; margin:auto;">
                             <input type="number" min="1"class="form-control" id="floatingInput" name="item_quantity" placeholder="item_quantity" style="background-color: #DFDFDF;" required />
                             <label for="floatingInput">Item Quantity</label>
                         </div>
-                        <div class="form-floating mb-2" style="width: 500px; margin:auto;">
+                        <div class="form-floating mb-2" style="width: 400px; margin:auto;">
                             <input type="text" class="form-control" id="floatingInput" name="item_status" placeholder="item_status" style="background-color: #DFDFDF;" required />
                             <label for="floatingInput">Item Status</label>
                         </div>
-                        <div class="form-floating mb-2" style="width: 500px; margin:auto;">
+                        <div class="form-floating mb-2" style="width: 400px; margin:auto;">
                             <input type="date" class="form-control" id="floatingInput" name="date_and_time" placeholder="date" style="background-color: #DFDFDF;" required />
                             <label for="floatingInput">Date & Time</label>
                         </div>

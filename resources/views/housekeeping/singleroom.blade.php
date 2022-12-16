@@ -2,15 +2,15 @@
 
 @section('content')
 <div class= "container" style="width: 90%; margin-top: 130px;">
-    <div class="card border-primary mb-3" style="max-width: 100%; height: 520px; margin-left: 10px; border-radius: 15px;">
+    <div class="card mb-3">
         <div class="row">
-            <div class="card">
-                <div class="card-header">
+            <div class="card"><br>
+                <div class="card-header" style="background-color:#1840C4; color:#FFFFFF; border-radius: 5px;">
                     Room Description
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label class="form-label"><strong>Room No.:</strong> </label>
+                        <label class="form-label"><strong>Room No:</strong> </label>
                         {{$view_rooms['room_number']}}
                     </div>
                     <div class="mb-3">
