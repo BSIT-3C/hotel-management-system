@@ -1,30 +1,13 @@
-<?php
-
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=hotel_management_system', 'root', '');
-
-// set error
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$statement = $pdo->prepare('
-        SELECT * FROM `revenues`
-    ');
-
-$statement->execute();
-$revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-?>
-
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title> REVENUE </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
 
-    <!-- FOR JQUERY AND DATEPICKER  -->
+    <!-- FOR JQUERY -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -42,48 +25,47 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <style>
-body {
-    margin: 0;
-    background: white;
-}
+    body {
+        margin: 0;
+        background: white;
+    }
 
-.navbar {
-    background:#1840C4;
-}
+    .navbar {
+        background:#1840C4;
+    }
 
-img {
-    margin-left: 15px;
-}
+    img {
+        margin-left: 15px;
+    }
 
-h1{
-    font-size: 50px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-left: 10px;
-    margin-top: 10px;
-}
+    h1{
+        font-size: 50px;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
 
-#logo {
-    margin-left: 20px
-}
+    #logo {
+        margin-left: 20px
+    }
 
-table caption {
-    padding: .5em 0;
-}
+    table caption {
+        padding: .5em 0;
+    }
 
-table.dataTable th{
-    white-space: nowrap;
-}
+    table.dataTable th{
+        white-space: nowrap;
+    }
 
-table.dataTable td {
-    white-space: nowrap;
-}
+    table.dataTable td {
+        white-space: nowrap;
+    }
 
-.p {
-    text-align: center;
-    padding-top: 140px;
-    font-size: 14px;
-}
-
+    .p {
+        text-align: center;
+        padding-top: 140px;
+        font-size: 14px;
+    }
 </style>
 
 <body>
@@ -100,24 +82,20 @@ table.dataTable td {
       <table class="table table-bordered table-hover dt-responsive">
         <thead>
           <tr>
-            <th> Date </th>
-            <th> Superior </th>
-            <th> Luxury </th>
-            <th> Suite </th>
-            <th> Club Room </th>
-            <th> Total </th>
+            <th>Date</th>
+            <th>Room Type</th>
+            <th>Occupied</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>
 
             @foreach ($revenues as $revenue)
                 <tr>
-                    <td>{{$revenue["date"]}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{$revenue["amount"]}}</td>
+                    <td>{{$revenue->date}}</td>
+                    <td>{{$revenue->room_type->room_type}}</td>
+                    <td>{{$revenue->occupied}}</td>
+                    <td>{{$revenue->amount}}</td>
                 </tr>
             @endforeach
 
@@ -125,9 +103,9 @@ table.dataTable td {
       </table>
     </div>
 
-<script>
-$('table').DataTable();
-</script>
-
 </body>
 </html>
+
+<script>
+    $('table').DataTable();
+</script>

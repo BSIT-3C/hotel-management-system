@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee_Payroll;
 use App\Models\Payroll;
+use App\Models\Revenue;
 
 /**
  * Controller class for accounting module
@@ -72,7 +73,9 @@ class AccountingController extends Controller
      * @return View
      */ 
     public function revenueEdit(){
-        return view('/accounting_information_system/revenueEdit');
+        return view('/accounting_information_system/revenueEdit', [
+            "revenues" => Revenue::all()
+        ]);
     }
 
     /**
