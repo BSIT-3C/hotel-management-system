@@ -160,7 +160,7 @@ class HousekeepingController extends Controller
     //Assign Housekeeper
     public function show_assign_housekeeper()
     {
-        $employees = Employee::all();
+        $employees = Employee::where('position_id', 12)->get();
 
         return view('/housekeeping/assign', [
             'employees' => $employees

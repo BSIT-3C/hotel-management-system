@@ -16,7 +16,7 @@
                     <option value="Claimed">Claimed</option>
                     <option value="Found">Found</option></div>
                 </select>
-            </div>
+            </div><br>
             <div class="d-flex justify-content-center align-items-center">
                 <input class="btn btn-primary" type="submit" value="Submit" style="width: 100px; margin:auto;"><br><br>
             </div><br>
