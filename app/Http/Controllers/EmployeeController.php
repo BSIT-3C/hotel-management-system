@@ -68,24 +68,22 @@ class EmployeeController extends Controller
 
     // update employee
     public function update(Employee $list)
-    {
-        //dd(request()->all());        
+    {    
         $formFields = request()->validate([
-            'work_start' => ['required', 'string'],
-            'work_end' => ['required', 'string'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string', 'max:255'],
+            'work_start' => ['required'],
+            'work_end' => ['required'],
+            'first_name' => ['required', 'max:255'],
+            'last_name' => ['required', 'max:255'],
+            'address' => ['required', 'max:255'],
+            'gender' => ['required', 'max:255'],
             'birthday' => ['required', 'date'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'position' => ['required', 'string'],
-            'department' => ['required', 'string'],
-            'roles' => ['required', 'string'],
-            'contact_number' => ['required', 'string'],
-            'position_id' => ['string']
+            'email' => ['required', 'email', 'max:255'],
+            'position' => ['nullable'],
+            'department' => ['nullable'],
+            'roles' => ['nullable'],
+            'contact_number' => ['required']
         ]);
-        //dd($list->id);
+       
         $list->update($formFields);
         $roles = request()->roles;
         // dd($roles);
@@ -99,7 +97,7 @@ class EmployeeController extends Controller
             }
         }
 
-        return redirect("/employee_information_system/profile/{$list->id}");
+        return back();
     }
 
     // delete employee

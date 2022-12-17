@@ -96,7 +96,6 @@ Route::prefix('accounting')->group(function () {
 
 
 //employee
-// test
 Route::controller(UserController::class)->group(function () {
     Route::post('/registration', 'store');
     Route::post('/login/auth', 'login');

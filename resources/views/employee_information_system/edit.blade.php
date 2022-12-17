@@ -32,7 +32,7 @@
                                 <label for="work_start" class="col-form-label text-md-end">{{ __('Work Start') }}</label>
 
                                 <div class="">
-                                    <input id="work_start" type="time" class="form-control @error('work_start') is-invalid @enderror" name="work_start" value="{{$list->work_start}}" required autocomplete="work_start" autofocus>
+                                    <input id="work_start" type="time" class="form-control" @error('work_start') is-invalid @enderror name="work_start" value="{{$list->work_start}}" required autocomplete="work_start" autofocus>
 
                                     @error('work_start')
                                         <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                 <label for="work_end" class="col-form-label text-md-end">{{ __('Work End') }}</label>
 
                                 <div class="">
-                                    <input id="work_end" type="time" class="form-control @error('work_end') is-invalid @enderror" name="work_end" value="{{$list->work_end}}" required autocomplete="work_end" autofocus>
+                                    <input id="work_end" type="time" class="form-control" @error('work_end') is-invalid @enderror name="work_end" value="{{$list->work_end}}" required autocomplete="work_end" autofocus>
 
                                     @error('work_end')
                                         <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@
                             <div class="col-6">
                                 <label for="first_name" class="col-form-label text-md-end">{{ __('First name') }}</label>
 
-                                <div class="">
-                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{$list->first_name}}" required autocomplete="first_name" autofocus>
+                                <div>
+                                    <input id="first_name" type="text" class="form-control" @error('first_name') is-invalid @enderror name="first_name" value="{{$list->first_name}}" required autocomplete="first_name" autofocus>
 
                                     @error('first_name')
                                         <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
                                 <label for="last_name" class="col-form-label text-md-end">{{ __('Last name') }}</label>
 
                                 <div class="">
-                                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{$list->last_name}}" required autocomplete="last_name" autofocus>
+                                    <input id="last_name" type="text" class="form-control" @error('last_name') is-invalid @enderror name="last_name" value="{{$list->last_name}}" required autocomplete="last_name" autofocus>
 
                                     @error('last_name')
                                         <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                                 <label for="address" class="col-form-label text-md-end">{{ __('Address') }}</label>
 
                                 <div class="">
-                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{$list->address}}" required autocomplete="address" autofocus>
+                                    <input id="address" type="text" class="form-control" @error('address') is-invalid @enderror name="address" value="{{$list->address}}" required autocomplete="address" autofocus>
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -123,7 +123,7 @@
                                 <label for="birthday" class="col-form-label text-md-end">{{ __('Birthday') }}</label>
 
                                 <div class="">
-                                    <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{$list->birthday}}" required autocomplete="address" autofocus>
+                                    <input id="birthday" type="date" class="form-control" @error('birthday') is-invalid @enderror name="birthday" value="{{$list->birthday}}" required autocomplete="address" autofocus>
 
                                     @error('birthday')
                                         <span class="invalid-feedback" role="alert">
@@ -142,7 +142,7 @@
                                 <label for="email" class="col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                                 <div class="">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$list->email}}" required autocomplete="email">
+                                    <input id="email" type="email" class="form-control" @error('email') is-invalid @enderror name="email" value="{{$list->email}}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -156,7 +156,7 @@
                                 <label for="contact_number" class="col-form-label text-md-end">{{ __('Contact Number') }}</label>
 
                                 <div class="">
-                                    <input id="contact_number" type="number" class="form-control @error('contact_number') is-invalid @enderror" name="contact_number" value="{{$list->contact_number}}" required autocomplete="contact_number" autofocus>
+                                    <input id="contact_number" type="number" class="form-control" @error('contact_number') is-invalid @enderror name="contact_number" value="{{$list->contact_number}}" required autocomplete="contact_number" autofocus>
 
                                     @error('contact_number')
                                         <span class="invalid-feedback" role="alert">
@@ -178,10 +178,10 @@
                         </div> --}}
                         
 
-                        <div class="col-6 ">
-                            <label  for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                                <select name="position_id" id="position" name="position" class="form-select">
-                                    <option @if(count($Positions)==0) selected @else  @endif value="">-- Position --</option>
+                        <div class="col-6">
+                            <label for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
+                                <select id="position" name="position" class="form-select form-control">
+                                    <option @if(count($Positions)==0) @else  @endif value="">-- Position --</option>
                                 @foreach ($Positions as $position)
                                     <option @if($position->id==$list->position_id) selected @endif value="{{$position->id}}">{{$position->position}}</option>
                                 @endforeach
@@ -189,8 +189,8 @@
                         </div>
 
                         <div class="col-6 ">
-                            <label  for="position" class="col-form-label text-md-end">{{ __('Department') }}</label>
-                                <select id="position" name="department" class="form-select">
+                            <label for="department" class="col-form-label text-md-end">{{ __('Department') }}</label>
+                                <select id="department" name="department" class="form-select">
                                     <option value="" disabled selected hidden>-- Department --</option>
                                 @foreach ($Departments as $department)
                                     <option value="{{$department->id}}">{{$department->department}}</option>
@@ -203,27 +203,18 @@
                             <div class="col-form-label ">
                             <input type="radio" name="role" value="" class="invisible" checked="checked">
                             @foreach($Roles as $role)
-                                <input type="radio" name="role" id="{{$role->role}}" value="{{$role->id}}" class="form-check-input">
+                                @if(!$is_admin && $role->role === "Admin")
+                                    @continue
+                                @endif
+                    
+                                <input type="checkbox" name="role" id="{{$role->role}}" @if(in_array($role->id, $user_roles)) checked @endif value="{{$role->id}}" class="form-check-input">
                                 <label for="{{$role->role}}">{{$role->role}}</label>
                             @endforeach
                             </div>
 
                         </div>
                     </div>
-                    @if($is_admin)
-                        <div class="row">
-                            <div class="col-12">
-                                <label  for="position" class="col-form-label">{{ __('Role') }}</label>
-                                <div class="form-check">
-                                    @foreach($Roles as $role) 
-                                    <input @if (in_array($role->id,$user_roles)) checked @endif class="form-check-input" type="checkbox" id="{{$role->role}}" name="roles[]" value="{{$role->id}}">
-                                    <label class="form-check-label" for="{{$role->role}}"> {{$role->role}}</label><br>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>    
-                    @endif
-                        
+                   
 
                         <!--EMAIL AND CONTACT NUMBER ROW-->
 
