@@ -190,7 +190,7 @@
                                 <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/function.jpg')}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h3>Function Hall</h3>
-                                    <p class="card-text">Our function hall where you can hosts your celebration it can be a meeting, birthdays, wedding and much more</p>
+                                    <p class="card-text">Our function hall where you can hosts your celebration and enjoy it. It can be a meeting, birthdays, wedding and much more</p>
                                 </div>
                             </div>
                         </div>
