@@ -69,35 +69,6 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
         margin-left: 20px
     }
 
-    .button {
-        border: none;
-        color: white;
-        padding: 2px 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-    }
-
-    .button1 {
-        background-color: #1840C4;
-    }
-
-    .button1:hover {
-        background-color: black;
-    }
-
-    .button2 {
-        background-color: firebrick;
-    }
-
-    .button2:hover {
-        background-color: black;
-    }
-
 </style>
 
 <body>
@@ -131,8 +102,14 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <td>{{$revenue["amount"]}}</td>
                     <td>
                         <!-- Call to action buttons -->
-                        <button type="button" class="button button1"><span class="bi bi-pencil"></span></button>
-                        <button type="button" class="button button2"><span class="bi bi-trash"></span></button>
+                        <button type="button" class="btn btn-outline-primary"><i
+                            class="bi bi-pencil"></i>
+                        Edit</button>
+
+                        <button type="button" class="btn btn-outline-danger"><i
+                            class="bi bi-trash"></i>
+                        Delete</button>
+
                     </td>
                 </tr>
             @endforeach

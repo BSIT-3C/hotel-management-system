@@ -127,7 +127,7 @@ Route::prefix('guestinfo')->group(function () {
 
  //housekeeping
  Route::controller(HousekeepingController::class)->group(function () {
-    
+
     Route::delete('/housekeeping/lostandfound/delete/{id}', 'process_delete_lostandfound')->middleware('auth');
     Route::get('/housekeeping/manage', 'show_manage')->middleware('auth')->name('manage-page');
     Route::get('/housekeeping/viewall', 'show_rooms')->middleware('auth')->name('viewall-page');
@@ -144,7 +144,7 @@ Route::prefix('guestinfo')->group(function () {
     Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
 
  });
- 
+
 Auth::routes();
 
 Route::get('/housekeeping/home', [App\Http\Controllers\HousekeepingController::class, 'index']);
