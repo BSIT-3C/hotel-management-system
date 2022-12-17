@@ -179,8 +179,8 @@
                         
 
                         <div class="col-6">
-                            <label for="position" class="col-form-label text-md-end">{{ __('Position') }}</label>
-                                <select id="position" name="position" class="form-select form-control">
+                            <label for="position_id" class="col-form-label text-md-end">{{ __('Position') }}</label>
+                                <select id="position_id" name="position_id" class="form-select form-control">
                                     <option @if(count($Positions)==0) @else  @endif value="">-- Position --</option>
                                 @foreach ($Positions as $position)
                                     <option @if($position->id==$list->position_id) selected @endif value="{{$position->id}}">{{$position->position}}</option>
@@ -188,29 +188,23 @@
                             </select>
                         </div>
 
-                        <div class="col-6 ">
-                            <label for="department" class="col-form-label text-md-end">{{ __('Department') }}</label>
-                                <select id="department" name="department" class="form-select">
-                                    <option value="" disabled selected hidden>-- Department --</option>
-                                @foreach ($Departments as $department)
-                                    <option value="{{$department->id}}">{{$department->department}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
                         <div class="col-6">
                             <label class="col-form-label text-md-end" for="Role">{{ __('Role') }}</label>
-                            <div class="col-form-label ">
-                            <input type="radio" name="role" value="" class="invisible" checked="checked">
+                            @php
+                            $i = 1;
+                            @endphp
                             @foreach($Roles as $role)
+                            <div class="col-form-label form-check">
+                                
                                 @if(!$is_admin && $role->role === "Admin")
                                     @continue
                                 @endif
                     
-                                <input type="checkbox" name="role" id="{{$role->role}}" @if(in_array($role->id, $user_roles)) checked @endif value="{{$role->id}}" class="form-check-input">
+                                <input type="checkbox" name="role{{$i++}}" id="{{$role->role}}" @if(in_array($role->id, $user_roles)) checked @endif value="{{$role->id}}" class="form-check-input">
                                 <label for="{{$role->role}}">{{$role->role}}</label>
-                            @endforeach
                             </div>
+                            @endforeach
+                            
 
                         </div>
                     </div>

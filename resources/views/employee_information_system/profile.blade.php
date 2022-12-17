@@ -20,7 +20,7 @@
 
                     <div class="mt-3 ms-3" style="color: ;">
                         <a href="/employee_information_system/edit/{{ $list->id }}"><i
-                                class="fa-solid fa-pen-to-square fa-xl" style="color: #1840C4;"></i></a>
+                            class="fa-solid fa-pen-to-square fa-xl" style="color: #1840C4;"></i></a>
                     </div>
 
                     <div class="text-center mt-3 mb-3">

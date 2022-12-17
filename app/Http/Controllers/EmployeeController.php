@@ -69,6 +69,7 @@ class EmployeeController extends Controller
     // update employee
     public function update(Employee $list)
     {    
+        $request = request();
         $formFields = request()->validate([
             'work_start' => ['required'],
             'work_end' => ['required'],
@@ -78,19 +79,22 @@ class EmployeeController extends Controller
             'gender' => ['required', 'max:255'],
             'birthday' => ['required', 'date'],
             'email' => ['required', 'email', 'max:255'],
-            'position' => ['nullable'],
+            'position_id' => ['nullable'],
             'department' => ['nullable'],
-            'roles' => ['nullable'],
             'contact_number' => ['required']
         ]);
-       
+        
+        //dd($formFields);
         $list->update($formFields);
-        $roles = request()->roles;
-        // dd($roles);
+        $roles = [$request->role1, $request->role2, $request->role3];
+        //dd($roles);
 
         if ($roles) {
             EmployeeRole::where('employee_id', $list->id)->delete();
             foreach ($roles as $role) {
+                if(!$role){
+                    continue;
+                }
                 if (count(EmployeeRole::where('employee_id', $list->id)->where('role_id', $role)->get()) == 0) {
                     EmployeeRole::create(['employee_id' => $list->id, "role_id" => $role]);
                 }
