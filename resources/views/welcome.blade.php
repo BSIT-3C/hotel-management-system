@@ -98,7 +98,7 @@
                                 <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/featured_spots/featured_1.jpg')}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h3>Resorts</h3>
-                                    <p class="card-text"> You can enjoy our alluring view from outside in our resorts and enjoy the tranquil in our refreshing pool, you can also take a deep rest on one of our bench</p>
+                                    <p class="card-text"> You can enjoy our alluring views from outside in our resorts and enjoy the tranquil in our refreshing pool, you can also take a deep rest on one of our bench</p>
                                 </div>
                             </div>
                         </div>
