@@ -143,4 +143,9 @@ class EmployeeController extends Controller
         return view('employee_information_system/unverified');
     }
 
+    protected function department(){
+        $employees=Employee::all();
+        return view('/employee_information_system/department',['Lists'=>$employees]); 
+    }
+
 }
