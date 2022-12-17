@@ -84,11 +84,9 @@ class EmployeeController extends Controller
             'contact_number' => ['required']
         ]);
         
-        //dd($formFields);
         $list->update($formFields);
         $roles = [$request->role1, $request->role2, $request->role3];
-        //dd($roles);
-
+       
         if ($roles) {
             EmployeeRole::where('employee_id', $list->id)->delete();
             foreach ($roles as $role) {
