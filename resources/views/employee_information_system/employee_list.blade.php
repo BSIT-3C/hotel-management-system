@@ -15,7 +15,8 @@
             </div>
         </div>
 
-            <a type="submit" class="btn btn-primary" href="/employee_information_system/verification">Verification</a>    
+            <a type="submit" class="btn btn-primary" href="/employee_information_system/verification">Verification</a>
+            <a type="submit" class="btn btn-primary" href="/employee_information_system/department">Department</a>     
 
             <div class="dtr_Tables rounded p-2">
                 <table id="table" class="table table-hover table-primary table-striped text-center shadow-sm">
