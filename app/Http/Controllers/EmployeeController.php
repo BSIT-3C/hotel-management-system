@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
-    protected function index() {
+    protected function index()
+    {
         $Lists = DB::table('employees')
-                ->join('accounts', 'employees.id', 'accounts.employee_id')
-                ->where('is_verified', '1')
-                ->get();
+            ->join('accounts', 'employees.id', 'accounts.employee_id')
+            ->where('is_verified', '1')
+            ->get();
 
         return view('employee_information_system.employee_list', [
             'Lists' => $Lists
@@ -111,19 +112,20 @@ class EmployeeController extends Controller
         }
 
         DB::table('employees')
-                    ->where('id', $list->id)
-                    ->update(['deleted_at' => date("Y-m-d h:i:s")]);
+            ->where('id', $list->id)
+            ->update(['deleted_at' => date("Y-m-d h:i:s")]);
 
         return back();
     }
 
     // verification employee table
-    protected function verification() {
+    protected function verification()
+    {
 
         $Lists = DB::table('employees')
-                ->join('accounts', 'employees.id', 'accounts.employee_id')
-                ->where('is_verified', '0')
-                ->get();
+            ->join('accounts', 'employees.id', 'accounts.employee_id')
+            ->where('is_verified', '0')
+            ->get();
 
         return view('employee_information_system.verification', [
             'Lists' => $Lists
@@ -132,20 +134,26 @@ class EmployeeController extends Controller
 
 
     // verifying an employee
-    protected function verified(Account $list) {
+    protected function verified(Account $list)
+    {
         $list->update(["is_verified" => '1']);
-        
+
         return redirect('employee_information_system/employees');
     }
 
     // unverified employee
-    protected function unverified() { 
+    protected function unverified()
+    {
+        $user = Auth::user()->account->first()->is_verified;
+        if ($user) {
+            return redirect('home');
+        }
         return view('employee_information_system/unverified');
     }
 
-    protected function department(){
-        $employees=Employee::all();
-        return view('/employee_information_system/department',['Lists'=>$employees]); 
+    protected function department()
+    {
+        $employees = Employee::all();
+        return view('/employee_information_system/department', ['Lists' => $employees]);
     }
-
 }

@@ -114,7 +114,9 @@ class DatabaseSeeder extends Seeder
 
         Room::factory()->count(50)->create();
 
+        Employee::factory()->count(100)->create();
         $this->createTenEntryPerFactory();
+
 
         HouseKeeping::factory()->count(1)->create();
 
@@ -153,7 +155,6 @@ class DatabaseSeeder extends Seeder
     public function createTenEntryPerFactory()
     {
         $factoryArray = [
-            'employee' => Employee::factory(),
             'guest' => Guest::factory(),
             'reservation' => Reservation::factory(),
             'account' => Account::factory(),

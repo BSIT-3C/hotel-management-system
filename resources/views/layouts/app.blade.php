@@ -149,7 +149,7 @@
                                         Modules
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Frontdesk</a></li>
+                                        <li><a class="dropdown-item" href="/frontdesk/dashboard">Frontdesk</a></li>
                                         <li><a class="dropdown-item" href="/housekeeping/home">House Keeping</a></li>
                                         <li><a class="dropdown-item" href="/guestinfo/guest-form">Guest Information</a></li>
                                         <li><a class="dropdown-item" href="/accounting/home">Accounting</a></li>
