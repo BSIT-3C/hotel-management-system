@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="{{ URL::asset('css/homepage.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ URL::asset('css/homepage.scss') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ URL::asset('resources/carousel.css')}}" rel ="stylesheet" type ="text/css">
+    <link href="{{URL::asset('resources/css/style.css')}}" rel="stylesheet" type="text/css">
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -90,6 +90,35 @@
                     <div class="row">
                         <div class="row mb-2 ">
                             <h1><i>"Savor the <b>tranquility</b> of our featured spots..."</i></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/featured_spots/featured_1.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3>Resorts</h3>
+                                    <p class="card-text"> You can enjoy our alluring view from outside in our resorts and enjoy the tranquil in our refreshing pool, you can also take a deep rest on one of our bench</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/featured_spots/court.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-text"><i>Outdoor Basketball Court</i></h3>
+                                    <p class="card-text">You can enjoy our Outdoor Basketball court and shows your skills, to your crush like you where like Stephen Curry. And enjoy playing also with your families and friends</p>
+                                </div>
+                            </div>
+                        </div> </i></b>
+                        <div class="col-4">
+                            <div class="card" style="width: 25rem;">
+                                <img class="card-img-top p-3 Rounded" src="{{URL::asset('assets/landingpage/featured_spots/beach.jpg')}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3><b>Beach View</b></h3>
+                                    <p class="card-text">Take a deep refreshing breath, have fun, and enjoy the tranquil and oceanic feeling as you relax by the beachfront</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -187,7 +216,6 @@
                                     <img src="{{URL::asset('assets/landingpage/icons/facebook-logo.png')}}" alt="Facebook Logo" style="width:150px;height:150px">
                                 </a>
                             
-
                             </div>
                         </div>
                     </div>
