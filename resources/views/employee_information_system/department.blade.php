@@ -18,12 +18,12 @@
             <div class="dtr_Tables rounded p-2">
                 <table id="table" class="table table-hover table-primary table-striped text-center shadow-sm">
                     <thead>
-                      <tr>
-                        <th scope="col">Employee Name</th>
-                        <th scope="col">ID Number</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Departemnt</th>
+                      <tr class="text-center">
+                        <th class="text-center" scope="col">Employee Name</th>
+                        <th class="text-center"scope="col">ID Number</th>
+                        <th class="text-center"scope="col">Role</th>
+                        <th class="text-center"scope="col">Position</th>
+                        <th class="text-center"scope="col">Departemnt</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
@@ -35,9 +35,9 @@
                             <td>{{$List->last_name}} {{$List->first_name}}</th>
                             <td>{{$List->id}}</td>
                             <td>{{$List->role}}</td>
-                            <td>{{$List->position}}</td>
-                            <td>{{$List->department}}</td>
-                        </tr>
+                            <td>{{$List->position->position}}</td>
+                            <td>{{$List->position->department->department}}</td>
+                        </tr> 
                       @endforeach
                         
                     @else

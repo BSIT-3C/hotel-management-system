@@ -110,6 +110,9 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::delete('/employee_information_system/delete/{list}', 'delete')->middleware(['auth', 'role.admin' ,'account.verified']);
     Route::get('/employee_information_system/verification', 'verification')->middleware('auth', 'role.admin' ,'account.verified');
     Route::get('/employee_information_system/verification/verified/{list}', 'verified')->middleware('auth' , 'role.admin' ,'account.verified');
+
+
+    Route::get('/employee_information_system/department', 'department')->middleware('auth' , 'role.admin');
 });
 
 Route::controller(Daily_Time_RecordController::class)->group(function () {
