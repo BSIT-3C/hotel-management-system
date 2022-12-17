@@ -19,7 +19,8 @@
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Position</th>
-                            <th>Actions</th>
+                            <th>Asigned Room</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -30,14 +31,16 @@
                                     <td>{{$employee['last_name']}}</td>
                                     <td>{{$employee['first_name']}}</td>
                                     <td>{{$employee->position->position}}</td>
-                                    <td>
-                                        <a href="/housekeeping/lostandfound/{{$employee->id}}"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
+                                    <td><a href="/housekeeping/assign_action" style="text-decoration: none;">Click here to assign room</a></td>
+                                  <!--  <td>
+                                        <a href="/housekeeping/assign_action/"><i class="fa-solid fa-pen-to-square text-primary "></i></a>
                                     </td>
+                                -->
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">No Employee Records</td>
+                                <td colspan="6">No Employee Records</td>
                             </tr>
                         @endunless
                     </tbody>

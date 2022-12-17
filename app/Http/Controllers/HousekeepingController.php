@@ -167,6 +167,14 @@ class HousekeepingController extends Controller
         ]);
     }
 
+    public function show_assign_action_housekeeper()
+    {
+        $rooms = Room::all();
+        return view('/housekeeping/assign_action', [
+            'view_rooms' => $rooms
+        ]);
+    }
+
     /**
      * Show the application dashboard.
      *
