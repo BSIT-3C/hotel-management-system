@@ -183,6 +183,7 @@ Route::controller(HousekeepingController::class)->group(function () {
 
     Route::get('/housekeeping/manage/{id}', 'update_manage')->middleware('auth');
     Route::post('/housekeeping/manage-process_update/{id}', 'process_update_manage')->middleware('auth');
+    Route::get('/housekeeping/assign_action', 'show_assign_action_housekeeper')->middleware('auth');
 });
 
 Auth::routes();
