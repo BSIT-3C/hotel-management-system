@@ -106,18 +106,26 @@
                             <th scope="row">{{ $payroll->id }}</th>
                             <td>{{ $payroll->employee->getName() }}</td>
                             <td>{{ $payroll->position->position }}</td>
-                            <td>{{ date('d-m-Y', strtotime($payroll->employee->created_at)) }}</td>
+                            <td>{{ date('d-m-Y', strtotime($payroll->cut_off)) }}</td>
                             <td>{{ $payroll->position->payroll[0]->gross_amount }}</td>
                             <td>{{ $payroll->position->payroll[0]->total_deduction }}</td>
                             <td>{{ $payroll->position->payroll[0]->getTotalSalary() }}</td>
                             <td>
-                                <form action="/accounting/payrolls/{{ $payroll->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger"><i
-                                            class="fa-solid fa-trash"></i>
-                                        Delete</button>
-                                </form>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a class="btn btn-outline-secondary"
+                                            href="/accounting/payrollPrint/{{ $payroll->id }}">View</a>
+                                    </div>
+                                    <form class="col-6" action="/accounting/payrolls/{{ $payroll->id }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger"><i
+                                                class="fa-solid fa-trash"></i>
+                                            Delete</button>
+                                    </form>
+                                </div>
+
                             </td>
                         </tr>
                     @endforeach
