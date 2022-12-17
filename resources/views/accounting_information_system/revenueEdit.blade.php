@@ -94,6 +94,8 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
           </tr>
 
         </thead>
+
+                    <!-- Display Data from DB -->
         <tbody>
 
             @foreach ($revenues as $revenue)
