@@ -84,6 +84,7 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
 
       <table class="table table-bordered table-hover dt-responsive">
         <thead>
+
           <tr>
             <th>Date</th>
             <th>Room Type</th>
@@ -91,10 +92,12 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
             <th>Amount</th>
             <th></th>
           </tr>
+
         </thead>
         <tbody>
 
             @foreach ($revenues as $revenue)
+
                 <tr>
                     <td>{{$revenue["date"]}}</td>
                     <td>{{$revenue["room_type_id"]}}</td>
@@ -112,6 +115,7 @@ $revenues = $statement->fetchAll(PDO::FETCH_ASSOC);
 
                     </td>
                 </tr>
+
             @endforeach
 
         </tbody>
