@@ -68,38 +68,38 @@ class EmployeeController extends Controller
 
     // update employee
     public function update(Employee $list)
-    {    
-        $request = request();
+    {
+        //dd(request()->all());        
         $formFields = request()->validate([
-            'work_start' => ['required'],
-            'work_end' => ['required'],
-            'first_name' => ['required', 'max:255'],
-            'last_name' => ['required', 'max:255'],
-            'address' => ['required', 'max:255'],
-            'gender' => ['required', 'max:255'],
+            'work_start' => ['required', 'string'],
+            'work_end' => ['required', 'string'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date'],
-            'email' => ['required', 'email', 'max:255'],
-            'position_id' => ['nullable'],
-            'department' => ['nullable'],
-            'contact_number' => ['required']
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'position' => ['required', 'string'],
+            'department' => ['required', 'string'],
+            'roles' => ['required', 'string'],
+            'contact_number' => ['required', 'string'],
+            'position_id' => ['string']
         ]);
-        
+        //dd($list->id);
         $list->update($formFields);
-        $roles = [$request->role1, $request->role2, $request->role3];
-       
+        $roles = request()->roles;
+        // dd($roles);
+
         if ($roles) {
             EmployeeRole::where('employee_id', $list->id)->delete();
             foreach ($roles as $role) {
-                if(!$role){
-                    continue;
-                }
                 if (count(EmployeeRole::where('employee_id', $list->id)->where('role_id', $role)->get()) == 0) {
                     EmployeeRole::create(['employee_id' => $list->id, "role_id" => $role]);
                 }
             }
         }
 
-        return back();
+        return redirect("/employee_information_system/profile/{$list->id}");
     }
 
     // delete employee
@@ -141,6 +141,11 @@ class EmployeeController extends Controller
     // unverified employee
     protected function unverified() { 
         return view('employee_information_system/unverified');
+    }
+
+    protected function department(){
+        $employees=Employee::all();
+        return view('/employee_information_system/department',['Lists'=>$employees]); 
     }
 
 }

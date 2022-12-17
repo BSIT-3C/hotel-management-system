@@ -1,16 +1,18 @@
-
 @php
     $i = 0;
 @endphp
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
 
     <!-- FOR JQUERY AND DATEPICKER  -->
@@ -18,38 +20,45 @@
     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.css"/>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.css" />
+
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/r-2.4.0/rg-1.3.0/sp-2.1.0/datatables.min.js">
+    </script>
 
     <!-- FOR BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-</head> 
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
+</head>
 
 <style>
-    .navbar {
-        background:#1840C4;
-        height: 80px;
+    .rectangle {
+        height: 12ch;
+        width: auto;
+        background-color: #1840C4;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    h1{
+    h1 {
         font-size: 50px;
         font-family: 'Times New Roman', Times, serif;
         margin-left: 10px;
     }
 
     .Search {
-        margin-top:30px;
+        margin-top: 30px;
         right: 10px;
         margin-right: 20px;
     }
 
-    .total{
-        width:70%;
+    .total {
+        width: 70%;
         height: 50px;
         font-size: 25px;
         margin-left: auto;
@@ -64,15 +73,14 @@
 
 <body>
     <!--Header-->
-    <nav class="navbar navbar-expand-md">
-        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo" margin-right="20px" width="80" height="40">
-    </nav>
-    
+    <div class="rectangle">
+        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P"
+            style="position:absolute; left:40px; top:15px" height="85px" width="100px">
+    </div>
+
     <div class="d-flex justify-content-center">
         <h1 class="my-4"><b>PAYROLL</b></h1>
     </div>
-    
-    <hr>
 
     <div class="row">
         <div class="col-10 mx-auto mb-3">
@@ -90,36 +98,37 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                
+
                 <!--Grid For Data-->
                 <tbody>
                     @foreach ($payrolls as $payroll)
                         <tr>
-                            <th scope="row">{{$payroll->id}}</th>
-                            <td>{{$payroll->employee->getName()}}</td>
-                            <td>{{$payroll->position->position}}</td>
-                            <td>{{date('d-m-Y', strtotime($payroll->employee->created_at))}}</td>
-                            <td>{{$payroll->position->payroll[0]->gross_amount}}</td>
-                            <td>{{$payroll->position->payroll[0]->total_deduction}}</td>
-                            <td>{{$payroll->position->payroll[0]->getTotalSalary()}}</td>
+                            <th scope="row">{{ $payroll->id }}</th>
+                            <td>{{ $payroll->employee->getName() }}</td>
+                            <td>{{ $payroll->position->position }}</td>
+                            <td>{{ date('d-m-Y', strtotime($payroll->employee->created_at)) }}</td>
+                            <td>{{ $payroll->position->payroll[0]->gross_amount }}</td>
+                            <td>{{ $payroll->position->payroll[0]->total_deduction }}</td>
+                            <td>{{ $payroll->position->payroll[0]->getTotalSalary() }}</td>
                             <td>
-                            <form action="/accounting/payrolls/{{ $payroll->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
+                                <form action="/accounting/payrolls/{{ $payroll->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger"><i
-                                    class="fa-solid fa-trash"></i>
+                                            class="fa-solid fa-trash"></i>
                                         Delete</button>
-                            </form>
+                                </form>
                             </td>
                         </tr>
-                    @endforeach            
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    
+
 
 </body>
+
 </html>
 
 <script>
@@ -131,7 +140,9 @@
         }
     }
 
-    $('#date').datepicker({ beforeShowDay: available })
+    $('#date').datepicker({
+        beforeShowDay: available
+    })
 
-    $('#table').DataTable(); 
+    $('#table').DataTable();
 </script>
