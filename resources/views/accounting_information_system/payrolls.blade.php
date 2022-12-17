@@ -65,7 +65,7 @@
 <body>
     <!--Header-->
     <nav class="navbar navbar-expand-md">
-        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo" margin-right="20px" width="80" height="40">
+        <img src="https://drive.google.com/uc?export=download&id=1N-yj2KqeeyVd3t_RLgeaO2HGI5i94h4P" alt="logo" tofa-pull-right="20px" width="80" height="40">
     </nav>
     
     <div class="d-flex justify-content-center">
@@ -94,7 +94,7 @@
                 <!--Grid For Data-->
                 <tbody>
                     @foreach ($payrolls as $payroll)
-                        <tr>
+                        <tr style="text-align: center">
                             <th scope="row">{{$payroll->id}}</th>
                             <td>{{$payroll->employee->getName()}}</td>
                             <td>{{$payroll->position->position}}</td>
